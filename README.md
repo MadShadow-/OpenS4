@@ -1,7 +1,9 @@
 # OpenS4
 
-## Prerequisites
+## Build Requirements
 
-<br>
+ * C++17
+ * Clang (Version >= 10)
+ 
+## Building OpenS4
 
-<h1> test </h1>
