@@ -30,3 +30,11 @@
 *.exe
 *.out
 *.app
+
+# Binary/Deps/Vs-Folders
+out/
+Dependencies/
+.vs/
+
+# VS Settings
+CMakeSettings.json
