@@ -5,60 +5,68 @@
 namespace OpenS4::Renderer {
 class TriangleBatch {
    public:
-    GLuint m_vertexArray = 0;
-    GLuint m_textureArray = 0;
+
     GLuint m_vertexArrayObject = 0;
 
-    u64 m_numberOfVertices = 0;
-    u64 m_vertexArrayBufferSize = 0;
-    u64 m_textureArrayBufferSize = 0;
+    GLuint m_attributes[3] = {0};
+    u64 m_attributeSize[3] = {0};
 
-    GLuint m_colorArray = 0;
-    u64 m_colorArrayaBufferSize = 0;
+    u64 m_numberOfVertices;
+
+    void setAttribute(u64 attrID, const std::vector<float>& attribute,
+                      u64 valuesPerAttribute) {
+        if (m_attributes[attrID] == 0) {
+            glGenBuffers(1, &m_attributes[attrID]);
+        }
+
+        glBindBuffer(GL_ARRAY_BUFFER, m_attributes[attrID]);
+        if (m_attributeSize[attrID] < attribute.size()) {
+            glBufferData(GL_ARRAY_BUFFER, sizeof(float) * attribute.size(),
+                         attribute.data(), GL_DYNAMIC_DRAW);
+            m_attributeSize[attrID] = attribute.size();
+        } else {
+            glBufferSubData(GL_ARRAY_BUFFER, 0,
+                            sizeof(float) * attribute.size(), attribute.data());
+        }
+        glVertexAttribPointer(attrID, valuesPerAttribute, GL_FLOAT, GL_FALSE, 0,
+                              0);
+    }
+
+    void setAttribute(u64 attrID, float* attribute, u64 attributeLength,
+                      u64 valuesPerAttribute) {
+        if (m_attributes[attrID] == 0) {
+            glGenBuffers(1, &m_attributes[attrID]);
+        }
+
+        glBindBuffer(GL_ARRAY_BUFFER, m_attributes[attrID]);
+        if (m_attributeSize[attrID] < attributeLength) {
+            glBufferData(GL_ARRAY_BUFFER, sizeof(float) * attributeLength,
+                         attribute, GL_DYNAMIC_DRAW);
+            m_attributeSize[attrID] = attributeLength;
+        } else {
+            glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(float) * attributeLength,
+                            attribute);
+        }
+        glVertexAttribPointer(attrID, valuesPerAttribute, GL_FLOAT, GL_FALSE, 0,
+                              0);
+    }
+
+    void bindVAO() {
+        if (m_vertexArrayObject == 0) {
+            glGenVertexArrays(1, &m_vertexArrayObject);
+        }
+        glBindVertexArray(m_vertexArrayObject);
+    }
 
    public:
     TriangleBatch() {}
     ~TriangleBatch() {
-        if (m_vertexArray != 0) glDeleteBuffers(1, &m_vertexArray);
-        if (m_textureArray != 0) glDeleteBuffers(1, &m_textureArray);
-        if (m_textureArrayBufferSize != 0) glDeleteBuffers(1, &m_colorArray);
+        for (int i = 0; i < 3; i++) {
+            if (m_attributes[i]) glDeleteBuffers(1, &m_attributes[i]);
+        }
+
         if (m_vertexArrayObject != 0)
             glDeleteVertexArrays(1, &m_vertexArrayObject);
-    }
-
-    void begin(u64 numberOfVertices) {
-        glGenVertexArrays(1, &m_vertexArrayObject);
-        glBindVertexArray(m_vertexArrayObject);
-
-        m_numberOfVertices = numberOfVertices;
-    }
-    void end() {
-        glBindBuffer(GL_ARRAY_BUFFER, m_vertexArrayObject);
-        glUnmapBuffer(GL_ARRAY_BUFFER);
-
-        glEnableVertexAttribArray(0);
-        glBindBuffer(GL_ARRAY_BUFFER, m_vertexArray);
-        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, 0);
-
-        glEnableVertexAttribArray(1),
-            glBindBuffer(GL_ARRAY_BUFFER, m_textureArray);
-        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
-
-        glBindVertexArray(0);
-    }
-
-    void copyVertexData(float* xyData) {
-        glGenBuffers(1, &m_vertexArray);
-        glBindBuffer(GL_ARRAY_BUFFER, m_vertexArray);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(float) * m_numberOfVertices,
-                     xyData, GL_DYNAMIC_DRAW);
-    }
-
-    void copyTextureData(float* xyTexture) {
-        glGenBuffers(1, &m_textureArray);
-        glBindBuffer(GL_ARRAY_BUFFER, m_textureArray);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(float) * m_numberOfVertices,
-                     xyTexture, GL_DYNAMIC_DRAW);
     }
 
     void draw() {
@@ -67,97 +75,14 @@ class TriangleBatch {
         glBindVertexArray(0);
     }
 
-    void updateData(float* xyData, float* xyTexture, u64 numberOfElements) {
-        if (m_vertexArrayObject == 0) {
-            glGenVertexArrays(1, &m_vertexArrayObject);
-        }
-        glBindVertexArray(m_vertexArrayObject);
+    void updateData(const std::vector<float>& xy, u64 nXY,
+                    const std::vector<float>& uv, u64 nUV,
+                    const std::vector<float>& color, u64 nColor) {
+        bindVAO();
 
-        if (m_vertexArray == 0) {
-            glGenBuffers(1, &m_vertexArray);
-        }
-        glBindBuffer(GL_ARRAY_BUFFER, m_vertexArray);
-        if (m_vertexArrayBufferSize < numberOfElements) {
-            glBufferData(GL_ARRAY_BUFFER, sizeof(float) * numberOfElements,
-                         xyData, GL_DYNAMIC_DRAW);
-            m_vertexArrayBufferSize = numberOfElements;
-        } else {
-            glBufferSubData(GL_ARRAY_BUFFER, 0,
-                            sizeof(float) * numberOfElements, xyData);
-        }
-        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, 0);
-
-        if (m_textureArray == 0) {
-            glGenBuffers(1, &m_textureArray);
-        }
-        glBindBuffer(GL_ARRAY_BUFFER, m_textureArray);
-        if (m_textureArrayBufferSize < numberOfElements) {
-            glBufferData(GL_ARRAY_BUFFER, sizeof(float) * numberOfElements,
-                         xyTexture, GL_DYNAMIC_DRAW);
-        } else {
-            glBufferSubData(GL_ARRAY_BUFFER, 0,
-                            sizeof(float) * numberOfElements, xyTexture);
-        }
-        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
-
-        glEnableVertexAttribArray(0);
-        glEnableVertexAttribArray(1);
-        glDisableVertexAttribArray(2);
-
-        glBindVertexArray(0);
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-        m_numberOfVertices = numberOfElements;
-    }
-
-    void updateData(float* xyData, float* xyTexture, float* rgbaColor,
-                    u64 numberOfElements) {
-        if (m_vertexArrayObject == 0) {
-            glGenVertexArrays(1, &m_vertexArrayObject);
-        }
-        glBindVertexArray(m_vertexArrayObject);
-
-        if (m_vertexArray == 0) {
-            glGenBuffers(1, &m_vertexArray);
-        }
-        glBindBuffer(GL_ARRAY_BUFFER, m_vertexArray);
-        if (m_vertexArrayBufferSize < numberOfElements) {
-            glBufferData(GL_ARRAY_BUFFER, sizeof(float) * numberOfElements,
-                         xyData, GL_DYNAMIC_DRAW);
-            m_vertexArrayBufferSize = numberOfElements;
-        } else {
-            glBufferSubData(GL_ARRAY_BUFFER, 0,
-                            sizeof(float) * numberOfElements, xyData);
-        }
-        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, 0);
-
-        if (m_textureArray == 0) {
-            glGenBuffers(1, &m_textureArray);
-        }
-        glBindBuffer(GL_ARRAY_BUFFER, m_textureArray);
-        if (m_textureArrayBufferSize < numberOfElements) {
-            glBufferData(GL_ARRAY_BUFFER, sizeof(float) * numberOfElements,
-                         xyTexture, GL_DYNAMIC_DRAW);
-            m_textureArrayBufferSize = numberOfElements;
-        } else {
-            glBufferSubData(GL_ARRAY_BUFFER, 0,
-                            sizeof(float) * numberOfElements, xyTexture);
-        }
-        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
-
-        if (m_colorArray == 0) {
-            glGenBuffers(1, &m_colorArray);
-        }
-        glBindBuffer(GL_ARRAY_BUFFER, m_colorArray);
-        if (m_colorArrayaBufferSize < numberOfElements * 2) {
-            glBufferData(GL_ARRAY_BUFFER, sizeof(float) * numberOfElements * 2,
-                         rgbaColor, GL_DYNAMIC_DRAW);
-            m_colorArrayaBufferSize = numberOfElements * 2;
-        } else {
-            glBufferSubData(GL_ARRAY_BUFFER, 0,
-                            sizeof(float) * numberOfElements * 2, rgbaColor);
-        }
-        glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, 0, 0);
+        setAttribute(0, xy, nXY);
+        setAttribute(1, uv, nUV);
+        setAttribute(2, color, nColor);
 
         glEnableVertexAttribArray(0);
         glEnableVertexAttribArray(1);
@@ -166,7 +91,25 @@ class TriangleBatch {
         glBindVertexArray(0);
         glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-        m_numberOfVertices = numberOfElements;
+        m_numberOfVertices = xy.size() / nXY;
+    }
+
+    void updateData(float* xy, u64 xySize, u64 nXY, float* uv, u64 uvSize,
+                    u64 nUV, float* color, u64 colorSize, u64 nColor) {
+        bindVAO();
+
+        setAttribute(0, xy, xySize, nXY);
+        setAttribute(1, uv, uvSize, nUV);
+        setAttribute(2, color, colorSize, nColor);
+
+        glEnableVertexAttribArray(0);
+        glEnableVertexAttribArray(1);
+        glEnableVertexAttribArray(2);
+
+        glBindVertexArray(0);
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+        m_numberOfVertices = xySize / nXY;
     }
 };
 

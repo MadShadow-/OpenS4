@@ -10,12 +10,16 @@ namespace OpenS4::Renderer::Shader {
 const char* FRAGMENTSHADER_MAP =
 STRINGIFY(#version 330 core\n
 in vec2 texCoord;
+in float colorScale;
 
 out vec4 fragColor;
 uniform sampler2D tex2D;
 
 void main() {
     fragColor = texture2D(tex2D, texCoord);
+	fragColor.r *= colorScale * 1.15;
+	fragColor.g *= colorScale * 1.1;
+	fragColor.b *= colorScale;
 }
 );
 
@@ -24,14 +28,17 @@ STRINGIFY(#version 330 core\n
 
 layout(location = 0) in vec4 vVertex;
 layout(location = 1) in vec2 vTexCoord;
+layout(location = 2) in float vColorScale;
 
 uniform mat4 mvpMatrix;
 
 out vec2 texCoord;
+out float colorScale;
 
 void main(){
 	gl_Position = mvpMatrix * vVertex;
 	texCoord = vTexCoord;
+	colorScale = vColorScale;
 }
     );
 

@@ -3,8 +3,9 @@ cmake_minimum_required (VERSION 3.8)
 
 
 file(GLOB_RECURSE src "${PROJECT_SOURCE_DIR}" "*.cpp")
+file(GLOB_RECURSE header "${PROJECT_SOURCE_DIR}" "*.hpp")
 
-add_executable(OpenS4 ${src})
+add_executable(OpenS4 ${src} ${header})
 #add_executable(OpenS4 main.cpp "Renderer/TextureAtlas.cpp" "Renderer/LandscapeTextures.cpp"  "Renderer/Shaders.hpp" "Renderer/Shaders.cpp"  "Renderer/TriangleBatch.hpp" "Renderer/LandscapeRenderer.hpp" "Renderer/MatrixStack.hpp" "Renderer/TransformationPipeline.hpp" "Renderer/LoadShader.hpp" "Import/Gfx.cpp" "Import/Reader.cpp"  "Import/MapReader/Map.cpp" "Import/MapReader/Map.hpp" "Import/MapReader/Reader.cpp" "Import/MapReader/Reader.hpp")
 set_property(TARGET OpenS4 PROPERTY CXX_STANDARD 17)
 
