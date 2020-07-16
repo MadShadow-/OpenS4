@@ -603,8 +603,9 @@ void drawLoop(GLFWwindow* window, OpenS4::Renderer::Landscape* landscape,
                     settler_color.push_back(color.a / 255.0);
                 }
 
-                settler_batch.updateData(settler_pos, settler_tex,
-                                         settler_color.data(), 12);
+                settler_batch.updateData(settler_pos, 12, 2,
+                                         settler_tex, 12, 2,
+                                         settler_color.data(), 24, 4);
 
                 settler_batch.draw();
             }

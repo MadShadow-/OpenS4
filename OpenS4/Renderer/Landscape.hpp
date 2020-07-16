@@ -63,7 +63,7 @@ class Landscape {
 
     LandscapeTextureID getTerrain(int x, int y) { return m_textureType[idx(x, y)]; }
 
-    int getTerrainHeight(int x, int y) { return m_heightMap[idx(x, y)] * 3; }
+    int getTerrainHeight(int x, int y) { return m_heightMap[idx(x, y)]; }
 
     void update() {
         for (int y = 0; y < m_height; y++) {

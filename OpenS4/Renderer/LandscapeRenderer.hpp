@@ -1,8 +1,9 @@
 #pragma once
 
+#include <Logger/Logger.hpp>
+#include <glm/gtx/normal.hpp>
 #include <glm/matrix.hpp>
 
-#include <Logger/Logger.hpp>
 #include "../main.hpp"
 #include "Landscape.hpp"
 #include "TransformationPipeline.hpp"
@@ -17,6 +18,52 @@ class LandscapeRenderer {
 
     u64 CHUNK_SIZE = 64;
 
+    float getGradient(u64 x, u64 y) {
+        if (x == 0 || y == 0 || x >= m_landscape->getWidth() - 1 ||
+            y >= m_landscape->getHeight() - 1) {
+            return 1.0f;
+        }
+
+        auto h1 = m_landscape->getTerrainHeight(x, y + 1) * 2;
+        auto h2 = m_landscape->getTerrainHeight(x + 1, y + 1) * 2;
+        auto h3 = m_landscape->getTerrainHeight(x + 1, y) * 2;
+        auto h4 = m_landscape->getTerrainHeight(x, y - 1) * 2;
+        auto h5 = m_landscape->getTerrainHeight(x - 1, y - 1) * 2;
+        auto h6 = m_landscape->getTerrainHeight(x - 1, y) * 2;
+
+        auto h0 = m_landscape->getTerrainHeight(x, y) * 2;
+
+        int n = 0;
+
+        auto diff1 = h0 - h1;
+        auto diff2 = h0 - h2;
+        auto diff3 = h0 - h3;
+        auto diff4 = h0 - h4;
+        auto diff5 = h0 - h5;
+        auto diff6 = h0 - h6;
+
+        if (diff1 > 0) n++;
+        if (diff2 > 0) n++;
+
+        if (diff5 > 0) n--;
+        if (diff4 > 0) n--;
+
+        if (diff3 > 0) n--;
+        if (diff6 > 0) n--;
+
+        n = 0;
+        if (diff1 < 0) n += 3 * diff1;
+        if (diff2 < 0) n += 3 * diff2;
+
+        n -= 1 * diff5;
+        n -= 1 * diff4;
+
+        n -= diff3;
+        n += diff6;
+
+        return 1.0f + n / 150.0f;
+    }
+
    public:
     LandscapeRenderer(OpenS4::Renderer::Landscape* landscape) {
         m_landscape = landscape;
@@ -25,7 +72,6 @@ class LandscapeRenderer {
         u32 chunksY = landscape->getHeight() / CHUNK_SIZE;
 
         m_batches.resize(chunksY);
-
         for (u32 chunkY = 0; chunkY < chunksY; chunkY++) {
             m_batches[chunkY].resize(chunksX);
             for (u32 chunkX = 0; chunkX < chunksX; chunkX++) {
@@ -81,7 +127,6 @@ class LandscapeRenderer {
         std::vector<float> vertices;
         std::vector<float> texture;
 
-
         // calculate borders for this chunk
         u64 x_max = std::min((chunkX + 1) * CHUNK_SIZE,
                              (u64)(m_landscape->getWidth() - 1));
@@ -100,6 +145,9 @@ class LandscapeRenderer {
         vertices.reserve(numberOfCoordinates);
         texture.reserve(numberOfCoordinates);
 
+        std::vector<float> color;
+        color.reserve(numberOfCoordinates / 2 * 3);
+
         for (auto y = y_min; y < y_max; y++) {
             for (auto x = x_min; x < x_max; x++) {
                 const OpenS4::Renderer::LandscapeTexturePosition& pos =
@@ -117,16 +165,21 @@ class LandscapeRenderer {
                 */
 
                 glm::vec2 p1 = toPixelPosition(glm::vec2(x, y));
-                p1.y += m_landscape->getTerrainHeight(x, y);
+                p1.y += m_landscape->getTerrainHeight(x, y) * 2;
 
                 glm::vec2 p2 = toPixelPosition(glm::vec2(x + 1, y));
-                p2.y += m_landscape->getTerrainHeight(x + 1, y);
+                p2.y += m_landscape->getTerrainHeight(x + 1, y) * 2;
 
                 glm::vec2 p3 = toPixelPosition(glm::vec2(x, y - 1));
-                p3.y += m_landscape->getTerrainHeight(x, y - 1);
+                p3.y += m_landscape->getTerrainHeight(x, y - 1) * 2;
 
                 glm::vec2 p4 = toPixelPosition(glm::vec2(x + 1, y - 1));
-                p4.y += m_landscape->getTerrainHeight(x + 1, y - 1);
+                p4.y += m_landscape->getTerrainHeight(x + 1, y - 1) * 2;
+
+                // p1.x += m_landscape->getTerrainHeight(x, y);
+                // p2.x += m_landscape->getTerrainHeight(x+1, y);
+                // p3.x += m_landscape->getTerrainHeight(x, y-1);
+                // p4.x += m_landscape->getTerrainHeight(x+1, y-1);
 
                 vertices.push_back(p1.x);
                 vertices.push_back(p1.y);
@@ -157,12 +210,40 @@ class LandscapeRenderer {
                 vertices.push_back(p3.y);
                 texture.push_back(pos2.p3.x);
                 texture.push_back(pos2.p3.y);
+
+                auto h1 = m_landscape->getTerrainHeight(x, y);
+                auto h2 = m_landscape->getTerrainHeight(x + 1, y);
+                auto h3 = m_landscape->getTerrainHeight(x, y - 1);
+                auto h4 = m_landscape->getTerrainHeight(x + 1, y - 1);
+
+                auto diffA = (h3 - h1) / 255.0f;
+                auto diffB = (h4 - h2) / 255.0f;
+
+                // gradA += diffA * 20.0f;
+                // gradB += diffB * 20.0f;
+
+                auto gradient = getGradient(x, y);
+                color.push_back(gradient);
+
+                gradient = getGradient(x + 1, y);
+                color.push_back(gradient);
+
+                gradient = getGradient(x, y - 1);
+                color.push_back(gradient);
+
+                gradient = getGradient(x + 1, y);
+                color.push_back(gradient);
+
+                gradient = getGradient(x + 1, y - 1);
+                color.push_back(gradient);
+
+                gradient = getGradient(x, y - 1);
+                color.push_back(gradient);
             }
         }
 
-        m_batches[chunkY][chunkX].updateData(vertices.data(), texture.data(),
-                                             numberOfCoordinates);
+        m_batches[chunkY][chunkX].updateData(vertices, 2, texture, 2, color, 1);
     }
-};
+};  // namespace OpenS4::Renderer
 
 }  // namespace OpenS4::Renderer
