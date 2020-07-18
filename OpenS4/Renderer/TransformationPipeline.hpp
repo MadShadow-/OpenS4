@@ -11,9 +11,7 @@ class TransformationPipeline {
     glm::mat4x4 m_mvp;
 
    public:
-    OpenS4::Renderer::MatrixStack* getModelViewStack() {
-        return &m_modelView;
-    }
+    OpenS4::Renderer::MatrixStack* getModelViewStack() { return &m_modelView; }
     OpenS4::Renderer::MatrixStack* getProjectionStack() {
         return &m_projection;
     }

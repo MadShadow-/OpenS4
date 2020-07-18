@@ -1,9 +1,8 @@
 #pragma once
 
+#include <Logger/Types.hpp>
 #include <glm/glm.hpp>
 #include <glm/gtx/transform.hpp>
-
-#include <Logger/Types.hpp>
 
 namespace OpenS4::Renderer {
 

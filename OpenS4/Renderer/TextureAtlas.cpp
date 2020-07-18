@@ -1,6 +1,8 @@
 
 #include "TextureAtlas.hpp"
 
+#include "../main.hpp"
+
 namespace OpenS4::Renderer {
 TextureAtlas::TextureAtlas(int width, int height) {
     m_width = width;
@@ -40,7 +42,7 @@ TextureAtlas::TextureSizeSlot TextureAtlas::get_slot_by_height(int height) {
 TextureAtlas::TextureAtlasPosition TextureAtlas::add_texture_to_atlas_swapped(
     const OpenS4::Import::ImageData* img) {
     OpenS4::Import::ImageData image(img->getWidth(), img->getHeight(),
-                                      img->getPalette());
+                                    img->getPalette());
 
     for (int i = 0; i < img->getWidth() * img->getHeight(); i++) {
         uint32_t num = img->getData()[i];
@@ -57,7 +59,7 @@ TextureAtlas::TextureAtlasPosition TextureAtlas::add_texture_to_atlas_swapped(
 TextureAtlas::TextureAtlasPosition TextureAtlas::add_texture_to_atlas(
     const OpenS4::Import::ImageData* img) {
     OpenS4::Import::ImageData biggerImage(img->getWidth() + 2,
-                                            img->getHeight() + 2);
+                                          img->getHeight() + 2);
     for (int y = 0; y < biggerImage.getHeight(); y++) {
         for (int x = 0; x < biggerImage.getWidth(); x++) {
             int yidx = y - 1;
@@ -142,6 +144,7 @@ TextureAtlas::TextureAtlasPosition TextureAtlas::add_texture_to_atlas(
     return pos;
 }
 
+/*
 TextureAtlas::TextureAtlasPosition TextureAtlas::add_texture_to_atlas(
     uint32_t* data, int width, int height, int repeatWidth) {
     TextureAtlas::TextureAtlasPosition pos;
@@ -217,7 +220,7 @@ TextureAtlas::TextureAtlasPosition TextureAtlas::add_texture_to_atlas(
 
     return pos;
 }
-
+*/
 //-------------------------------------//
 void TextureAtlas::copy_image(unsigned int* dest, unsigned int* src, int posX,
                               int posY, int width, int height, int destWidth,

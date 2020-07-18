@@ -46,15 +46,13 @@ const char* FRAGMENTSHADER_SETTLER =
 STRINGIFY(#version 330 core\n
 
 	in vec2 texCoord;
-	in vec4 vCol;
-
-	uniform vec4 playerColor;
-
-
+	in float vCol;
 
 	out vec4 fragColor;
 
 	uniform sampler2D tex2D;
+
+	uniform vec4 playerColors[8];
 
 	void main(){
 
@@ -68,10 +66,9 @@ STRINGIFY(#version 330 core\n
 		{
 			if (textureColor.r == 0 && textureColor.g == 0 && textureColor.b == 0 && textureColor.a != 0)
 			{
-				fragColor = vCol;
-				fragColor.r = textureColor.a * vCol.r;
-				fragColor.g = textureColor.a * vCol.g;
-				fragColor.b = textureColor.a * vCol.b;
+				fragColor.r = textureColor.a * playerColors[int(vCol)].r;
+				fragColor.g = textureColor.a * playerColors[int(vCol)].g;
+				fragColor.b = textureColor.a * playerColors[int(vCol)].b;
 				fragColor.a = 1;
 			}
 			else
@@ -79,6 +76,9 @@ STRINGIFY(#version 330 core\n
 				fragColor = textureColor;
 			}
 		}
+
+		if (fragColor.a == 0)
+			discard;
 	}
 );
 
@@ -87,12 +87,12 @@ STRINGIFY(#version 330 core\n
 
 layout(location = 0) in vec4 vVertex;
 layout(location = 1) in vec2 vTexCoord;
-layout(location = 2) in vec4 vColor;
+layout(location = 2) in float vColor;
 
 uniform mat4 mvpMatrix;
 
 out vec2 texCoord;
-out vec4 vCol;
+out float vCol;
 
 	void main(){
 		gl_Position = mvpMatrix * vVertex;
@@ -100,6 +100,36 @@ out vec4 vCol;
 		vCol = vColor;
 
 	}
+);
+
+const char* VERTEXSHADER_POINT =
+STRINGIFY(#version 330 core\n
+
+	layout(location = 0) in vec4 vVertex;
+	layout(location = 2) in vec4 vColor;
+
+	uniform mat4 mvpMatrix;
+
+	out vec4 vCol;
+
+	void main()
+	{
+		gl_Position = mvpMatrix * vVertex;
+		vCol = vColor;
+	}
+);
+
+const char* FRAGMENTSHADER_POINT =
+STRINGIFY(#version 330 core\n
+
+	in vec4 vCol;
+
+	out vec4 fragColor;
+
+	void main(){
+		fragColor = vCol;
+	}
+
 );
 
 // clang-format on

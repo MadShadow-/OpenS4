@@ -1,11 +1,10 @@
 #pragma once
 
-#include "../main.hpp"
+#include "../OpenGL.hpp"
 
 namespace OpenS4::Renderer {
-class TriangleBatch {
+class PointBatch {
    public:
-
     GLuint m_vertexArrayObject = 0;
 
     GLuint m_attributes[3] = {0};
@@ -59,8 +58,8 @@ class TriangleBatch {
     }
 
    public:
-    TriangleBatch() {}
-    ~TriangleBatch() {
+    PointBatch() {}
+    ~PointBatch() {
         for (int i = 0; i < 3; i++) {
             if (m_attributes[i]) glDeleteBuffers(1, &m_attributes[i]);
         }
@@ -71,45 +70,24 @@ class TriangleBatch {
 
     void draw() {
         glBindVertexArray(m_vertexArrayObject);
-        glDrawArrays(GL_TRIANGLES, 0, m_numberOfVertices);
+        glDrawArrays(GL_POINTS, 0, m_numberOfVertices);
         glBindVertexArray(0);
     }
 
     void updateData(const std::vector<float>& xy, u64 nXY,
-                    const std::vector<float>& uv, u64 nUV,
                     const std::vector<float>& color, u64 nColor) {
         bindVAO();
 
         setAttribute(0, xy, nXY);
-        setAttribute(1, uv, nUV);
         setAttribute(2, color, nColor);
 
         glEnableVertexAttribArray(0);
-        glEnableVertexAttribArray(1);
         glEnableVertexAttribArray(2);
 
         glBindVertexArray(0);
         glBindBuffer(GL_ARRAY_BUFFER, 0);
 
         m_numberOfVertices = xy.size() / nXY;
-    }
-
-    void updateData(float* xy, u64 xySize, u64 nXY, float* uv, u64 uvSize,
-                    u64 nUV, float* color, u64 colorSize, u64 nColor) {
-        bindVAO();
-
-        setAttribute(0, xy, xySize, nXY);
-        setAttribute(1, uv, uvSize, nUV);
-        setAttribute(2, color, colorSize, nColor);
-
-        glEnableVertexAttribArray(0);
-        glEnableVertexAttribArray(1);
-        glEnableVertexAttribArray(2);
-
-        glBindVertexArray(0);
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-        m_numberOfVertices = xySize / nXY;
     }
 };
 

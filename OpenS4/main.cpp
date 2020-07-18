@@ -2,6 +2,7 @@
 #include "main.hpp"
 
 #include <chrono>
+#include <functional>
 #include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/transform.hpp>
@@ -10,14 +11,19 @@
 #include <thread>
 
 #include "Import/Map/Map.hpp"
+#include "Input/InputHandler.hpp"
+#include "Input/InputListener.hpp"
+#include "Logic/Logic.hpp"
+#include "Renderer/Batch/PointBatch.hpp"
+#include "Renderer/Batch/TriangleBatch.hpp"
 #include "Renderer/Landscape.hpp"
 #include "Renderer/LandscapeRenderer.hpp"
 #include "Renderer/LandscapeTextures.hpp"
 #include "Renderer/LoadShader.hpp"
+#include "Renderer/ObjectRenderer/ObjectRenderer.hpp"
 #include "Renderer/Shaders.hpp"
 #include "Renderer/TextureMapper.hpp"
 #include "Renderer/TransformationPipeline.hpp"
-#include "Renderer/TriangleBatch.hpp"
 
 void registerMapperTextures(OpenS4::Import::GraphicsRegistry& registry,
                             OpenS4::Renderer::LandscapeTextures* textures,
@@ -400,39 +406,77 @@ int g_playerColor = 0;
 int g_frameID = 0;
 int g_tapID = 0;
 
-const int XSTEP = 32;
-const int YSTEP = XSTEP / 2;
-glm::vec2 toPixelPosition(glm::vec2 model) {
-    glm::vec2 pos;
-    pos.x = model.x * XSTEP - (model.y + 1) * XSTEP / 2;
-    pos.y = -(model.y + 1) * YSTEP;
-    return pos;
-}
-glm::vec2 toModelPosition(glm::vec2 pixel) {
-    glm::vec2 model;
+OpenS4::Logic::Direction g_direction = OpenS4::Logic::Direction::EAST;
 
-    model.y = -(pixel.y / YSTEP) - 1;
-    model.x = (pixel.x + (model.y + 1) * XSTEP / 2) / XSTEP;
-    return model;
-}
-glm::vec2 screenToWorld(glm::vec2 screen,
-                        OpenS4::Renderer::TransformationPipeline* transform,
-                        int width, int height) {
-    glm::vec2 clip(2 * screen.x / width - 1.0, 1 - (2 * screen.y) / height);
+class TestListener : public OpenS4::Input::InputListener {
+    GLFWwindow* m_window = nullptr;
 
-    glm::vec3 clip3(clip.x, clip.y, -1);
+   public:
+    TestListener(std::string name, GLFWwindow* window)
+        : OpenS4::Input::InputListener(name), m_window(window) {}
 
-    glm::vec4 ray(clip3, 1);
+    OpenS4::Input::EventDispatching keyPressed(
+        const OpenS4::Input::KeyEvent* event) {
+        OpenS4::Input::EventDispatching dispatched = keyBindAction(event);
+        if (dispatched != OpenS4::Input::EventDispatching::NoKeyBindFound) {
+            return dispatched;
+        }
 
-    glm::vec4 rayEye = glm::inverse(transform->getProjectionMatrix()) * ray;
+        using namespace OpenS4::Input;
 
-    rayEye = glm::vec4(rayEye.x, rayEye.y, -1.0, 0);
+        static int drawMode = 0;
 
-    glm::vec3 rayWorld =
-        glm::vec3(glm::inverse(transform->getModelViewMatrix()) * rayEye);
+        switch (event->getKey()) {
+            case Key::Q:
+                g_direction = (OpenS4::Logic::Direction)((int)g_direction + 1);
+                if (g_direction == OpenS4::Logic::Direction::_DIRECTION_COUNT)
+                    g_direction = OpenS4::Logic::Direction::EAST;
+                break;
+            case Key::W:
+                g_playerColor++;
+                break;
+            case Key::D:
+                drawMode = ++drawMode % 3;
+                if (drawMode == 0)  // fill mode
+                {
+                    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+                } else if (drawMode == 1)  // wireframe mode
+                {
+                    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+                } else  // point mode
+                {
+                    glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
+                }
+                break;
+            case Key::J:
+                g_zoom *= 1.5f;
+                break;
+            case Key::K:
+                g_zoom /= 1.5f;
+                break;
 
-    return glm::vec2(rayWorld.x, rayWorld.y);
-}
+            case Key::Right:
+                g_mapPosX += 1 / g_zoom;
+                break;
+            case Key::Left:
+                g_mapPosX -= 1 / g_zoom;
+                break;
+            case Key::Down:
+                g_mapPosY += 1 / g_zoom;
+                break;
+            case Key::Up:
+                g_mapPosY -= 1 / g_zoom;
+                break;
+            case Key::Esc:
+                glfwSetWindowShouldClose(m_window, GLFW_TRUE);
+                break;
+            default:
+                return OpenS4::Input::EventDispatching::PassEvent;
+        }
+
+        return OpenS4::Input::EventDispatching::CatchEvent;
+    }
+};
 
 void TERMINATE(u64 errorCode) {
     OpenS4::getLogger().flush();
@@ -441,9 +485,11 @@ void TERMINATE(u64 errorCode) {
 
 void drawLoop(GLFWwindow* window, OpenS4::Renderer::Landscape* landscape,
               OpenS4::Renderer::TextureAtlas* landscape_atlas,
-              OpenS4::Import::GraphicsRegistry* registry) {
+              OpenS4::Import::GraphicsRegistry* registry,
+              OpenS4::Renderer::TextureMapper* mapper) {
     glClearColor(0, 0, 0, 1);
 
+    // Setup Shaders
     GLuint mapShader = OpenS4::Renderer::LoadShader(
         OpenS4::Renderer::Shader::VERTEXSHADER_MAP,
         OpenS4::Renderer::Shader::FRAGMENTSHADER_MAP);
@@ -452,25 +498,12 @@ void drawLoop(GLFWwindow* window, OpenS4::Renderer::Landscape* landscape,
         OpenS4::Renderer::Shader::VERTEXSHADER_SETTLER,
         OpenS4::Renderer::Shader::FRAGMENTSHADER_SETTLER);
 
+    GLuint pointShader = OpenS4::Renderer::LoadShader(
+        OpenS4::Renderer::Shader::VERTEXSHADER_POINT,
+        OpenS4::Renderer::Shader::FRAGMENTSHADER_POINT);
+
+    // Init clock
     auto start = std::chrono::high_resolution_clock::now();
-
-    OpenS4::Renderer::TextureAtlas settler_atlas(8192, 8192);
-
-    std::vector<
-        std::vector<OpenS4::Renderer::TextureAtlas::TextureAtlasPosition>>
-        taps;
-
-    OpenS4::Import::ImageData image;
-    int idx = 7;
-    for (int i = 0; i < 200; i++) {
-        taps.resize(taps.size() + 1);
-        for (int j = 0; j < 12; j++) {
-            image = registry->getImage(20, idx++);
-            taps[i].push_back(
-                settler_atlas.add_texture_to_atlas_swapped(&image));
-        }
-        idx++;
-    }
 
     OpenS4::Renderer::TriangleBatch settler_batch;
 
@@ -487,26 +520,107 @@ void drawLoop(GLFWwindow* window, OpenS4::Renderer::Landscape* landscape,
         {0xFF, 0xBE, 0x4B, 0xFF}, {0xFF, 0xFD, 0xA0, 0x24},
         {0xFF, 0x21, 0xC5, 0xB5}, {0xFF, 0xE6, 0xFF, 0xFF}};
 
+    std::vector<float> floatColors;
+    for (PlayerColor& color : colors) {
+        floatColors.push_back(color.r / 255.0f);
+        floatColors.push_back(color.g / 255.0f);
+        floatColors.push_back(color.b / 255.0f);
+        floatColors.push_back(color.a / 255.0f);
+    }
+
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     OpenS4::Renderer::LandscapeRenderer renderer(landscape);
 
+    OpenS4::Renderer::LandscapeRenderer* p_renderer = &renderer;
+
+    OpenS4::Renderer::ObjectRenderer::ObjectRenderer objRenderer(p_renderer);
+
+    int maxImageID = 0;
+
+    std::map<u32, u32> registryFrameIDtoImageID;
+
+    // Build atlas(es) 20 = roman settlers
+    for (int i = 20; i < 21; i++) {
+        for (int j = 0; j < registry->getNumberOfImages(i); j++) {
+            OpenS4::Import::ImageData image = registry->getImage(i, j);
+            auto imageID = objRenderer.addImage(image);
+            maxImageID++;
+
+            registryFrameIDtoImageID[j] = imageID;
+            if (maxImageID % 1000 == 0) objRenderer.buildAtlasesContinuous(1024);
+        }
+    }
+    objRenderer.buildAtlasesContinuous(1024, true);
+
+    
+    OpenS4::getLogger().info("Built %d atlases for objects!",
+                             objRenderer.getNumberOfAtlases());
+    OpenS4::getLogger().info("Atlases contain %d images!", maxImageID);
+
+
+    // Create a test entity with test properties.
+    OpenS4::Logic::EntityProperties* entityProperties =
+        OpenS4::Logic::test_makeProperties(registry);
+    OpenS4::Logic::Entity entity;
+    entity.m_properties = entityProperties;
+
+
+    auto imageID = 0;
     int width = 0;
     int height = 0;
 
     u64 frameCount = 0;
     double lastFrameCount = 0;
 
+    // Logic game tick.
+    u32 tick = 0;
+
+    // Current Tick (tick2 "interpolated")
+    double tick2 = tick;
+
     while (!glfwWindowShouldClose(window)) {
         frameCount++;
         auto now = std::chrono::high_resolution_clock::now();
         auto duration = (now - start).count();
-        if (duration > 1000000000) {
+        if (duration > 1000000000 || tick == 0) {
+            tick++;
+            tick2 = tick;
+
             start = now;
             lastFrameCount =
                 ((double)frameCount / duration * 1000 * 1000 * 1000);
             frameCount = 0;
+
+            std::stringstream sstream;
+            sstream << "Tick: " << tick;
+            sstream << " Tick2: " << tick2;
+            sstream << " FPS: " << lastFrameCount;
+            glfwSetWindowTitle(window, sstream.str().c_str());
+
+            // Update test entity
+            if (entity.end_tick <= tick) {
+                entity.start_tick = tick;
+
+                entity.current_animation++;
+                if (entity.current_animation >=
+                    entity.m_properties->animations.size())
+                    entity.current_animation = 0;
+
+                entity.end_tick =
+                    tick +
+                    entity.m_properties->animations[entity.current_animation]
+                        .duration;
+            }
+        } else {
+            tick2 = tick + duration / 1000000000.0;
+
+            std::stringstream sstream;
+            sstream << "Tick: " << tick;
+            sstream << " Tick2: " << tick2;
+            sstream << " FPS: " << lastFrameCount;
+            glfwSetWindowTitle(window, sstream.str().c_str());
         }
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -515,7 +629,10 @@ void drawLoop(GLFWwindow* window, OpenS4::Renderer::Landscape* landscape,
 
         OpenS4::Renderer::TransformationPipeline transform;
 
+        // Only render if window has size > 0
         if (width && height) {
+
+            // Setup camera & translation for this frame.
             glm::mat4x4 ortho = glm::ortho(
                 (float)-width / 2, (float)width / 2, (float)-height / 2,
                 (float)height / 2, (float)-200, (float)200);
@@ -524,21 +641,8 @@ void drawLoop(GLFWwindow* window, OpenS4::Renderer::Landscape* landscape,
             transform.getProjectionStack()->translate(-g_mapPosX * 10,
                                                       10 * g_mapPosY, 0);
 
-            // getting cursor position
-            double xpos, ypos;
-            glfwGetCursorPos(window, &xpos, &ypos);
-
-            std::stringstream sstream;
-
-            // Set Title
-            glm::vec2 mousePositionInModelCoordinates =
-                toModelPosition(screenToWorld(glm::vec2(xpos, ypos), &transform,
-                                              width, height));
-            sstream << std::fixed << std::setprecision(2)
-                    << " MouseMapPos: " << mousePositionInModelCoordinates.x
-                    << " " << mousePositionInModelCoordinates.y;
-            sstream << " FPS: " << lastFrameCount;
-            glfwSetWindowTitle(window, sstream.str().c_str());
+            // Pass the tranformation to the landscape renderer (so that it can translate visible pixels to coordinates).
+            renderer.setTransform(&transform, width, height);
 
             // Draw Landscape
             glUseProgram(mapShader);
@@ -548,91 +652,120 @@ void drawLoop(GLFWwindow* window, OpenS4::Renderer::Landscape* landscape,
             glBindTexture(GL_TEXTURE_2D, landscape_atlas->getGLTextureID());
             renderer.draw(window, &transform);
 
-            // Draw Settler
+            // Draw objects
+            objRenderer.clear();
             glUseProgram(settlerShader);
             glUniformMatrix4fv(
                 glGetUniformLocation(settlerShader, "mvpMatrix"), 1, GL_FALSE,
                 glm::value_ptr(transform.getModelViewProjectionMatrix()));
+            glUniform4fv(glGetUniformLocation(settlerShader, "playerColors"), 8,
+                         floatColors.data());
 
-            glBindTexture(GL_TEXTURE_2D, settler_atlas.getGLTextureID());
 
-            // Update test settler based on user input....
-            {
-                auto& tap = taps[g_tapID % taps.size()];
-                auto position = tap[g_frameID % tap.size()];
+            double percentage = (tick2 - entity.start_tick) /
+                                (entity.end_tick - entity.start_tick);
 
-                glm::vec2 topLeft =
-                    glm::vec2(1.0f * position.x / settler_atlas.get_width(),
-                              1.0f * position.y / settler_atlas.get_height());
-                glm::vec2 bottomRight =
-                    glm::vec2(1.0f * (position.x + position.width) /
-                                  settler_atlas.get_width(),
-                              1.0f * (position.y + position.height) /
-                                  settler_atlas.get_height());
+            int n_frames =
+                (entity.m_properties->animations[entity.current_animation]
+                     .frameEnd -
+                 entity.m_properties->animations[entity.current_animation]
+                     .frameStart +
+                 1) /
+                (u32)OpenS4::Logic::Direction::_DIRECTION_COUNT;
 
-                float settler_tex[] = {
-                    topLeft.x,     topLeft.y,      // 0
-                    topLeft.x,     bottomRight.y,  // 0
-                    bottomRight.x, bottomRight.y,  // 0
-                    bottomRight.x, bottomRight.y,  // 0
-                    bottomRight.x, topLeft.y,      // 0
-                    topLeft.x,     topLeft.y,      // 0
-                };
+            entity.direction = g_direction;
 
-                float settler_pos[] = {
-                    0,
-                    0,  // 0 0
-                    0,
-                    (float)position.height,  // 0 1
-                    (float)position.width,
-                    (float)position.height,  // 1 1
-                    (float)position.width,
-                    (float)position.height,  // 1 1
-                    (float)position.width,
-                    0,  // 1 0
-                    0,
-                    0  // 0 0
-                };
+            int frameOffset = n_frames * (u32)entity.direction;
 
-                PlayerColor& color = colors[(g_playerColor) % 8];
-                std::vector<float> settler_color;
-                for (int j = 0; j < 6; j++) {
-                    settler_color.push_back(color.r / 255.0);
-                    settler_color.push_back(color.g / 255.0);
-                    settler_color.push_back(color.b / 255.0);
-                    settler_color.push_back(color.a / 255.0);
+            u32 frame =
+                entity.m_properties->animations[entity.current_animation]
+                    .frameStart +
+                frameOffset + std::round(percentage * (n_frames - 1));
+
+            objRenderer.render(10, 10, registryFrameIDtoImageID[frame],
+                               g_playerColor % 8);
+            objRenderer.draw();
+
+            // Draw map points
+            glUseProgram(pointShader);
+            glUniformMatrix4fv(
+                glGetUniformLocation(pointShader, "mvpMatrix"), 1, GL_FALSE,
+                glm::value_ptr(transform.getModelViewProjectionMatrix()));
+
+            OpenS4::Renderer::PointBatch pointBatch;
+
+            std::vector<float> points;
+            std::vector<float> pointColors;
+
+            auto box = renderer.getBoundingBox();
+
+            box.lower.x = std::floor(box.lower.x);
+            box.lower.y = std::floor(box.lower.y);
+            box.upper.x = std::floor(box.upper.x);
+            box.upper.y = std::floor(box.upper.y);
+            box.lower.x = std::max(0.0f, box.lower.x);
+            box.lower.y = std::max(0.0f, box.lower.y);
+            box.upper.x = std::min((float)renderer.getWidth(), box.upper.x);
+            box.upper.y = std::min((float)renderer.getHeight(), box.upper.y);
+
+            for (auto y = box.lower.y; y < box.upper.y; y++) {
+                for (auto x = box.lower.x; x < box.upper.x; x++) {
+                    glm::vec2 pixel = renderer.toPixelPosition(glm::vec2(x, y));
+                    points.push_back(pixel.x);
+                    points.push_back(pixel.y);
+
+                    auto terrain = landscape->getTerrain(x, y);
+
+                    if (y == 10 && x == 10) {
+                        pointColors.push_back(0);
+                        pointColors.push_back(1);
+                        pointColors.push_back(0);
+                        pointColors.push_back(1);
+                    } else if (mapper->getTexture("GRASS") == terrain ||
+                               mapper->getTexture("BEACH") == terrain) {
+                        pointColors.push_back(1);
+                        pointColors.push_back(0);
+                        pointColors.push_back(0);
+                        pointColors.push_back(1);
+                    } else {
+                        pointColors.push_back(1);
+                        pointColors.push_back(1);
+                        pointColors.push_back(0);
+                        pointColors.push_back(1);
+                    }
                 }
-
-                settler_batch.updateData(settler_pos, 12, 2,
-                                         settler_tex, 12, 2,
-                                         settler_color.data(), 24, 4);
-
-                settler_batch.draw();
             }
 
-            glfwSwapBuffers(window);
-            glfwPollEvents();
+            glPointSize(5);
+            pointBatch.updateData(points, 2, pointColors, 4);
+            pointBatch.draw();
         }
+
+
+        glfwSwapBuffers(window);
+        glfwPollEvents();
     }
 }
 
+#include "Input/WindowSystem/GLFWInputHandler/GLFWInputHandler.hpp"
+
 int main(int argc, char* argv[]) {
-    std::string graphicsPath = OpenS4::Import::getGraphicsPathByRegistry();
-
-    if (graphicsPath == "") graphicsPath = "./Gfx";
-
+    // Setup logger to also print to console
     OpenS4::getLogger().printToConsole(true);
 
+    // Initialize Graphics Registry
+    std::string graphicsPath = OpenS4::Import::getGraphicsPathByRegistry();
+    if (graphicsPath == "") graphicsPath = "./Gfx";
     OpenS4::Import::GraphicsRegistry registry =
         OpenS4::Import::getGraphicsRegistry(graphicsPath);
 
+    // Log some generic information
     std::string current_path = std::filesystem::current_path().generic_string();
-
     OpenS4::getLogger().info("Graphics Path is: %s", graphicsPath.c_str());
     OpenS4::getLogger().info("Current Directory is: %s", current_path.c_str());
 
+    // Setup and initialize glfw
     glfwSetErrorCallback(error_callback);
-
     if (glfwInit() == GLFW_FALSE) {
         OpenS4::getLogger().err("glfwInit() failed!");
         return 1;
@@ -640,98 +773,44 @@ int main(int argc, char* argv[]) {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
     GLFWwindow* window = glfwCreateWindow(800, 600, "OpenS4", NULL, NULL);
-
     if (window == nullptr) {
         OpenS4::getLogger().err("glfwCreateWindow failed!");
         return 1;
     }
-
     glfwMakeContextCurrent(window);
 
-    auto key_cb = [](GLFWwindow* window, int key, int scancode, int action,
-                     int mods) {
-        static int drawMode = 0;
+    // Setup Input Subsystem
+    OpenS4::Input::GLFWInputHandler::getInstance()->registerCallbacks(window);
 
-        if (action == GLFW_PRESS || action == GLFW_REPEAT) {
-            switch (key) {
-                case GLFW_KEY_ESCAPE:
-                    glfwSetWindowShouldClose(window, GLFW_TRUE);
-                    break;
 
-                case 'q':
-                case 'Q':
-                    g_frameID++;
-                    break;
-                case 'w':
-                case 'W':
-                    g_playerColor++;
-                    break;
-                case 'a':
-                case 'A':
-                    g_tapID++;
-                    break;
+    // Add simple test listener
+    std::shared_ptr<TestListener> listener =
+        std::make_shared<TestListener>("test", window);
+    OpenS4::Input::InputHandler* handler =
+        OpenS4::Input::InputHandler::getInstance();
+    handler->registerListenerAtTop(listener);
 
-                case 'd':
-                case 'D':
-                    drawMode = ++drawMode % 3;
-                    if (drawMode == 0)  // fill mode
-                    {
-                        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-                    } else if (drawMode == 1)  // wireframe mode
-                    {
-                        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-                    } else  // point mode
-                    {
-                        glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
-                    }
-                    break;
-                case 'j':
-                case 'J':
-                    g_zoom *= 1.5f;
-                    break;
-                case 'k':
-                case 'K':
-                    g_zoom /= 1.5f;
-                    break;
-
-                case GLFW_KEY_RIGHT:
-                    g_mapPosX += 1 / g_zoom;
-                    break;
-                case GLFW_KEY_LEFT:
-                    g_mapPosX -= 1 / g_zoom;
-                    break;
-
-                case GLFW_KEY_DOWN:
-                    g_mapPosY += 1 / g_zoom;
-                    break;
-                case GLFW_KEY_UP:
-                    g_mapPosY -= 1 / g_zoom;
-                    break;
-            }
-        }
-    };
-
-    glfwSetKeyCallback(window, key_cb);
-
+    // Init glew
     auto init = glewInit();
     if (init != GLEW_OK) {
         OpenS4::getLogger().err("glewInit failed!");
         return 1;
     }
 
+    // Init Landscape Texture Atlas & Texture Mapper
     OpenS4::Renderer::LandscapeTextures landscape_textures(2048, 2048);
     OpenS4::Renderer::TextureMapper textureMapper;
-
     registerMapperTextures(registry, &landscape_textures, &textureMapper, 2);
 
+    // Load simple map
     OpenS4::Import::Map::Map* map =
         OpenS4::Import::Map::readMap("576_AlleTexturen.map");
-
     if (!map) {
         OpenS4::getLogger().warn("Map not found!");
     }
+
+    // Make Landscape from Map
     OpenS4::Renderer::Landscape* landscape;
     if (map)
         landscape = makeLandscape(map, &landscape_textures, &textureMapper);
@@ -743,14 +822,10 @@ int main(int argc, char* argv[]) {
         map = nullptr;
     }
 
-    //- setup OpenGL
-
-    glBindTexture(GL_TEXTURE_2D, landscape_textures.getGLTextureID());
-
-    drawLoop(window, landscape, &landscape_textures, &registry);
+    // Loop forever
+    drawLoop(window, landscape, &landscape_textures, &registry, &textureMapper);
 
     glfwTerminate();
-
     OpenS4::getLogger().info("Program is exiting correctly!");
 
     return 0;

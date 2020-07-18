@@ -5,7 +5,7 @@ cmake_minimum_required (VERSION 3.8)
 file(GLOB_RECURSE src "${PROJECT_SOURCE_DIR}" "*.cpp")
 file(GLOB_RECURSE header "${PROJECT_SOURCE_DIR}" "*.hpp")
 
-add_executable(OpenS4 ${src} ${header})
+add_executable(OpenS4 ${src} ${header} "Renderer/OpenGL.hpp" )
 #add_executable(OpenS4 main.cpp "Renderer/TextureAtlas.cpp" "Renderer/LandscapeTextures.cpp"  "Renderer/Shaders.hpp" "Renderer/Shaders.cpp"  "Renderer/TriangleBatch.hpp" "Renderer/LandscapeRenderer.hpp" "Renderer/MatrixStack.hpp" "Renderer/TransformationPipeline.hpp" "Renderer/LoadShader.hpp" "Import/Gfx.cpp" "Import/Reader.cpp"  "Import/MapReader/Map.cpp" "Import/MapReader/Map.hpp" "Import/MapReader/Reader.cpp" "Import/MapReader/Reader.hpp")
 set_property(TARGET OpenS4 PROPERTY CXX_STANDARD 17)
 
@@ -13,10 +13,11 @@ set_property(TARGET OpenS4 PROPERTY CXX_STANDARD 17)
 include_directories("../Dependencies/glew-2.1.0/include")
 include_directories("../Dependencies/glfw-3.2.2/include")
 
+include_directories("../Dependencies")
+
 
 target_link_libraries(OpenS4 glew)
 target_link_libraries(OpenS4 glfw)
-
 
 #set(GLFW_INCLUDE_DIR "../Dependencies/GLFW/include" CACHE PATH "GLFW_INCLUDE_DIR")
 #set(GLFW_LIBRARY "../Dependencies/GLFW/glfw3.lib" CACHE FILEPATH "GLFW_LIBRARY")
@@ -39,6 +40,7 @@ include_directories(".")
 include_directories(${glm_INCLUDE_DIR})
 #include_directories(${GLTools_INCLUDE_DIR})
 
+include_directories("../Dependencies/rectpack2D/include")
 
 
 #file (GLOB_RECURSE shaders "shaders/*.*")

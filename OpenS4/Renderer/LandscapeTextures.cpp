@@ -9,9 +9,10 @@ LandscapeTextures::LandscapeTextures(int texture_atlas_width,
 
 LandscapeTextures::~LandscapeTextures() {}
 
-int LandscapeTextures::add_texture_plane_256x256(const OpenS4::Import::ImageData* data) {
-
-    OpenS4::Import::ImageData newImage(data->getWidth(), data->getHeight(), data->getPalette());
+int LandscapeTextures::add_texture_plane_256x256(
+    const OpenS4::Import::ImageData* data) {
+    OpenS4::Import::ImageData newImage(data->getWidth(), data->getHeight(),
+                                       data->getPalette());
 
     for (int y = 0; y < data->getHeight(); y++)
         for (int x = 0; x < data->getWidth(); x++) {
@@ -24,8 +25,8 @@ int LandscapeTextures::add_texture_plane_256x256(const OpenS4::Import::ImageData
             newImage.setPixel(x, y, swapped);
         }
 
-  //  auto atlas_pos = add_texture_to_atlas(
-  //      (unsigned int*)dat.data(), data->getWidth(), data->getHeight());
+    //  auto atlas_pos = add_texture_to_atlas(
+    //      (unsigned int*)dat.data(), data->getWidth(), data->getHeight());
 
     auto atlas_pos = add_texture_to_atlas(&newImage);
 
@@ -41,8 +42,8 @@ int LandscapeTextures::add_texture_plane_256x256(const OpenS4::Import::ImageData
     return m_textures.size() - 1;
 }
 
-int LandscapeTextures::add_texture_hexagon(int hexSizeX, int hexSizeY,
-                                           int slotX, int slotY,
+int LandscapeTextures::add_texture_hexagon(
+    int hexSizeX, int hexSizeY, int slotX, int slotY,
     const OpenS4::Import::ImageData* data) {
     ::std::vector<uint32_t> dat;
     for (int i = 0; i < data->getWidth() * data->getHeight(); i++) {
@@ -66,6 +67,21 @@ int LandscapeTextures::add_texture_hexagon(int hexSizeX, int hexSizeY,
     int yMax = hexSizeY * (slotY + 1);
 
     ::std::vector<uint32_t> sub;
+
+    OpenS4::Import::ImageData subImage(hexSizeX, hexSizeY);
+
+    int y2 = 0;
+    int x2 = 0;
+    for (int y = yMin; y < yMax; y++) {
+        x2 = 0;
+        for (int x = xMin; x < xMax; x++) {
+            subImage.setPixel(y2 * hexSizeX + x2,
+                              dat[y * data->getWidth() + x]);
+            x2++;
+        }
+        y2++;
+    }
+
     for (int y = yMin; y < yMax; y++) {
         for (int x = xMin; x < xMax; x++) {
             sub.push_back(dat[y * data->getWidth() + x]);
@@ -74,8 +90,10 @@ int LandscapeTextures::add_texture_hexagon(int hexSizeX, int hexSizeY,
 
     dat = sub;
 
-    auto atlas_pos =
-        add_texture_to_atlas((unsigned int*)dat.data(), hexSizeX, hexSizeY);
+    auto atlas_pos = add_texture_to_atlas(&subImage);
+
+    // auto atlas_pos =
+    //  add_texture_to_atlas((unsigned int*)dat.data(), hexSizeX, hexSizeY);
 
     TextureInformation texture;
     texture.x = atlas_pos.x;
@@ -114,10 +132,25 @@ int LandscapeTextures::add_texture(int sizeX, int sizeY, int slotX, int slotY,
         }
     }
 
+    OpenS4::Import::ImageData subImage(sizeX, sizeY);
+
+    int y2 = 0;
+    int x2 = 0;
+    for (int y = yMin; y < yMax; y++) {
+        x2 = 0;
+        for (int x = xMin; x < xMax; x++) {
+            subImage.setPixel(y2 * sizeX + x2, dat[y * data->getWidth() + x]);
+            x2++;
+        }
+        y2++;
+    }
+
     dat = sub;
 
-    auto atlas_pos =
-        add_texture_to_atlas((unsigned int*)dat.data(), sizeX, sizeY);
+    auto atlas_pos = add_texture_to_atlas(&subImage);
+
+    // auto atlas_pos =
+    //    add_texture_to_atlas((unsigned int*)dat.data(), sizeX, sizeY);
 
     TextureInformation texture;
     texture.x = atlas_pos.x;
@@ -130,7 +163,5 @@ int LandscapeTextures::add_texture(int sizeX, int sizeY, int slotX, int slotY,
     m_textures.push_back(texture);
     return m_textures.size() - 1;
 }
-
-
 
 }  // namespace OpenS4::Renderer

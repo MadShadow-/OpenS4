@@ -8,6 +8,8 @@
 #include "IndexList.hpp"
 #include "Palette.hpp"
 
+#include <iostream>
+
 namespace OpenS4::Import {
 
 class ImageData {
@@ -102,6 +104,8 @@ class IGraphics {
 
         ImageData imgData(width, height, paletteOffset);
 
+        bool print_error = true;
+
         if (type != 32) {
             // run length encoding
 
@@ -129,10 +133,12 @@ class IGraphics {
                 if (position < reader->size()) {
                     value = reader->read_byte(position++);
                 } else {
-                    if (position == reader->size())
+                    if (position == reader->size() && print_error) {
                         OpenS4::getLogger().warn(
                             "Position exceeded size of image at offset %d",
                             offset);
+                        print_error = false;
+                    }
 
                     value = 1;
                 }
@@ -146,10 +152,12 @@ class IGraphics {
                     if (position < reader->size()) {
                         count = reader->read_byte(position++);
                     } else {
-                        if (position == reader->size())
+                        if (position == reader->size() && print_error) {
                             OpenS4::getLogger().warn(
                                 "Position exceeded size of image at offset %d",
                                 offset);
+                            print_error = false;
+                        }
                         count = 1;
                     }
 
@@ -223,6 +231,7 @@ class IGraphics {
    public:
     virtual uint32_t getNumberOfImages() = 0;
     virtual ImageData getImage(int offset) = 0;
+    virtual u32 getPalette(u32 offset) = 0;
 };
 
 class GraphicsLazy : public IGraphics {
@@ -280,6 +289,27 @@ class GraphicsLazy : public IGraphics {
 
         return readImage(m_reader, gfx_offset, m_pal,
                          m_pal->get_offset(palette));
+    }
+
+    u32 getPalette(u32 offset) override {
+        auto gfx_offset = m_gil->get_offset(offset);
+
+        auto palette = 0;
+
+        if (m_jil) {
+            palette = 0;
+            for (auto i = offset; i > 0; i--) {
+                auto pal = m_jil->lookup(m_dil->lookup(i));
+                if (pal) {
+                    palette = pal;
+                    break;
+                }
+            }
+        } else {
+            palette = offset;
+        }
+
+        return palette;
     }
 };
 

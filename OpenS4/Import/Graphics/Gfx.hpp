@@ -29,6 +29,20 @@ class GraphicsRegistry {
     bool hasGfx(uint32_t id) { return m_gfxs.count(id) != 0; }
     bool hasGh(uint32_t id) { return m_ghs.count(id) != 0; }
     bool hasGraphics(uint32_t id) { return hasGfx(id) || hasGh(id); }
+
+    uint32_t getNumberOfImages(uint32_t id) {
+        if (hasGfx(id))
+            return m_gfxs[id]->getNumberOfImages();
+        else if (hasGh(id))
+            return m_ghs[id]->getNumberOfImages();
+        else
+            return 0;
+    }
+
+    u32 getPalette(u32 id, u32 pic_id) {
+        if (hasGfx(id)) return m_gfxs[id]->getPalette(pic_id);
+        return 0;
+    }
 };
 
 /* Read gfx by registry entry. Windows only. */

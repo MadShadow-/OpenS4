@@ -4,7 +4,7 @@
 
 #include "../Import/Graphics/Image.hpp"
 #include "../Logger/Logger.hpp"
-#include "main.hpp"
+#include "OpenGL.hpp"
 
 namespace OpenS4::Renderer {
 class TextureAtlas {

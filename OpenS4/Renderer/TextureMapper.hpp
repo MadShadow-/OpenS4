@@ -5,6 +5,8 @@
 #include <string>
 #include <vector>
 
+#include "../Logger/Types.hpp"
+
 namespace OpenS4::Renderer {
 
 using LandscapeTextureID = u32;
@@ -253,7 +255,6 @@ class TextureMapper {
     LandscapeTextureID textureIDCounter = 0;
 
     LandscapeTextureID getOrMake(std::string name) {
-
         if (m_landscapeTextureNameToLandscapeTextureID.count(name) == 0) {
             m_landscapeTextureNameToLandscapeTextureID[name] =
                 ++textureIDCounter;
@@ -263,6 +264,10 @@ class TextureMapper {
     }
 
    public:
+    LandscapeTextureID getTexture(std::string name) {
+        return m_landscapeTextureNameToLandscapeTextureID[name];
+    }
+
     void setGameTextureMapping(int id, int id2, LandscapeTextureID texID) {
         m_gameTextureMapping[(id2 << 8) + id] = texID;
     }
