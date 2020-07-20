@@ -415,6 +415,20 @@ class TestListener : public OpenS4::Input::InputListener {
     TestListener(std::string name, GLFWwindow* window)
         : OpenS4::Input::InputListener(name), m_window(window) {}
 
+
+    OpenS4::Input::EventDispatching mouseScrolled(const OpenS4::Input::MouseEvent* event) { 
+        double scrollValue = event->getMouseScroll();
+        if (scrollValue >= 0)
+        {
+            g_zoom *= 1+(scrollValue/10);
+        }
+        else
+        {
+            g_zoom /= 1 - (scrollValue / 10);
+        }
+        return OpenS4::Input::EventDispatching::CatchEvent;
+    }
+
     OpenS4::Input::EventDispatching keyPressed(
         const OpenS4::Input::KeyEvent* event) {
         OpenS4::Input::EventDispatching dispatched = keyBindAction(event);
@@ -456,16 +470,16 @@ class TestListener : public OpenS4::Input::InputListener {
                 break;
 
             case Key::Right:
-                g_mapPosX += 1 / g_zoom;
+                g_mapPosX += 2 / g_zoom;
                 break;
             case Key::Left:
-                g_mapPosX -= 1 / g_zoom;
+                g_mapPosX -= 2 / g_zoom;
                 break;
             case Key::Down:
-                g_mapPosY += 1 / g_zoom;
+                g_mapPosY += 2 / g_zoom;
                 break;
             case Key::Up:
-                g_mapPosY -= 1 / g_zoom;
+                g_mapPosY -= 2 / g_zoom;
                 break;
             case Key::Esc:
                 glfwSetWindowShouldClose(m_window, GLFW_TRUE);
