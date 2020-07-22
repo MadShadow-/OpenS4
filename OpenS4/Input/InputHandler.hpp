@@ -27,7 +27,7 @@ namespace OpenS4::Input
         InputHandler() = default;
         InputHandler(const InputHandler&) = delete;
 
-        static InputHandler* instance;
+        static inline InputHandler* instance{nullptr};
 
        public:
         static InputHandler* getInstance() { return instance; }

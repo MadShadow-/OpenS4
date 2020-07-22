@@ -8,8 +8,6 @@
 
 namespace OpenS4::Input
 {
-    InputHandler* InputHandler::instance{nullptr};
-
     void InputHandler::registerListenerAtTop(std::shared_ptr<InputListener> listener)
     {
         m_listenerList.push_front(listener);
