@@ -66,7 +66,7 @@ TextureAtlas::TextureAtlasPosition TextureAtlas::add_texture_to_atlas(
     for (int y = 0; y < biggerImage.getHeight(); y++) {
         for (int x = 0; x < biggerImage.getWidth(); x++) {
             biggerImage2.setPixel(
-                x, y, biggerImage.getColor(x, biggerImage.getWidth() - y));
+                x, y, biggerImage.getColor(x, biggerImage.getHeight() - y - 1));
         }
     }
     biggerImage = biggerImage2;
