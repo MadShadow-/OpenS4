@@ -91,7 +91,7 @@ class ObjectRenderer {
             uv->uBegin, uv->vBegin,
         };
         float colors[6] = {
-            colorID, colorID, colorID, colorID, colorID, colorID
+            (float)colorID, (float)colorID, (float)colorID, (float)colorID, (float)colorID, (float)colorID
         };
         // clang-format on
 
