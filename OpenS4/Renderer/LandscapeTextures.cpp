@@ -12,7 +12,7 @@ LandscapeTextures::~LandscapeTextures() {}
 int LandscapeTextures::add_texture_plane_256x256(
     const OpenS4::Import::ImageData* data) {
     OpenS4::Import::ImageData newImage(data->getWidth(), data->getHeight(),
-                                       data->getPalette());
+                                       data->getPalette(), 0, 0, 0, 0);
 
     for (int y = 0; y < data->getHeight(); y++)
         for (int x = 0; x < data->getWidth(); x++) {
@@ -68,7 +68,7 @@ int LandscapeTextures::add_texture_hexagon(
 
     ::std::vector<uint32_t> sub;
 
-    OpenS4::Import::ImageData subImage(hexSizeX, hexSizeY);
+    OpenS4::Import::ImageData subImage(hexSizeX, hexSizeY, 0, 0, 0, 0, 0);
 
     int y2 = 0;
     int x2 = 0;
@@ -132,7 +132,7 @@ int LandscapeTextures::add_texture(int sizeX, int sizeY, int slotX, int slotY,
         }
     }
 
-    OpenS4::Import::ImageData subImage(sizeX, sizeY);
+    OpenS4::Import::ImageData subImage(sizeX, sizeY, 0, 0, 0, 0, 0);
 
     int y2 = 0;
     int x2 = 0;

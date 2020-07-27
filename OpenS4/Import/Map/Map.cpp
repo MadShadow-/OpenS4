@@ -696,8 +696,8 @@ Landscape* fromMap(Map* map) {
         for (uint_fast32_t x = 0; x < width; x++) {
             LandscapePosition pos;
             pos.height = re.readByte(y * width * 4 + x * 4);
-            pos.terrainSubtype = re.readByte(y * width * 4 + x * 4 + 1);
-            pos.terrainType = re.readByte(y * width * 4 + x * 4 + 2);
+            pos.terrainType = re.readByte(y * width * 4 + x * 4 + 1);
+            pos.terrainSubtype = re.readByte(y * width * 4 + x * 4 + 2);
 
             // + 3 is always 0x40
             landscape->m_landscape[y * width + x] = pos;

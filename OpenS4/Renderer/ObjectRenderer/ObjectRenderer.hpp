@@ -61,7 +61,6 @@ class ObjectRenderer {
     }
 
     void render(u32 x, u32 y, u32 imageID, u32 colorID) {
-        // if (!m_landscapeRenderer->isVisibleModel(glm::vec2(x, y))) return;
 
         auto uv = m_multiAtlas.getUV(imageID);
 
@@ -71,7 +70,8 @@ class ObjectRenderer {
 
         auto coords = m_landscapeRenderer->toPixelPosition(glm::vec2(x, y));
 
-        coords.x -= uv->width / 2;
+        coords.x -= uv->left;
+        coords.y -= (s32)uv->height - (s32)uv->top;
 
         // clang-format off
         float vertices[12] = {
@@ -99,65 +99,6 @@ class ObjectRenderer {
         textureBuffer.insert(textureBuffer.end(), textures, textures + 12);
         colorBuffer.insert(colorBuffer.end(), colors, colors + 6);
 
-        return;
-
-        // Vertex 1 Bottom Left
-        vertexBuffer.push_back(coords.x);
-        vertexBuffer.push_back(coords.y);
-        textureBuffer.push_back(uv->uBegin);
-        textureBuffer.push_back(uv->vEnd);
-        colorBuffer.push_back(1);
-        colorBuffer.push_back(1);
-        colorBuffer.push_back(1);
-        colorBuffer.push_back(1);
-        // Vertex 2 Top Left
-        vertexBuffer.push_back(coords.x);
-        vertexBuffer.push_back(coords.y + uv->height);
-        textureBuffer.push_back(uv->uBegin);
-        textureBuffer.push_back(uv->vBegin);
-        colorBuffer.push_back(1);
-        colorBuffer.push_back(1);
-        colorBuffer.push_back(1);
-        colorBuffer.push_back(1);
-        // Vertex 3 Bottom Right
-        vertexBuffer.push_back(coords.x + uv->width);
-        vertexBuffer.push_back(coords.y);
-        textureBuffer.push_back(uv->uEnd);
-        textureBuffer.push_back(uv->vEnd);
-        colorBuffer.push_back(1);
-        colorBuffer.push_back(1);
-        colorBuffer.push_back(1);
-        colorBuffer.push_back(1);
-
-        // Vertex 3 Bottom Right
-        vertexBuffer.push_back(coords.x + uv->width);
-        vertexBuffer.push_back(coords.y);
-        textureBuffer.push_back(uv->uEnd);
-        textureBuffer.push_back(uv->vEnd);
-        colorBuffer.push_back(1);
-        colorBuffer.push_back(1);
-        colorBuffer.push_back(1);
-        colorBuffer.push_back(1);
-
-        // Vertex 3 Top Right
-        vertexBuffer.push_back(coords.x + uv->width);
-        vertexBuffer.push_back(coords.y + uv->height);
-        textureBuffer.push_back(uv->uEnd);
-        textureBuffer.push_back(uv->vBegin);
-        colorBuffer.push_back(1);
-        colorBuffer.push_back(1);
-        colorBuffer.push_back(1);
-        colorBuffer.push_back(1);
-
-        // Vertex 2 Top Left
-        vertexBuffer.push_back(coords.x);
-        vertexBuffer.push_back(coords.y + uv->height);
-        textureBuffer.push_back(uv->uBegin);
-        textureBuffer.push_back(uv->vBegin);
-        colorBuffer.push_back(1);
-        colorBuffer.push_back(1);
-        colorBuffer.push_back(1);
-        colorBuffer.push_back(1);
     }
 
     void draw() {

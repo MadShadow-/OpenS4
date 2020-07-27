@@ -17,8 +17,8 @@ uniform sampler2D tex2D;
 
 void main() {
     fragColor = texture2D(tex2D, texCoord);
-	fragColor.r *= colorScale * 1.15;
-	fragColor.g *= colorScale * 1.1;
+	fragColor.r *= pow(colorScale, 1.5);
+	fragColor.g *= pow(colorScale, 1.5);
 	fragColor.b *= colorScale;
 }
 );

@@ -39,27 +39,10 @@ TextureAtlas::TextureSizeSlot TextureAtlas::get_slot_by_height(int height) {
     return TextureAtlas::TextureSizeSlot::_TEXTURE_HEIGHT_COUNT;
 }
 
-TextureAtlas::TextureAtlasPosition TextureAtlas::add_texture_to_atlas_swapped(
-    const OpenS4::Import::ImageData* img) {
-    OpenS4::Import::ImageData image(img->getWidth(), img->getHeight(),
-                                    img->getPalette());
-
-    for (int i = 0; i < img->getWidth() * img->getHeight(); i++) {
-        uint32_t num = img->getData()[i];
-        uint32_t swapped = ((num >> 24) & 0xff) |       // move byte 3 to byte 0
-                           ((num << 8) & 0xff0000) |    // move byte 1 to byte 2
-                           ((num >> 8) & 0xff00) |      // move byte 2 to byte 1
-                           ((num << 24) & 0xff000000);  // byte 0 to byte 3
-        image.setPixel(i, swapped);
-    }
-
-    return add_texture_to_atlas(&image);
-}
-
 TextureAtlas::TextureAtlasPosition TextureAtlas::add_texture_to_atlas(
     const OpenS4::Import::ImageData* img) {
     OpenS4::Import::ImageData biggerImage(img->getWidth() + 2,
-                                          img->getHeight() + 2);
+                                          img->getHeight() + 2, 0, 0, 0, 0, 0);
     for (int y = 0; y < biggerImage.getHeight(); y++) {
         for (int x = 0; x < biggerImage.getWidth(); x++) {
             int yidx = y - 1;
@@ -76,6 +59,17 @@ TextureAtlas::TextureAtlasPosition TextureAtlas::add_texture_to_atlas(
             biggerImage.setPixel(x, y, img->getColor(xidx, yidx));
         }
     }
+
+    // Mirror in y dir.
+    OpenS4::Import::ImageData biggerImage2(
+        biggerImage.getWidth(), biggerImage.getHeight(), 0, 0, 0, 0, 0);
+    for (int y = 0; y < biggerImage.getHeight(); y++) {
+        for (int x = 0; x < biggerImage.getWidth(); x++) {
+            biggerImage2.setPixel(
+                x, y, biggerImage.getColor(x, biggerImage.getWidth() - y));
+        }
+    }
+    biggerImage = biggerImage2;
 
     TextureAtlas::TextureAtlasPosition pos;
     pos.height = 0;

@@ -1,5 +1,6 @@
 #pragma once
 
+
 #include <map>
 #include <memory>
 #include <vector>
@@ -8,14 +9,18 @@
 #include "IndexList.hpp"
 #include "Palette.hpp"
 
-#include <iostream>
-
 namespace OpenS4::Import {
 
 class ImageData {
     uint32_t m_width;
     uint32_t m_height;
     std::vector<uint32_t> m_data;
+
+    uint32_t m_left;
+    uint32_t m_top;
+
+    uint32_t m_flag1;
+    uint32_t m_flag2;
 
     __inline uint32_t getIndex(uint32_t x, uint32_t y) const {
         return y * m_width + x;
@@ -24,10 +29,17 @@ class ImageData {
     uint32_t m_palette;
 
    public:
-    ImageData(uint32_t width = 0, uint32_t height = 0, uint32_t palette = 0) {
+    ImageData(uint32_t width, uint32_t height, uint32_t palette, uint32_t left,
+              uint32_t top, uint32_t flag1, uint32_t flag2) {
         m_width = width;
         m_height = height;
         m_data.resize(m_width * m_height);
+
+        m_left = left;
+        m_top = top;
+
+        m_flag1 = flag1;
+        m_flag2 = flag2;
 
         m_palette = palette;
     }
@@ -48,6 +60,11 @@ class ImageData {
     auto getPalette() const { return m_palette; }
 
     auto getData() const { return m_data.data(); }
+
+    auto getLeft() { return m_left; }
+    auto getTop() { return m_top; }
+    auto getFlag1() { return m_flag1; }
+    auto getFlag2() { return m_flag2; }
 };
 
 class IGraphics {
@@ -102,7 +119,7 @@ class IGraphics {
             data_offset += 12;
         }
 
-        ImageData imgData(width, height, paletteOffset);
+        ImageData imgData(width, height, paletteOffset, left, top, flag1, flag2);
 
         bool print_error = true;
 
@@ -214,7 +231,6 @@ class IGraphics {
             auto length = width * height;
 
             auto j = 0;
-            ImageData imgData(width, height, paletteOffset);
 
             auto pos = data_offset;
 
@@ -231,7 +247,8 @@ class IGraphics {
    public:
     virtual uint32_t getNumberOfImages() = 0;
     virtual ImageData getImage(int offset) = 0;
-    virtual u32 getPalette(u32 offset) = 0;
+    virtual u32 getJobIndex(u32 offset) = 0;
+    virtual u32 getDirection(u32 offset) = 0;
 };
 
 class GraphicsLazy : public IGraphics {
@@ -291,7 +308,7 @@ class GraphicsLazy : public IGraphics {
                          m_pal->get_offset(palette));
     }
 
-    u32 getPalette(u32 offset) override {
+    u32 getJobIndex(u32 offset) override {
         auto gfx_offset = m_gil->get_offset(offset);
 
         auto palette = 0;
@@ -310,6 +327,29 @@ class GraphicsLazy : public IGraphics {
         }
 
         return palette;
+    }
+
+    u32 getDirection(u32 offset) override {
+        auto gfx_offset = m_gil->get_offset(offset);
+
+        auto palette = 0;
+
+        if (m_jil) {
+            palette = 0;
+            for (auto i = offset; i > 0; i--) {
+                auto pal = m_jil->lookup(m_dil->lookup(i));
+                if (pal) {
+                    palette = pal;
+
+                    return m_dil->lookup(i);
+                    break;
+                }
+            }
+        } else {
+            palette = offset;
+        }
+
+        return m_dil->lookup(offset);
     }
 };
 
@@ -331,7 +371,7 @@ class BackgroundGraphics {
             for (int i = 0; i < row_count; i++) {
                 auto j = 0;
 
-                ImageData img(width, height);
+                ImageData img(width, height, 0, 0, 0, 0, 0);
 
                 while (j < width * height) {
                     auto value1 = reader->read_byte(pos++);
@@ -351,7 +391,7 @@ class BackgroundGraphics {
                 result.push_back(img);
             }
         } else {
-            ImageData img(width, height);
+            ImageData img(width, height, 0, 0, 0, 0, 0);
 
             auto chunk_length = width * width;
             int pos = offset;
@@ -436,4 +476,4 @@ class BackgroundGraphics {
     ImageData getImage(int offset) { return m_images[offset]; }
 };
 
-}  // namespace OpenS4::Graphics
+}  // namespace OpenS4::Import

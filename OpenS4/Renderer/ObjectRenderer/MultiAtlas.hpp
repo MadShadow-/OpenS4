@@ -13,6 +13,9 @@ struct UV {
 
     u32 atlasID;
 
+    u32 left;
+    u32 top;
+
     float uBegin;
     float uEnd;
     float vBegin;
@@ -22,8 +25,9 @@ struct UV {
 class MultiAtlas {
     OpenS4::Import::ImageData inflateImage(OpenS4::Import::ImageData image) {
         auto img = &image;
-        OpenS4::Import::ImageData biggerImage(img->getWidth() + 2,
-                                              img->getHeight() + 2);
+        OpenS4::Import::ImageData biggerImage(
+            img->getWidth() + 2, img->getHeight() + 2, img->getPalette(),
+            img->getLeft(), img->getTop(), img->getFlag1(), img->getFlag2());
         for (int y = 0; y < biggerImage.getHeight(); y++) {
             for (int x = 0; x < biggerImage.getWidth(); x++) {
                 int yidx = y - 1;
@@ -45,7 +49,8 @@ class MultiAtlas {
     }
     OpenS4::Import::ImageData swapImage(OpenS4::Import::ImageData image) {
         OpenS4::Import::ImageData img(image.getWidth(), image.getHeight(),
-                                      image.getPalette());
+                                      image.getPalette(), image.getLeft(),
+                                      image.getTop(), image.getFlag1(), image.getFlag2());
 
         for (int i = 0; i < image.getWidth() * image.getHeight(); i++) {
             uint32_t num = image.getData()[i];
