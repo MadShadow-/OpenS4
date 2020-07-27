@@ -1,19 +1,23 @@
 
 #include "main.hpp"
 
+#include <bitset>
 #include <chrono>
 #include <functional>
 #include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/transform.hpp>
 #include <glm/matrix.hpp>
+#include <nlohmann/json.hpp>
 #include <sstream>
 #include <thread>
 
 #include "Import/Map/Map.hpp"
 #include "Input/InputHandler.hpp"
 #include "Input/InputListener.hpp"
+#include "Input/WindowSystem/GLFWInputHandler/GLFWInputHandler.hpp"
 #include "Logic/Logic.hpp"
+#include "Logic/Map/Landscape.hpp"
 #include "Renderer/Batch/PointBatch.hpp"
 #include "Renderer/Batch/TriangleBatch.hpp"
 #include "Renderer/Landscape.hpp"
@@ -25,72 +29,44 @@
 #include "Renderer/TextureMapper.hpp"
 #include "Renderer/TransformationPipeline.hpp"
 
-void registerMapperTextures(OpenS4::Import::GraphicsRegistry& registry,
-                            OpenS4::Renderer::LandscapeTextures* textures,
-                            OpenS4::Renderer::TextureMapper* mapper, u32 ghID) {
-    mapper->setGameTextureMapping(48, 8, "BEACH");
-    mapper->setGameTextureMapping(48, 7, "BEACH");
+void registerMapperTextures(
+    OpenS4::Import::GraphicsRegistry& registry,
+    OpenS4::Logic::Map::LandscapeTextureMapper* ltm,
+    OpenS4::Logic::Map::LandscapeTextureConverter* converter,
+    OpenS4::Renderer::LandscapeTextures* textures,
+    OpenS4::Renderer::TextureMapper* mapper, u32 ghID) {
+    std::vector<std::string> textureNames = {"WATER_0",
+                                             "WATER_1",
+                                             "WATER_2",
+                                             "WATER_3",
+                                             "WATER_4",
+                                             "WATER_5",
+                                             "WATER_6",
+                                             "GRASS_TO_DARK_GRASS",
+                                             "GRASS_TO_DESERT_GRASS",
+                                             "DESERT_GRASS_TO_DESERT",
+                                             "GRASS_TO_GRASS_MOUNTAIN",
+                                             "GRASS_MOUNTAIN_TO_MOUNTAIN",
+                                             "GRASS_TO_SWAMP_GRASS",
+                                             "SWAMP_GRASS_TO_SWAMP",
+                                             "MUD_GRASS_TO_MUD",
+                                             "GRASS_TO_MUD_GRASS",
+                                             "MOUNTAIN_TO_SNOW_MOUNTAIN",
+                                             "SNOW_MOUNTAIN_TO_SNOW",
+                                             "RIVER_0",
+                                             "RIVER_1",
+                                             "RIVER_2",
+                                             "RIVER_3"};
 
-    mapper->setGameTextureMapping(16, 8, "GRASS");
+    for (std::string& texName : textureNames) {
+        ltm->registerTexture(texName);
 
-    mapper->setGameTextureMapping(17, 8, "GRASS");
-    mapper->setGameTextureMapping(18, 8, "GRASS");
-    mapper->setGameTextureMapping(19, 8, "GRASS");
-    mapper->setGameTextureMapping(20, 8, "GRASS");
-    mapper->setGameTextureMapping(21, 8, "GRASS");
-    mapper->setGameTextureMapping(22, 8, "GRASS");
-    mapper->setGameTextureMapping(23, 8, "GRASS");
+        auto rendererTextureID = mapper->createRendererLandscapeTextureID();
+        mapper->setTextureMapping(ltm->getTextureID(texName),
+                                  rendererTextureID);
+    }
 
-    mapper->setGameTextureMapping(16, 40, "GRASS");
-    mapper->setGameTextureMapping(16, 7, "GRASS");
-    mapper->setGameTextureMapping(16, 6, "GRASS");
-    mapper->setGameTextureMapping(16, 5, "GRASS");
-    mapper->setGameTextureMapping(16, 4, "GRASS");
-    mapper->setGameTextureMapping(16, 3, "GRASS");
-    mapper->setGameTextureMapping(16, 10, "GRASS");
-    mapper->setGameTextureMapping(16, 9, "GRASS");
-    mapper->setGameTextureMapping(16, 11, "GRASS");
-    mapper->setGameTextureMapping(16, 12, "GRASS");
-    mapper->setGameTextureMapping(16, 13, "GRASS");
-    mapper->setGameTextureMapping(16, 14, "GRASS");
-    mapper->setGameTextureMapping(16, 15, "GRASS");
-
-    mapper->setGameTextureMapping(24, 8, "DARK_GRASS");
-    mapper->setGameTextureMapping(25, 8, "DARK_GRASS");
-
-    mapper->setGameTextureMapping(18, 8, "GRASS_ISLAND");
-
-    mapper->setGameTextureMapping(28, 8, "EARTH");
-    mapper->setGameTextureMapping(32, 8, "MOUNTAIN");
-    mapper->setGameTextureMapping(29, 8, "PATH");
-    mapper->setGameTextureMapping(64, 8, "DESERT");
-    mapper->setGameTextureMapping(144, 8, "MUD");
-    mapper->setGameTextureMapping(128, 8, "SNOW");
-
-    mapper->setGameTextureMapping(80, 8, "SWAMP");
-
-    mapper->setGameTextureMapping(20, 8, "DESERT");
-    mapper->setGameTextureMapping(17, 8, "MOUNTAIN");
-    mapper->setGameTextureMapping(65, 8, "DESERT");
-
-    mapper->setGameTextureMapping(33, 8, "MOUNTAIN");
-
-    // mapper->setGameTextureMapping(21, 8, "SWAMP");
-    // mapper->setGameTextureMapping(23, 8, "SWAMP");
-
-    mapper->setGameTextureMapping(81, 8, "SWAMP");
-
-    mapper->setGameTextureMapping(7, 8,
-                                  "WATER_7");  // TODO Water levels.
-    mapper->setGameTextureMapping(6, 8, "WATER_6");
-    mapper->setGameTextureMapping(5, 8, "WATER_5");
-    mapper->setGameTextureMapping(4, 8, "WATER_4");
-    mapper->setGameTextureMapping(3, 8, "WATER_3");
-    mapper->setGameTextureMapping(2, 8, "WATER_2");
-    mapper->setGameTextureMapping(1, 8, "WATER_1");
-    mapper->setGameTextureMapping(0, 8, "WATER_0");
-
-    std::vector<int> ids = {32, 0, 1, 2, 4, 7, 8, 10, 13, 15, 17, 20, 21};
+    std::vector<int> ids = {32, 0, 2, 1, 4, 7, 8, 10, 13, 15, 17, 20, 21};
     std::vector<std::string> textures2 = {
         "UNKNOWN", "GRASS",    "DARK_GRASS", "GRASS_ISLAND", "WATER_7",
         "BEACH",   "MOUNTAIN", "DESERT",     "MUD",          "SWAMP",
@@ -100,31 +76,106 @@ void registerMapperTextures(OpenS4::Import::GraphicsRegistry& registry,
         OpenS4::Import::ImageData data = registry.getImage(ghID, ids[i]);
         int id = textures->add_texture_plane_256x256(&data);
 
-        mapper->setLandscapeTextureID(textures2[i], id);
+        ltm->registerTexture(textures2[i]);
+
+        auto rendererID = mapper->createRendererLandscapeTextureID();
+        mapper->setTextureMapping(ltm->getTextureID(textures2[i]), rendererID);
+        mapper->setLandscapeTextureID(rendererID, id);
     }
 
     // Water
     {
         OpenS4::Import::ImageData data = registry.getImage(ghID, 5);
         mapper->setLandscapeTextureID(
-            "WATER_0", textures->add_texture(64, 64, 0, 0, &data));
+            mapper->getRendererTextureID(ltm->getTextureID("WATER_0")),
+            textures->add_texture(64, 64, 0, 0, &data));
         mapper->setLandscapeTextureID(
-            "WATER_1", textures->add_texture(64, 64, 1, 0, &data));
+            mapper->getRendererTextureID(ltm->getTextureID("WATER_1")),
+            textures->add_texture(64, 64, 1, 0, &data));
         mapper->setLandscapeTextureID(
-            "WATER_2", textures->add_texture(64, 64, 2, 0, &data));
+            mapper->getRendererTextureID(ltm->getTextureID("WATER_2")),
+            textures->add_texture(64, 64, 2, 0, &data));
         mapper->setLandscapeTextureID(
-            "WATER_3", textures->add_texture(64, 64, 3, 0, &data));
+            mapper->getRendererTextureID(ltm->getTextureID("WATER_3")),
+            textures->add_texture(64, 64, 3, 0, &data));
         mapper->setLandscapeTextureID(
-            "WATER_4", textures->add_texture(64, 64, 0, 1, &data));
+            mapper->getRendererTextureID(ltm->getTextureID("WATER_4")),
+            textures->add_texture(64, 64, 0, 1, &data));
         mapper->setLandscapeTextureID(
-            "WATER_5", textures->add_texture(64, 64, 1, 1, &data));
+            mapper->getRendererTextureID(ltm->getTextureID("WATER_5")),
+            textures->add_texture(64, 64, 1, 1, &data));
         mapper->setLandscapeTextureID(
-            "WATER_6", textures->add_texture(64, 64, 2, 1, &data));
+            mapper->getRendererTextureID(ltm->getTextureID("WATER_6")),
+            textures->add_texture(64, 64, 2, 1, &data));
     }
+
+    converter->setTextureConversion(16, 8, ltm->getTextureID("GRASS"));
+
+    converter->setTextureConversion(
+        17, 8, ltm->getTextureID("GRASS_TO_GRASS_MOUNTAIN"));
+
+    converter->setTextureConversion(18, 8, ltm->getTextureID("GRASS_ISLAND"));
+
+    converter->setTextureConversion(20, 8,
+                                    ltm->getTextureID("GRASS_TO_DESERT_GRASS"));
+
+    converter->setTextureConversion(21, 8,
+                                    ltm->getTextureID("GRASS_TO_SWAMP_GRASS"));
+
+    converter->setTextureConversion(23, 8,
+                                    ltm->getTextureID("GRASS_TO_MUD_GRASS"));
+    converter->setTextureConversion(24, 8, ltm->getTextureID("DARK_GRASS"));
+
+    converter->setTextureConversion(25, 8,
+                                    ltm->getTextureID("GRASS_TO_DARK_GRASS"));
+
+    converter->setTextureConversion(28, 8, ltm->getTextureID("EARTH"));
+    converter->setTextureConversion(29, 8, ltm->getTextureID("PATH"));
+
+    converter->setTextureConversion(32, 8, ltm->getTextureID("MOUNTAIN"));
+    converter->setTextureConversion(
+        35, 8, ltm->getTextureID("MOUNTAIN_TO_SNOW_MOUNTAIN"));
+
+    converter->setTextureConversion(
+        33, 8, ltm->getTextureID("GRASS_MOUNTAIN_TO_MOUNTAIN"));
+
+    converter->setTextureConversion(48, 8, ltm->getTextureID("BEACH"));
+    converter->setTextureConversion(48, 7, ltm->getTextureID("BEACH"));
+
+    converter->setTextureConversion(64, 8, ltm->getTextureID("DESERT"));
+
+    converter->setTextureConversion(
+        65, 8, ltm->getTextureID("DESERT_GRASS_TO_DESERT"));
+
+    converter->setTextureConversion(80, 8, ltm->getTextureID("SWAMP"));
+
+    converter->setTextureConversion(81, 8,
+                                    ltm->getTextureID("SWAMP_GRASS_TO_SWAMP"));
+
+    converter->setTextureConversion(128, 8, ltm->getTextureID("SNOW"));
+    converter->setTextureConversion(129, 8,
+                                    ltm->getTextureID("SNOW_MOUNTAIN_TO_SNOW"));
+
+    converter->setTextureConversion(144, 8, ltm->getTextureID("MUD"));
+    converter->setTextureConversion(145, 8,
+                                    ltm->getTextureID("MUD_GRASS_TO_MUD"));
+
+    converter->setTextureConversion(7, 8, ltm->getTextureID("WATER_7"));
+    converter->setTextureConversion(6, 8, ltm->getTextureID("WATER_6"));
+    converter->setTextureConversion(5, 8, ltm->getTextureID("WATER_5"));
+    converter->setTextureConversion(4, 8, ltm->getTextureID("WATER_4"));
+    converter->setTextureConversion(3, 8, ltm->getTextureID("WATER_3"));
+    converter->setTextureConversion(2, 8, ltm->getTextureID("WATER_2"));
+    converter->setTextureConversion(1, 8, ltm->getTextureID("WATER_1"));
+    converter->setTextureConversion(0, 8, ltm->getTextureID("WATER_0"));
+
+    converter->setRangedTextureConversion(16, 0, 69,
+                                          ltm->getTextureID("GRASS"));
+    converter->setRangedTextureConversion(48, 0, 69,
+                                          ltm->getTextureID("BEACH"));
 
     int id;
     OpenS4::Import::ImageData data = registry.getImage(ghID, 3);
-
     OpenS4::Renderer::HexInfo info;
 
     double width = textures->get_width();
@@ -145,201 +196,489 @@ void registerMapperTextures(OpenS4::Import::GraphicsRegistry& registry,
     };
 
     update_info(0, 0);
-    mapper->addTextureHexagon("GRASS", "GRASS_ISLAND", info);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")),
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS_TO_DARK_GRASS")),
+        info);
 
     update_info(1, 0);
-    mapper->addTextureHexagon("GRASS_ISLAND", "GRASS", info);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS_TO_DARK_GRASS")),
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")), info);
 
-    update_info(2, 0);
-    mapper->addTextureHexagon("GRASS", "BEACH", info);
+    update_info(0, 2);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("DARK_GRASS")),
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS_TO_DARK_GRASS")),
+        info);
 
-    update_info(3, 0);
-    mapper->addTextureHexagon("BEACH", "GRASS", info);
+    update_info(1, 2);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS_TO_DARK_GRASS")),
+        mapper->getRendererTextureID(ltm->getTextureID("DARK_GRASS")), info);
+
+    /*
+    update_info(1, 2);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS_TO_DARK_GRASS")),
+        mapper->getRendererTextureID(ltm->getTextureID("DARK_GRASS")),
+        info);
+
+    update_info(0, 3);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("DARK_GRASS")),
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS_TO_DARK_GRASS")),
+        info);
+    update_info(1, 3);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS_TO_DARK_GRASS")),
+        mapper->getRendererTextureID(ltm->getTextureID("DARK_GRASS")), info);
+*/
 
     update_info(2, 1);
-    mapper->addTextureHexagon("GRASS", "BEACH", info);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")),
+        mapper->getRendererTextureID(ltm->getTextureID("BEACH")), info);
 
     update_info(3, 1);
-    mapper->addTextureHexagon("BEACH", "GRASS", info);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("BEACH")),
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")), info);
+
+    update_info(2, 0);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")),
+        mapper->getRendererTextureID(ltm->getTextureID("BEACH")), info);
+
+    update_info(3, 0);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("BEACH")),
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")), info);
 
     update_info(2, 2);
-    mapper->addTextureHexagon("GRASS", "DARK_GRASS", info);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")),
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS_ISLAND")), info);
 
     update_info(3, 2);
-    mapper->addTextureHexagon("DARK_GRASS", "GRASS", info);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS_ISLAND")),
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")), info);
 
     data = registry.getImage(ghID, 5);
     update_info(0, 2);
-    mapper->addTextureHexagon("WATER_0", "BEACH", info);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("WATER_0")),
+        mapper->getRendererTextureID(ltm->getTextureID("BEACH")), info);
     update_info(1, 2);
-    mapper->addTextureHexagon("BEACH", "WATER_0", info);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("BEACH")),
+        mapper->getRendererTextureID(ltm->getTextureID("WATER_0")), info);
+
+    data = registry.getImage(ghID, 11);
+    // GRASS -> GRASS_TO_DESERT_GRASS -> DESERT_GRASS_TO_DESERT -> DESERT
+    update_info(3, 0);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(
+            ltm->getTextureID("DESERT_GRASS_TO_DESERT")),
+        mapper->getRendererTextureID(ltm->getTextureID("DESERT")), info);
+
+    update_info(2, 0);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("DESERT")),
+        mapper->getRendererTextureID(
+            ltm->getTextureID("DESERT_GRASS_TO_DESERT")),
+        info);
+
+    update_info(0, 2);
+    mapper->addTextureHexagon(mapper->getRendererTextureID(
+                                  ltm->getTextureID("DESERT_GRASS_TO_DESERT")),
+                              mapper->getRendererTextureID(
+                                  ltm->getTextureID("GRASS_TO_DESERT_GRASS")),
+                              info);
+
+    update_info(1, 2);
+    mapper->addTextureHexagon(mapper->getRendererTextureID(
+                                  ltm->getTextureID("GRASS_TO_DESERT_GRASS")),
+                              mapper->getRendererTextureID(
+                                  ltm->getTextureID("DESERT_GRASS_TO_DESERT")),
+                              info);
+    update_info(3, 2);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")),
+        mapper->getRendererTextureID(
+            ltm->getTextureID("GRASS_TO_DESERT_GRASS")),
+        info);
+    update_info(2, 2);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(
+            ltm->getTextureID("GRASS_TO_DESERT_GRASS")),
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")), info);
+
+    // GRASS_TO_GRASS_MOUNTAIN, GRASS_MOUNTAIN_TO_MOUNTAIN
+    data = registry.getImage(ghID, 9);
+
+    update_info(3, 0);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")),
+        mapper->getRendererTextureID(
+            ltm->getTextureID("GRASS_TO_GRASS_MOUNTAIN")),
+        info);
+    update_info(2, 0);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(
+            ltm->getTextureID("GRASS_TO_GRASS_MOUNTAIN")),
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")), info);
+
+    update_info(1, 2);
+    mapper->addTextureHexagon(mapper->getRendererTextureID(
+                                  ltm->getTextureID("GRASS_TO_GRASS_MOUNTAIN")),
+                              mapper->getRendererTextureID(ltm->getTextureID(
+                                  "GRASS_MOUNTAIN_TO_MOUNTAIN")),
+                              info);
+    update_info(0, 2);
+    mapper->addTextureHexagon(mapper->getRendererTextureID(ltm->getTextureID(
+                                  "GRASS_MOUNTAIN_TO_MOUNTAIN")),
+                              mapper->getRendererTextureID(
+                                  ltm->getTextureID("GRASS_TO_GRASS_MOUNTAIN")),
+                              info);
+
+    update_info(3, 2);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(
+            ltm->getTextureID("GRASS_MOUNTAIN_TO_MOUNTAIN")),
+        mapper->getRendererTextureID(ltm->getTextureID("MOUNTAIN")), info);
+
+    update_info(2, 2);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("MOUNTAIN")),
+        mapper->getRendererTextureID(
+            ltm->getTextureID("GRASS_MOUNTAIN_TO_MOUNTAIN")),
+        info);
+
+    data = registry.getImage(ghID, 14);
+    //"GRASS_TO_SWAMP_GRASS", "SWAMP_GRASS_TO_SWAMP"
+    update_info(3, 0);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")),
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS_TO_SWAMP_GRASS")),
+        info);
+    update_info(2, 0);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS_TO_SWAMP_GRASS")),
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")), info);
+
+    update_info(1, 2);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS_TO_SWAMP_GRASS")),
+        mapper->getRendererTextureID(ltm->getTextureID("SWAMP_GRASS_TO_SWAMP")),
+        info);
+    update_info(0, 2);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("SWAMP_GRASS_TO_SWAMP")),
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS_TO_SWAMP_GRASS")),
+        info);
+    update_info(3, 2);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("SWAMP_GRASS_TO_SWAMP")),
+        mapper->getRendererTextureID(ltm->getTextureID("SWAMP")), info);
+
+    update_info(2, 2);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("SWAMP")),
+        mapper->getRendererTextureID(ltm->getTextureID("SWAMP_GRASS_TO_SWAMP")),
+        info);
+
+    data = registry.getImage(ghID, 12);
+    //"MUD_GRASS_TO_MUD", "GRASS_TO_MUD_GRASS"
+    update_info(3, 2);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")),
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS_TO_MUD_GRASS")),
+        info);
+    update_info(2, 2);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS_TO_MUD_GRASS")),
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")), info);
+
+    update_info(1, 2);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS_TO_MUD_GRASS")),
+        mapper->getRendererTextureID(ltm->getTextureID("MUD_GRASS_TO_MUD")),
+        info);
+    update_info(0, 2);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("MUD_GRASS_TO_MUD")),
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS_TO_MUD_GRASS")),
+        info);
+    update_info(3, 0);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("MUD_GRASS_TO_MUD")),
+        mapper->getRendererTextureID(ltm->getTextureID("MUD")), info);
+
+    update_info(2, 0);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("MUD")),
+        mapper->getRendererTextureID(ltm->getTextureID("MUD_GRASS_TO_MUD")),
+        info);
+
+    data = registry.getImage(ghID, 16);
+    //"MOUNTAIN_TO_SNOW_MOUNTAIN", "SNOW_MOUNTAIN_TO_SNOW"
+    update_info(3, 0);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("MOUNTAIN")),
+        mapper->getRendererTextureID(
+            ltm->getTextureID("MOUNTAIN_TO_SNOW_MOUNTAIN")),
+        info);
+    update_info(2, 0);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(
+            ltm->getTextureID("MOUNTAIN_TO_SNOW_MOUNTAIN")),
+        mapper->getRendererTextureID(ltm->getTextureID("MOUNTAIN")), info);
+
+    update_info(1, 2);
+    mapper->addTextureHexagon(mapper->getRendererTextureID(ltm->getTextureID(
+                                  "MOUNTAIN_TO_SNOW_MOUNTAIN")),
+                              mapper->getRendererTextureID(
+                                  ltm->getTextureID("SNOW_MOUNTAIN_TO_SNOW")),
+                              info);
+    update_info(0, 2);
+    mapper->addTextureHexagon(mapper->getRendererTextureID(
+                                  ltm->getTextureID("SNOW_MOUNTAIN_TO_SNOW")),
+                              mapper->getRendererTextureID(ltm->getTextureID(
+                                  "MOUNTAIN_TO_SNOW_MOUNTAIN")),
+                              info);
+    update_info(3, 2);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(
+            ltm->getTextureID("SNOW_MOUNTAIN_TO_SNOW")),
+        mapper->getRendererTextureID(ltm->getTextureID("SNOW")), info);
+
+    update_info(2, 2);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("SNOW")),
+        mapper->getRendererTextureID(
+            ltm->getTextureID("SNOW_MOUNTAIN_TO_SNOW")),
+        info);
 
     data = registry.getImage(ghID, 19);
     update_info(0, 0);
-    mapper->addTextureHexagon("GRASS", "EARTH", info);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")),
+        mapper->getRendererTextureID(ltm->getTextureID("EARTH")), info);
     update_info(1, 0);
-    mapper->addTextureHexagon("EARTH", "GRASS", info);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("EARTH")),
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")), info);
 
     update_info(2, 0);
-    mapper->addTextureHexagon("GRASS", "PATH", info);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")),
+        mapper->getRendererTextureID(ltm->getTextureID("PATH")), info);
     update_info(3, 0);
-    mapper->addTextureHexagon("PATH", "GRASS", info);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("PATH")),
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")), info);
 
     data = registry.getImage(ghID, 6);
     update_info(0, 0);
-    mapper->addTextureHexagon("WATER_1", "WATER_0", info);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("WATER_1")),
+        mapper->getRendererTextureID(ltm->getTextureID("WATER_0")), info);
     update_info(1, 0);
-    mapper->addTextureHexagon("WATER_2", "WATER_1", info);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("WATER_2")),
+        mapper->getRendererTextureID(ltm->getTextureID("WATER_1")), info);
     update_info(2, 0);
-    mapper->addTextureHexagon("WATER_3", "WATER_2", info);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("WATER_3")),
+        mapper->getRendererTextureID(ltm->getTextureID("WATER_2")), info);
     update_info(3, 0);
-    mapper->addTextureHexagon("WATER_4", "WATER_3", info);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("WATER_4")),
+        mapper->getRendererTextureID(ltm->getTextureID("WATER_3")), info);
 
     update_info(0, 1);
-    mapper->addTextureHexagon("WATER_0", "WATER_1", info);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("WATER_0")),
+        mapper->getRendererTextureID(ltm->getTextureID("WATER_1")), info);
     update_info(1, 1);
-    mapper->addTextureHexagon("WATER_1", "WATER_2", info);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("WATER_1")),
+        mapper->getRendererTextureID(ltm->getTextureID("WATER_2")), info);
     update_info(2, 1);
-    mapper->addTextureHexagon("WATER_2", "WATER_3", info);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("WATER_2")),
+        mapper->getRendererTextureID(ltm->getTextureID("WATER_3")), info);
     update_info(3, 1);
-    mapper->addTextureHexagon("WATER_3", "WATER_4", info);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("WATER_3")),
+        mapper->getRendererTextureID(ltm->getTextureID("WATER_4")), info);
 
     update_info(0, 2);
-    mapper->addTextureHexagon("WATER_5", "WATER_4", info);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("WATER_5")),
+        mapper->getRendererTextureID(ltm->getTextureID("WATER_4")), info);
     update_info(1, 2);
-    mapper->addTextureHexagon("WATER_6", "WATER_5", info);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("WATER_6")),
+        mapper->getRendererTextureID(ltm->getTextureID("WATER_5")), info);
     update_info(2, 2);
-    mapper->addTextureHexagon("WATER_7", "WATER_6", info);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("WATER_7")),
+        mapper->getRendererTextureID(ltm->getTextureID("WATER_6")), info);
 
     update_info(0, 3);
-    mapper->addTextureHexagon("WATER_4", "WATER_5", info);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("WATER_4")),
+        mapper->getRendererTextureID(ltm->getTextureID("WATER_5")), info);
     update_info(1, 3);
-    mapper->addTextureHexagon("WATER_5", "WATER_6", info);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("WATER_5")),
+        mapper->getRendererTextureID(ltm->getTextureID("WATER_6")), info);
     update_info(2, 3);
-    mapper->addTextureHexagon("WATER_6", "WATER_7", info);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("WATER_6")),
+        mapper->getRendererTextureID(ltm->getTextureID("WATER_7")), info);
 
     data = registry.getImage(ghID, 11);
     update_info(2, 2);
-    mapper->addTextureHexagon("DESERT", "GRASS", info);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("DESERT")),
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")), info);
     update_info(1, 1);
-    mapper->addTextureHexagon("GRASS", "DESERT", info);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")),
+        mapper->getRendererTextureID(ltm->getTextureID("DESERT")), info);
 
     data = registry.getImage(ghID, 9);
     update_info(2, 0);
-    mapper->addTextureHexagon("MOUNTAIN", "GRASS", info);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("MOUNTAIN")),
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")), info);
     update_info(1, 2);
-    mapper->addTextureHexagon("GRASS", "MOUNTAIN", info);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")),
+        mapper->getRendererTextureID(ltm->getTextureID("MOUNTAIN")), info);
 
     data = registry.getImage(ghID, 14);
     update_info(2, 0);
-    mapper->addTextureHexagon("SWAMP", "GRASS", info);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("SWAMP")),
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")), info);
     update_info(3, 0);
-    mapper->addTextureHexagon("GRASS", "SWAMP", info);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")),
+        mapper->getRendererTextureID(ltm->getTextureID("SWAMP")), info);
+
+    //    converter.setTextureConversion(16, 8, ltm->getTextureID("GRASS"));
+    //   converter.setTextureConversion(48, 8, ltm->getTextureID("BEACH"));
+
+    converter->setTextureConversion(96, 8, ltm->getTextureID("RIVER_0"));
+    converter->setTextureConversion(97, 8, ltm->getTextureID("RIVER_1"));
+    converter->setTextureConversion(98, 8, ltm->getTextureID("RIVER_2"));
+    converter->setTextureConversion(99, 8, ltm->getTextureID("RIVER_3"));
+
+    data = registry.getImage(ghID, 18);
+
+    update_info(0, 0);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("RIVER_0")),
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")), info);
+    update_info(0, 2);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")),
+        mapper->getRendererTextureID(ltm->getTextureID("RIVER_0")), info);
+
+    update_info(1, 0);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("RIVER_1")),
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")), info);
+    update_info(1, 2);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")),
+        mapper->getRendererTextureID(ltm->getTextureID("RIVER_1")), info);
+
+    update_info(2, 0);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("RIVER_2")),
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")), info);
+    update_info(2, 2);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")),
+        mapper->getRendererTextureID(ltm->getTextureID("RIVER_2")), info);
+
+    update_info(3, 0);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("RIVER_3")),
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")), info);
+    update_info(3, 2);
+    mapper->addTextureHexagon(
+        mapper->getRendererTextureID(ltm->getTextureID("GRASS")),
+        mapper->getRendererTextureID(ltm->getTextureID("RIVER_3")), info);
+
+    auto river_3 = mapper->getRendererTextureID(ltm->getTextureID("RIVER_3"));
+    auto grass = mapper->getRendererTextureID(ltm->getTextureID("GRASS"));
+
+    auto beach = mapper->getRendererTextureID(ltm->getTextureID("BEACH"));
+
+    auto water_0 = mapper->getRendererTextureID(ltm->getTextureID("WATER_0"));
+
+    mapper->addTextureHexagon(grass, water_0, river_3, water_0, river_3,
+                              water_0, river_3, water_0, river_3, water_0,
+                              river_3, water_0, river_3, info);
+    mapper->addTextureHexagon(grass, river_3, water_0, river_3, water_0,
+                              river_3, water_0, river_3, water_0, river_3,
+                              water_0, river_3, water_0, info);
+
+    data = registry.getImage(ghID, 5);
+    update_info(0, 0);
+    mapper->addTextureHexagon(water_0, river_3, info);
+    mapper->addTextureHexagon(river_3, water_0, info);
+
+    data = registry.getImage(ghID, 18);
+
+    update_info(3, 2);
+    mapper->addTextureHexagon(grass, water_0, info);
+
+    update_info(3, 0);
+    mapper->addTextureHexagon(water_0, grass, info);
+
+    data = registry.getImage(ghID, 5);
+
+    update_info(3, 2);
+    mapper->addTextureHexagon(water_0, beach, grass, beach, grass, beach, grass,
+                              beach, grass, beach, grass, beach, grass, info);
+
+    update_info(2, 2);
+    mapper->addTextureHexagon(water_0, grass, beach, grass, beach, grass, beach,
+                              grass, beach, grass, beach, grass, beach, info);
+
+    // TODO ERROR IN TEXTURE HANDLING UV-COORDINATES ORIGIN IN BOTTOM LEFT; NOT
+    // TOP LEFT IN OPENGL
+
+    // 48, 0, 16
 
     /*
-
-
-
-    data = registry.get_image(2, 5);
-    info.hexagon_texture_id = textures->add_texture_hexagon(64, 64,
-    0, 2, &data); mapper->addTextureHexagon(Textures::BEACH,
-    Textures::BEACH, Textures::WATER_0, info); info.hexagon_texture_id =
-    textures->add_texture_hexagon(64, 64, 1, 2, &data);
-    mapper->addTextureHexagon(Textures::WATER_0, Textures::WATER_0,
-    Textures::BEACH, info);
-
-
-    data = registry.get_image(2, 19);
-    info.hexagon_texture_id = textures->add_texture_hexagon(64, 64,
-    0, 0, &data); mapper->addTextureHexagon(Textures::EARTH,
-    Textures::EARTH, Textures::GRASS, info); info.hexagon_texture_id =
-    textures->add_texture_hexagon(64, 64, 1, 0, &data);
-    mapper->addTextureHexagon(Textures::GRASS, Textures::GRASS,
-    Textures::EARTH, info);
-
-    info.hexagon_texture_id = textures->add_texture_hexagon(64, 64,
-    2, 0, &data); mapper->addTextureHexagon(Textures::GRASS,
-    Textures::PATH, Textures::PATH, info); info.hexagon_texture_id =
-    textures->add_texture_hexagon(64, 64, 3, 0, &data);
-    mapper->addTextureHexagon(Textures::GRASS, Textures::GRASS,
-    Textures::PATH, info);
-
-    data = registry.get_image(2, 6);
-    info.hexagon_texture_id = textures->add_texture_hexagon(64, 64,
-    0, 0, &data); mapper->addTextureHexagon(Textures::WATER_0,
-    Textures::WATER_0, Textures::WATER_1, info); info.hexagon_texture_id =
-    textures->add_texture_hexagon(64, 64, 1, 0, &data);
-    mapper->addTextureHexagon(Textures::WATER_1, Textures::WATER_1,
-    Textures::WATER_2, info); info.hexagon_texture_id =
-    textures->add_texture_hexagon(64, 64, 2, 0, &data);
-    mapper->addTextureHexagon(Textures::WATER_2, Textures::WATER_2,
-    Textures::WATER_3, info); info.hexagon_texture_id =
-    textures->add_texture_hexagon(64, 64, 3, 0, &data);
-    mapper->addTextureHexagon(Textures::WATER_3, Textures::WATER_3,
-    Textures::WATER_4, info);
-
-    info.hexagon_texture_id = textures->add_texture_hexagon(64, 64,
-    0, 1, &data); mapper->addTextureHexagon(Textures::WATER_0,
-    Textures::WATER_1, Textures::WATER_1, info); info.hexagon_texture_id =
-    textures->add_texture_hexagon(64, 64, 1, 1, &data);
-    mapper->addTextureHexagon(Textures::WATER_1, Textures::WATER_2,
-    Textures::WATER_2, info); info.hexagon_texture_id =
-    textures->add_texture_hexagon(64, 64, 2, 1, &data);
-    mapper->addTextureHexagon(Textures::WATER_2, Textures::WATER_3,
-    Textures::WATER_3, info); info.hexagon_texture_id =
-    textures->add_texture_hexagon(64, 64, 3, 1, &data);
-    mapper->addTextureHexagon(Textures::WATER_3, Textures::WATER_4,
-    Textures::WATER_4, info);
-
-    info.hexagon_texture_id = textures->add_texture_hexagon(64, 64,
-    0, 2, &data); mapper->addTextureHexagon(Textures::WATER_4,
-    Textures::WATER_4, Textures::WATER_5, info); info.hexagon_texture_id =
-    textures->add_texture_hexagon(64, 64, 1, 2, &data);
-    mapper->addTextureHexagon(Textures::WATER_5, Textures::WATER_5,
-    Textures::WATER_6, info); info.hexagon_texture_id =
-    textures->add_texture_hexagon(64, 64, 2, 2, &data);
-    mapper->addTextureHexagon(Textures::WATER_6, Textures::WATER_6,
-    Textures::WATER_7, info);
-
-    info.hexagon_texture_id = textures->add_texture_hexagon(64, 64,
-    0, 3, &data); mapper->addTextureHexagon(Textures::WATER_4,
-    Textures::WATER_5, Textures::WATER_5, info); info.hexagon_texture_id =
-    textures->add_texture_hexagon(64, 64, 1, 3, &data);
-    mapper->addTextureHexagon(Textures::WATER_5, Textures::WATER_6,
-    Textures::WATER_6, info); info.hexagon_texture_id =
-    textures->add_texture_hexagon(64, 64, 2, 3, &data);
-    mapper->addTextureHexagon(Textures::WATER_6, Textures::WATER_7,
-    Textures::WATER_7, info);
-
-    data = registry.get_image(2, 11);
-    info.hexagon_texture_id = textures->add_texture_hexagon(64, 64,
-    2, 2, &data); mapper->addTextureHexagon(Textures::GRASS,
-    Textures::GRASS, Textures::DESERT, info); info.hexagon_texture_id =
-    textures->add_texture_hexagon(64, 64, 1, 1, &data);
-    mapper->addTextureHexagon(Textures::DESERT, Textures::DESERT,
-    Textures::GRASS, info);
-
-    data = registry.get_image(2, 9);
-    info.hexagon_texture_id = textures->add_texture_hexagon(64, 64,
-    2, 0, &data); mapper->addTextureHexagon(Textures::GRASS,
-    Textures::GRASS, Textures::MOUNTAIN, info); info.hexagon_texture_id =
-    textures->add_texture_hexagon(64, 64, 1, 2, &data);
-    mapper->addTextureHexagon(Textures::MOUNTAIN, Textures::MOUNTAIN,
-    Textures::GRASS, info);
-
-    data = registry.get_image(2, 14);
-    info.hexagon_texture_id = textures->add_texture_hexagon(64, 64,
-    2, 0, &data); mapper->addTextureHexagon(Textures::GRASS,
-    Textures::GRASS, Textures::SWAMP, info); info.hexagon_texture_id =
-    textures->add_texture_hexagon(64, 64, 3, 0, &data);
-    mapper->addTextureHexagon(Textures::SWAMP, Textures::SWAMP,
-    Textures::GRASS, info);
+    SEE TEXTURE MAPPER 183ff
+            _6.y = _2.y;
+        _2.y = _5.y;
+        _5.y = _6.y;
+        _3.y = _2.y;
     */
+
+    /* mapper->addTextureHexagon(
+         mapper->getRendererTextureID(ltm->getTextureID("RIVER_3")),
+         mapper->getRendererTextureID(ltm->getTextureID("GRASS")), info);
+     */
+
+    // converter->setTextureConversion(0, 8, ltm->getTextureID("WATER_0"));
 }
 
-OpenS4::Renderer::Landscape* makeLandscape(
+OpenS4::Logic::Map::Landscape makeLandscape2(
     OpenS4::Import::Map::Map* map,
     OpenS4::Renderer::LandscapeTextures* textures,
+    OpenS4::Logic::Map::LandscapeTextureConverter* converter,
     OpenS4::Renderer::TextureMapper* mapper) {
     OpenS4::Import::Map::Landscape* mapLandscape =
         OpenS4::Import::Map::fromMap(map);
@@ -347,48 +686,25 @@ OpenS4::Renderer::Landscape* makeLandscape(
     auto height = mapLandscape->getHeight();
     auto width = mapLandscape->getWidth();
 
-    OpenS4::Renderer::Landscape* landscape =
-        new OpenS4::Renderer::Landscape(textures, mapper, width, height);
+    OpenS4::Logic::Map::Landscape landscape(width, height);
 
     for (auto y = 0; y < height; y++) {
         for (auto x = 0; x < width; x++) {
             OpenS4::Import::Map::LandscapePosition pos =
                 mapLandscape->getLandscapePosition(x, y);
 
-            landscape->setTerrain(x, y,
-                                  mapper->getGameTextureMapping(
-                                      pos.terrainType, pos.terrainSubtype));
-            landscape->setTerrainHeight(x, y, pos.height);
+            auto logicID =
+                converter->convert(pos.terrainType, pos.terrainSubtype);
+
+            landscape.setTerrainDebug(x, y, pos.terrainType,
+                                      pos.terrainSubtype);
+
+            landscape.setTerrain(x, y, logicID);
+            landscape.setTerrainHeight(x, y, pos.height);
         }
     }
 
-    //   landscape->update();
-
-    return landscape;
-}
-
-OpenS4::Renderer::Landscape* makeRandomLandscape(
-    OpenS4::Renderer::LandscapeTextures* textures,
-    OpenS4::Renderer::TextureMapper* mapper) {
-    auto height = 1024;
-    auto width = 1024;
-    OpenS4::Renderer::Landscape* landscape =
-        new OpenS4::Renderer::Landscape(textures, mapper, width, height);
-
-    std::vector<OpenS4::Renderer::LandscapeTextureID> rndTextures;
-    rndTextures.push_back(mapper->getLandscapeTextureID("GRASS"));
-    rndTextures.push_back(mapper->getLandscapeTextureID("BEACH"));
-
-    for (auto y = 0; y < height; y++) {
-        for (auto x = 0; x < width; x++) {
-            // landscape->setTerrain(x, y,
-            //                       mapper->getLandscapeTextureID("GRASS"));
-            landscape->setTerrain(x, y,
-                                  rndTextures[rand() % rndTextures.size()]);
-            landscape->setTerrainHeight(x, y, rand() % 15 + 1);
-        }
-    }
-
+    delete mapLandscape;
     return landscape;
 }
 
@@ -406,7 +722,45 @@ int g_playerColor = 0;
 int g_frameID = 0;
 int g_tapID = 0;
 
+float g_heightScale = 1.2f;
+
+bool g_drawPoints = false;
+
 OpenS4::Logic::Direction g_direction = OpenS4::Logic::Direction::EAST;
+
+OpenS4::Renderer::LandscapeRenderer* g_landscapeRenderer = nullptr;
+
+struct XYDir {
+    s32 x;
+    s32 y;
+    u32 dir;
+};
+
+struct BuildingFrames {
+    std::string name;
+    u32 baseFrameID = 0;
+    u32 gfxID = 0;
+    u32 width = 0;
+    u32 height = 0;
+
+    s32 xOffset = 0;
+    s32 yOffset = 0;
+
+    s32 doorX = 0;
+    s32 doorY = 0;
+
+    std::vector<XYDir> builders;
+
+    s32 hotspotX;
+    s32 hotspotY;
+
+    std::vector<std::bitset<32>> lines;
+};
+std::map<std::string, BuildingFrames> buildingFramesMap;
+
+std::string g_builderFrameIndex = "";
+
+auto g_imgID = 0;
 
 class TestListener : public OpenS4::Input::InputListener {
     GLFWwindow* m_window = nullptr;
@@ -440,16 +794,10 @@ class TestListener : public OpenS4::Input::InputListener {
 
         static int drawMode = 0;
 
+        static int xstep = 24;
+
         switch (event->getKey()) {
-            case Key::Q:
-                g_direction = (OpenS4::Logic::Direction)((int)g_direction + 1);
-                if (g_direction == OpenS4::Logic::Direction::_DIRECTION_COUNT)
-                    g_direction = OpenS4::Logic::Direction::EAST;
-                break;
-            case Key::W:
-                g_playerColor++;
-                break;
-            case Key::D:
+            case Key::T:
                 drawMode = ++drawMode % 3;
                 if (drawMode == 0)  // fill mode
                 {
@@ -462,11 +810,21 @@ class TestListener : public OpenS4::Input::InputListener {
                     glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
                 }
                 break;
+            case Key::Y:  // This is Key::Z (german keyboard)
+                g_drawPoints = !g_drawPoints;
+                break;
+
             case Key::J:
                 g_zoom *= 1.5f;
                 break;
             case Key::K:
                 g_zoom /= 1.5f;
+                break;
+            case Key::B:
+                g_zoom += 0.01f;
+                break;
+            case Key::N:
+                g_zoom -= 0.01f;
                 break;
 
             case Key::Right:
@@ -483,7 +841,55 @@ class TestListener : public OpenS4::Input::InputListener {
                 break;
             case Key::Esc:
                 glfwSetWindowShouldClose(m_window, GLFW_TRUE);
+
+            case Key::F:
+                g_heightScale += 0.1f;
+                g_landscapeRenderer->updateAllChunks();
+
                 break;
+            case Key::G:
+                g_heightScale -= 0.1f;
+
+                g_landscapeRenderer->updateAllChunks();
+                break;
+
+            case Key::I: {
+                std::string prev;
+                for (auto& frame : buildingFramesMap) {
+                    if (prev == "") {
+                        prev = frame.first;
+                    }
+                    if (frame.first == g_builderFrameIndex) {
+                        g_builderFrameIndex = prev;
+                        break;
+                    }
+                    prev = frame.first;
+                }
+            } break;
+            case Key::O: {
+                bool is_next = false;
+                for (auto& frame : buildingFramesMap) {
+                    if (is_next) {
+                        g_builderFrameIndex = frame.first;
+                        break;
+                    }
+                    if (frame.first == g_builderFrameIndex) {
+                        is_next = true;
+                    }
+                }
+            } break;
+
+            case Key::C:
+                g_imgID++;
+                break;
+            case Key::X:
+                g_imgID += 10;
+                break;
+
+            case Key::V:
+                g_imgID--;
+                break;
+
             default:
                 return OpenS4::Input::EventDispatching::PassEvent;
         }
@@ -500,7 +906,9 @@ void TERMINATE(u64 errorCode) {
 void drawLoop(GLFWwindow* window, OpenS4::Renderer::Landscape* landscape,
               OpenS4::Renderer::TextureAtlas* landscape_atlas,
               OpenS4::Import::GraphicsRegistry* registry,
-              OpenS4::Renderer::TextureMapper* mapper) {
+              OpenS4::Renderer::TextureMapper* mapper,
+              OpenS4::Logic::Map::Landscape* logicLandscape,
+              OpenS4::Logic::Map::LandscapeTextureMapper* ltm) {
     glClearColor(0, 0, 0, 1);
 
     // Setup Shaders
@@ -553,33 +961,83 @@ void drawLoop(GLFWwindow* window, OpenS4::Renderer::Landscape* landscape,
 
     int maxImageID = 0;
 
-    std::map<u32, u32> registryFrameIDtoImageID;
+    std::map<u32, std::map<u32, u32>> registryFrameIDtoImageID;
+
+    g_landscapeRenderer = p_renderer;
+
+    // gfx: 10 roman, 11 viking, 12 maya, 13 dark, 14 trojan
 
     // Build atlas(es) 20 = roman settlers
-    for (int i = 20; i < 21; i++) {
+    for (int i = 10; i < 25; i++) {
+        registryFrameIDtoImageID[i] = {};
         for (int j = 0; j < registry->getNumberOfImages(i); j++) {
             OpenS4::Import::ImageData image = registry->getImage(i, j);
             auto imageID = objRenderer.addImage(image);
             maxImageID++;
 
-            registryFrameIDtoImageID[j] = imageID;
-            if (maxImageID % 1000 == 0) objRenderer.buildAtlasesContinuous(1024);
+            registryFrameIDtoImageID[i][j] = imageID;
+            if (maxImageID % 1000 == 0)
+                objRenderer.buildAtlasesContinuous(1024);
         }
     }
     objRenderer.buildAtlasesContinuous(1024, true);
 
-    
     OpenS4::getLogger().info("Built %d atlases for objects!",
                              objRenderer.getNumberOfAtlases());
     OpenS4::getLogger().info("Atlases contain %d images!", maxImageID);
 
+    // JSON
+
+    {
+        std::ifstream ifs("Config/romanBuildingsBaseFrame.json");
+        nlohmann::json buildingFrames = nlohmann::json::parse(ifs);
+
+        for (auto& jo : buildingFrames) {
+            BuildingFrames frames;
+            frames.name = jo["name"];
+            frames.gfxID = jo["gfx"];
+            frames.baseFrameID = jo["baseFrame"];
+
+            frames.width =
+                registry->getImage(frames.gfxID, frames.baseFrameID).getWidth();
+            frames.height = registry->getImage(frames.gfxID, frames.baseFrameID)
+                                .getHeight();
+
+            buildingFramesMap[jo["name"]] = frames;
+        }
+
+        {
+            std::ifstream ifs("Config/romanBuildings.json");
+            nlohmann::json builders = nlohmann::json::parse(ifs);
+
+            for (auto& jo : builders) {
+                BuildingFrames& frame = buildingFramesMap[jo["name"]];
+
+                for (auto& builder : jo["builders"]) {
+                    XYDir xydir;
+                    xydir.x = builder["x"];
+                    xydir.y = builder["y"];
+                    xydir.dir = builder["direction"];
+                    frame.builders.push_back(xydir);
+                }
+
+                frame.hotspotX = jo["hotspotX"];
+                frame.hotspotY = jo["hotspotY"];
+
+                for (auto& line : jo["lines"]) {
+                    std::string l = line;
+                    std::bitset<32> bits = std::bitset<32>(l);
+                    frame.lines.push_back(bits);
+                }
+            }
+        }
+    }
 
     // Create a test entity with test properties.
     OpenS4::Logic::EntityProperties* entityProperties =
         OpenS4::Logic::test_makeProperties(registry);
     OpenS4::Logic::Entity entity;
     entity.m_properties = entityProperties;
-
 
     auto imageID = 0;
     int width = 0;
@@ -594,7 +1052,24 @@ void drawLoop(GLFWwindow* window, OpenS4::Renderer::Landscape* landscape,
     // Current Tick (tick2 "interpolated")
     double tick2 = tick;
 
+    OpenS4::Renderer::TransformationPipeline transform;
+
+    OpenS4::Renderer::PointBatch pointBatch;
+
     while (!glfwWindowShouldClose(window)) {
+        // Setup camera & translation for this frame.
+        glm::mat4x4 ortho =
+            glm::ortho((float)-width / 2, (float)width / 2, (float)-height / 2,
+                       (float)height / 2, (float)-200, (float)200);
+        transform.getProjectionStack()->loadMatrix(ortho);
+        transform.getProjectionStack()->scale(g_zoom, g_zoom, 1);
+        transform.getProjectionStack()->translate(-g_mapPosX * 10,
+                                                  10 * g_mapPosY, 0);
+
+        // Pass the tranformation to the landscape renderer (so that it can
+        // translate visible pixels to coordinates).
+        renderer.setTransform(&transform, width, height);
+
         frameCount++;
         auto now = std::chrono::high_resolution_clock::now();
         auto duration = (now - start).count();
@@ -608,7 +1083,8 @@ void drawLoop(GLFWwindow* window, OpenS4::Renderer::Landscape* landscape,
             frameCount = 0;
 
             std::stringstream sstream;
-            sstream << "Tick: " << tick;
+            sstream << " HeightScale: " << g_heightScale;
+            sstream << " Tick: " << tick;
             sstream << " Tick2: " << tick2;
             sstream << " FPS: " << lastFrameCount;
             glfwSetWindowTitle(window, sstream.str().c_str());
@@ -631,9 +1107,31 @@ void drawLoop(GLFWwindow* window, OpenS4::Renderer::Landscape* landscape,
             tick2 = tick + duration / 1000000000.0;
 
             std::stringstream sstream;
-            sstream << "Tick: " << tick;
+
+            double xpos, ypos;
+            glfwGetCursorPos(window, &xpos, &ypos);
+
+            glm::vec2 model = g_landscapeRenderer->toModelPositionHighPrecision(
+                g_landscapeRenderer->screenToWorld(glm::vec2(xpos, ypos)));
+            model.x = round(model.x);
+            model.y = round(model.y);
+
+            if (model.x >= 0 && model.y >= 0 &&
+                model.y < logicLandscape->getHeight() &&
+                model.x < logicLandscape->getWidth()) {
+                sstream
+                    << logicLandscape->getTerrainDebug(model.x, model.y).type
+                    << " "
+                    << logicLandscape->getTerrainDebug(model.x, model.y)
+                           .subType;
+            }
+
+            sstream << " HeightScale: " << g_heightScale;
+            sstream << " Tick: " << tick;
             sstream << " Tick2: " << tick2;
+
             sstream << " FPS: " << lastFrameCount;
+
             glfwSetWindowTitle(window, sstream.str().c_str());
         }
 
@@ -641,23 +1139,8 @@ void drawLoop(GLFWwindow* window, OpenS4::Renderer::Landscape* landscape,
         glfwGetFramebufferSize(window, &width, &height);
         glViewport(0, 0, width, height);
 
-        OpenS4::Renderer::TransformationPipeline transform;
-
         // Only render if window has size > 0
         if (width && height) {
-
-            // Setup camera & translation for this frame.
-            glm::mat4x4 ortho = glm::ortho(
-                (float)-width / 2, (float)width / 2, (float)-height / 2,
-                (float)height / 2, (float)-200, (float)200);
-            transform.getProjectionStack()->loadMatrix(ortho);
-            transform.getProjectionStack()->scale(g_zoom, g_zoom, 1);
-            transform.getProjectionStack()->translate(-g_mapPosX * 10,
-                                                      10 * g_mapPosY, 0);
-
-            // Pass the tranformation to the landscape renderer (so that it can translate visible pixels to coordinates).
-            renderer.setTransform(&transform, width, height);
-
             // Draw Landscape
             glUseProgram(mapShader);
             glUniformMatrix4fv(
@@ -674,7 +1157,6 @@ void drawLoop(GLFWwindow* window, OpenS4::Renderer::Landscape* landscape,
                 glm::value_ptr(transform.getModelViewProjectionMatrix()));
             glUniform4fv(glGetUniformLocation(settlerShader, "playerColors"), 8,
                          floatColors.data());
-
 
             double percentage = (tick2 - entity.start_tick) /
                                 (entity.end_tick - entity.start_tick);
@@ -696,65 +1178,146 @@ void drawLoop(GLFWwindow* window, OpenS4::Renderer::Landscape* landscape,
                     .frameStart +
                 frameOffset + std::round(percentage * (n_frames - 1));
 
-            objRenderer.render(10, 10, registryFrameIDtoImageID[frame],
+            objRenderer.render(10 + 6, 10 + 15,
+                               registryFrameIDtoImageID[20][frame],
                                g_playerColor % 8);
-            objRenderer.draw();
 
-            // Draw map points
-            glUseProgram(pointShader);
-            glUniformMatrix4fv(
-                glGetUniformLocation(pointShader, "mvpMatrix"), 1, GL_FALSE,
-                glm::value_ptr(transform.getModelViewProjectionMatrix()));
+            auto imgMaxID = registry->getNumberOfImages(24);
+            objRenderer.render(
+                10, 10, registryFrameIDtoImageID[24][g_imgID % imgMaxID], 2);
 
-            OpenS4::Renderer::PointBatch pointBatch;
+            auto palette = registry->getJobIndex(24, g_imgID);
 
-            std::vector<float> points;
-            std::vector<float> pointColors;
+            for (auto y = 0; y < 40; y++)
+                for (auto x = 0; x < 40; x++) {
+                    logicLandscape->setTerrain(x, y,
+                                               ltm->getTextureID("GRASS"));
+                }
 
-            auto box = renderer.getBoundingBox();
+            XYDir door;
 
-            box.lower.x = std::floor(box.lower.x);
-            box.lower.y = std::floor(box.lower.y);
-            box.upper.x = std::floor(box.upper.x);
-            box.upper.y = std::floor(box.upper.y);
-            box.lower.x = std::max(0.0f, box.lower.x);
-            box.lower.y = std::max(0.0f, box.lower.y);
-            box.upper.x = std::min((float)renderer.getWidth(), box.upper.x);
-            box.upper.y = std::min((float)renderer.getHeight(), box.upper.y);
+            std::map<u32, std::set<u32>> pointsToDraw;
+            {
+                BuildingFrames& frame2 = buildingFramesMap[g_builderFrameIndex];
 
-            for (auto y = box.lower.y; y < box.upper.y; y++) {
-                for (auto x = box.lower.x; x < box.upper.x; x++) {
-                    glm::vec2 pixel = renderer.toPixelPosition(glm::vec2(x, y));
-                    points.push_back(pixel.x);
-                    points.push_back(pixel.y);
+                OpenS4::Import::ImageData img =
+                    registry->getImage(frame2.gfxID, frame2.baseFrameID);
 
-                    auto terrain = landscape->getTerrain(x, y);
+                objRenderer.render(
+                    20, 20,
+                    registryFrameIDtoImageID[frame2.gfxID][frame2.baseFrameID],
+                    0);
 
-                    if (y == 10 && x == 10) {
-                        pointColors.push_back(0);
-                        pointColors.push_back(1);
-                        pointColors.push_back(0);
-                        pointColors.push_back(1);
-                    } else if (mapper->getTexture("GRASS") == terrain ||
-                               mapper->getTexture("BEACH") == terrain) {
-                        pointColors.push_back(1);
-                        pointColors.push_back(0);
-                        pointColors.push_back(0);
-                        pointColors.push_back(1);
-                    } else {
-                        pointColors.push_back(1);
-                        pointColors.push_back(1);
-                        pointColors.push_back(0);
-                        pointColors.push_back(1);
-                    }
+                door.x = 20 + frame2.doorX;
+                door.y = 20 + frame2.doorY;
+
+                int y = 20 - frame2.hotspotY;
+                for (auto& line : frame2.lines) {
+                    for (int i = 0; i < 32; i++)
+                        if (line.test(i)) {
+                            int x = 20 - frame2.hotspotX + (31 - i);
+                            pointsToDraw[x].emplace(y);
+
+                            logicLandscape->setTerrain(
+                                x, y, ltm->getTextureID("EARTH"));
+                        }
+                    y++;
+                }
+
+                for (auto& xydir : frame2.builders) {
+                    objRenderer.render(
+                        20 + xydir.x, 20 + xydir.y,
+                        registryFrameIDtoImageID[20][3840 + xydir.dir * 8], 0);
                 }
             }
 
-            glPointSize(5);
-            pointBatch.updateData(points, 2, pointColors, 4);
-            pointBatch.draw();
+            objRenderer.draw();
+
+            renderer.updateChunk(0, 0);
+
+            if (g_drawPoints) {
+                // Draw map points
+                glUseProgram(pointShader);
+                glUniformMatrix4fv(
+                    glGetUniformLocation(pointShader, "mvpMatrix"), 1, GL_FALSE,
+                    glm::value_ptr(transform.getModelViewProjectionMatrix()));
+
+                std::vector<float> points;
+                std::vector<float> pointColors;
+
+                auto box = renderer.getBoundingBox();
+
+                box.lower.x = std::floor(box.lower.x);
+                box.lower.y = std::floor(box.lower.y);
+                box.upper.x = std::floor(box.upper.x);
+                box.upper.y = std::floor(box.upper.y);
+                box.lower.x = std::max(0.0f, box.lower.x);
+                box.lower.y = std::max(0.0f, box.lower.y);
+                box.upper.x = std::min((float)renderer.getWidth(), box.upper.x);
+                box.upper.y =
+                    std::min((float)renderer.getHeight(), box.upper.y);
+
+                for (auto y = box.lower.y; y < box.upper.y; y++) {
+                    for (auto x = box.lower.x; x < box.upper.x; x++) {
+                        glm::vec2 pixel =
+                            renderer.toPixelPosition(glm::vec2(x, y));
+                        points.push_back(pixel.x);
+                        points.push_back(pixel.y);
+
+                        auto terrain = landscape->getTerrain(x, y);
+
+                        if ((x == door.x && y == door.y)) {
+                            pointColors.push_back(1);
+                            pointColors.push_back(1);
+                            pointColors.push_back(1);
+                            pointColors.push_back(1);
+                        } else if (x == 20 && y == 20) {
+                            pointColors.push_back(0);
+                            pointColors.push_back(1);
+                            pointColors.push_back(0);
+                            pointColors.push_back(1);
+                        } else if (pointsToDraw.count(x) &&
+                                   pointsToDraw[x].count(y)) {
+                            pointColors.push_back(0);
+                            pointColors.push_back(0);
+                            pointColors.push_back(0);
+                            pointColors.push_back(1);
+
+                        } else if ((y == 10 && x == 10) || (y == 5 && x == 5) ||
+                                   (y == 7 && x == 7)) {
+                            pointColors.push_back(0);
+                            pointColors.push_back(1);
+                            pointColors.push_back(0);
+                            pointColors.push_back(1);
+                        } else if (  // mapper->getTexture("GRASS") == terrain
+                                     // || mapper->getTexture("BEACH") ==
+                                     // terrain
+
+                            //  ||
+                            (x == 1 && y == 6) || (x == 8 && y == 6) ||
+                            (x == 3 && y == 9) || (x == 6 && y == 9)
+
+                            || (x == 20 && y == 20) ||
+                            (x == door.x && y == door.y)) {
+                            pointColors.push_back(1);
+                            pointColors.push_back(0);
+                            pointColors.push_back(0);
+                            pointColors.push_back(1);
+                        } else {
+                            pointColors.push_back(1);
+                            pointColors.push_back(1);
+                            pointColors.push_back(0);
+                            pointColors.push_back(1);
+                        }
+                    }
+                }
+
+                glPointSize(5);
+                pointBatch.updateData(points, 2, pointColors, 4);
+                pointBatch.draw();
+            }
         }
-        
+
         // tell imgui a new frame starts
         OpenS4::Gui::Imgui::RenderWindows();
 
@@ -764,8 +1327,6 @@ void drawLoop(GLFWwindow* window, OpenS4::Renderer::Landscape* landscape,
 
     OpenS4::Gui::Imgui::Cleanup();
 }
-
-#include "Input/WindowSystem/GLFWInputHandler/GLFWInputHandler.hpp"
 
 int main(int argc, char* argv[]) {
     // Setup logger to also print to console
@@ -801,7 +1362,6 @@ int main(int argc, char* argv[]) {
     // Setup Input Subsystem
     OpenS4::Input::GLFWInputHandler::getInstance()->registerCallbacks(window);
 
-
     // Add simple test listener
     std::shared_ptr<TestListener> listener =
         std::make_shared<TestListener>("test", window);
@@ -821,22 +1381,29 @@ int main(int argc, char* argv[]) {
 
     // Init Landscape Texture Atlas & Texture Mapper
     OpenS4::Renderer::LandscapeTextures landscape_textures(2048, 2048);
+
+    OpenS4::Logic::Map::LandscapeTextureMapper landscapeTextureMapper;
+    OpenS4::Logic::Map::LandscapeTextureConverter converter;
+
     OpenS4::Renderer::TextureMapper textureMapper;
-    registerMapperTextures(registry, &landscape_textures, &textureMapper, 2);
+
+    registerMapperTextures(registry, &landscapeTextureMapper, &converter,
+                           &landscape_textures, &textureMapper, 2);
 
     // Load simple map
     OpenS4::Import::Map::Map* map =
-        OpenS4::Import::Map::readMap("576_AlleTexturen.map");
+        OpenS4::Import::Map::readMap("Config/Maps/576_AlleTexturen.map");
     if (!map) {
         OpenS4::getLogger().warn("Map not found!");
     }
 
     // Make Landscape from Map
-    OpenS4::Renderer::Landscape* landscape;
-    if (map)
-        landscape = makeLandscape(map, &landscape_textures, &textureMapper);
-    else
-        landscape = makeRandomLandscape(&landscape_textures, &textureMapper);
+
+    OpenS4::Logic::Map::Landscape landscape =
+        makeLandscape2(map, &landscape_textures, &converter, &textureMapper);
+
+    OpenS4::Renderer::Landscape rendererLandscape(
+        &landscape, &landscape_textures, &textureMapper);
 
     if (map != nullptr) {
         delete map;
@@ -844,7 +1411,8 @@ int main(int argc, char* argv[]) {
     }
 
     // Loop forever
-    drawLoop(window, landscape, &landscape_textures, &registry, &textureMapper);
+    drawLoop(window, &rendererLandscape, &landscape_textures, &registry,
+             &textureMapper, &landscape, &landscapeTextureMapper);
 
     glfwTerminate();
     OpenS4::getLogger().info("Program is exiting correctly!");

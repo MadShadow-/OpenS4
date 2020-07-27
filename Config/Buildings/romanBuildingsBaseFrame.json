@@ -1,0 +1,332 @@
+[
+  {
+    "baseFrame": 491,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_AMMOMAKERHUT"
+  },
+  {
+    "baseFrame": 82,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_ANIMALRANCH"
+  },
+  {
+    "baseFrame": 53,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_BAKERY"
+  },
+  {
+    "baseFrame": 469,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_BARRACKS"
+  },
+  {
+    "baseFrame": 588,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_BIGTEMPLE"
+  },
+  {
+    "baseFrame": 615,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_CASTLE"
+  },
+  {
+    "baseFrame": 371,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_COALMINE"
+  },
+  {
+    "baseFrame": 270,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_DONKEYRANCH"
+  },
+  {
+    "baseFrame": 711,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_EYECATCHER01"
+  },
+  {
+    "baseFrame": 713,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_EYECATCHER02"
+  },
+  {
+    "baseFrame": 715,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_EYECATCHER03"
+  },
+  {
+    "baseFrame": 717,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_EYECATCHER04"
+  },
+  {
+    "baseFrame": 719,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_EYECATCHER05"
+  },
+  {
+    "baseFrame": 721,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_EYECATCHER06"
+  },
+  {
+    "baseFrame": 723,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_EYECATCHER07"
+  },
+  {
+    "baseFrame": 725,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_EYECATCHER08"
+  },
+  {
+    "baseFrame": 727,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_EYECATCHER09"
+  },
+  {
+    "baseFrame": 729,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_EYECATCHER10"
+  },
+  {
+    "baseFrame": 739,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_EYECATCHER11"
+  },
+  {
+    "baseFrame": 741,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_EYECATCHER12"
+  },
+  {
+    "baseFrame": 26,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_FISHERHUT"
+  },
+  {
+    "baseFrame": 5,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_FORESTERHUT"
+  },
+  {
+    "baseFrame": 369,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_GOLDMINE"
+  },
+  {
+    "baseFrame": 80,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_GRAINFARM"
+  },
+  {
+    "baseFrame": 610,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_GUARDTOWERBIG"
+  },
+  {
+    "baseFrame": 605,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_GUARDTOWERSMALL"
+  },
+  {
+    "baseFrame": 489,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_HEALERHUT"
+  },
+  {
+    "baseFrame": 41,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_HUNTERHUT"
+  },
+  {
+    "baseFrame": 367,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_IRONMINE"
+  },
+  {
+    "baseFrame": 590,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_LOOKOUTTOWER"
+  },
+  {
+    "baseFrame": 495,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_MARKETPLACE"
+  },
+  {
+    "baseFrame": 45,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_MILL"
+  },
+  {
+    "baseFrame": 627,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_PORTA"
+  },
+  {
+    "baseFrame": 638,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_PORTB"
+  },
+  {
+    "baseFrame": 649,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_PORTC"
+  },
+  {
+    "baseFrame": 660,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_PORTD"
+  },
+  {
+    "baseFrame": 671,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_PORTE"
+  },
+  {
+    "baseFrame": 682,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_PORTF"
+  },
+  {
+    "baseFrame": 749,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_PORTG"
+  },
+  {
+    "baseFrame": 760,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_PORTH"
+  },
+  {
+    "baseFrame": 557,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_RESIDENCEBIG"
+  },
+  {
+    "baseFrame": 554,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_RESIDENCEMEDIUM"
+  },
+  {
+    "baseFrame": 551,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_RESIDENCESMALL"
+  },
+  {
+    "baseFrame": 7,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_SAWMILL"
+  },
+  {
+    "baseFrame": 693,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_SHIPYARDA"
+  },
+  {
+    "baseFrame": 696,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_SHIPYARDB"
+  },
+  {
+    "baseFrame": 699,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_SHIPYARDC"
+  },
+  {
+    "baseFrame": 702,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_SHIPYARDD"
+  },
+  {
+    "baseFrame": 705,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_SHIPYARDE"
+  },
+  {
+    "baseFrame": 708,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_SHIPYARDF"
+  },
+  {
+    "baseFrame": 743,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_SHIPYARDG"
+  },
+  {
+    "baseFrame": 746,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_SHIPYARDH"
+  },
+  {
+    "baseFrame": 43,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_SLAUGHTERHOUSE"
+  },
+  {
+    "baseFrame": 576,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_SMALLTEMPLE"
+  },
+  {
+    "baseFrame": 375,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_SMELTGOLD"
+  },
+  {
+    "baseFrame": 396,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_SMELTIRON"
+  },
+  {
+    "baseFrame": 9,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_STONECUTTERHUT"
+  },
+  {
+    "baseFrame": 365,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_STONEMINE"
+  },
+  {
+    "baseFrame": 547,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_STORAGEAREA"
+  },
+  {
+    "baseFrame": 373,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_SULFURMINE"
+  },
+  {
+    "baseFrame": 431,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_TOOLSMITH"
+  },
+  {
+    "baseFrame": 467,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_VEHICLEHALL"
+  },
+  {
+    "baseFrame": 549,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_VINYARD"
+  },
+  {
+    "baseFrame": 11,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_WATERWORKHUT"
+  },
+  {
+    "baseFrame": 449,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_WEAPONSMITH"
+  },
+  {
+    "baseFrame": 3,
+    "gfx": 10,
+    "name": "ROMAN_BUILDING_WOODCUTTERHUT"
+  }
+]

@@ -36,7 +36,7 @@ EntityProperties* test_makeProperties(
     std::vector<u32> beginnings;
     u32 lastPal = 0;
     for (int i = 0; i < registry->getNumberOfImages(20); i++) {
-        auto pal = registry->getPalette(20, i);
+        auto pal = registry->getJobIndex(20, i);
         if (pal != lastPal || lastPal == 0) {
             lastPal = pal;
             beginnings.push_back(i);

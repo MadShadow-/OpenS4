@@ -6,6 +6,7 @@
 #include <vector>
 
 #include "../Logger/Types.hpp"
+#include "../Logic/Map/Landscape.hpp"
 
 namespace OpenS4::Renderer {
 
@@ -178,6 +179,7 @@ struct HexPart : public HexagonPart {
         _6.x = info.offset.x + info.size.width / 4;
         _6.y = info.offset.y;
 
+
         hexagonTextureID = info.hexagon_texture_id;
 
         switch (triID) {
@@ -219,28 +221,8 @@ struct HexPart : public HexagonPart {
 };
 
 class TextureMapper {
-    std::map<int, std::map<int, std::map<int, std::vector<HexagonInformation>>>>
-        m_textures;
-
-    void sort(int& a, int& b, int& c) {
-        if (a > b) {
-            std::swap(a, b);
-        }
-        if (a > c) {
-            std::swap(a, c);
-        }
-        if (b > c) {
-            std::swap(b, c);
-        }
-    }
-
-    std::map<int, int> m_game_texture_id_to_texture;
-    std::map<int, int> m_texture_to_texture_id;
-
-    std::map<int, LandscapeTextureID> m_gameTextureMapping;
-
     std::map<LandscapeTextureID, int> m_landscapeTextureID;
-    std::map<std::string, LandscapeTextureID>
+    std::map<LandscapeTextureID, LandscapeTextureID>
         m_landscapeTextureNameToLandscapeTextureID;
 
     std::map<LandscapeTextureID,
@@ -254,50 +236,21 @@ class TextureMapper {
 
     LandscapeTextureID textureIDCounter = 0;
 
-    LandscapeTextureID getOrMake(std::string name) {
-        if (m_landscapeTextureNameToLandscapeTextureID.count(name) == 0) {
-            m_landscapeTextureNameToLandscapeTextureID[name] =
-                ++textureIDCounter;
-        }
-
-        return m_landscapeTextureNameToLandscapeTextureID[name];
-    }
+    std::map<OpenS4::Logic::Map::LandscapeTextureID, LandscapeTextureID>
+        m_logicToRenderer;
 
    public:
-    LandscapeTextureID getTexture(std::string name) {
-        return m_landscapeTextureNameToLandscapeTextureID[name];
+    LandscapeTextureID createRendererLandscapeTextureID() {
+        return ++textureIDCounter;
     }
 
-    void setGameTextureMapping(int id, int id2, LandscapeTextureID texID) {
-        m_gameTextureMapping[(id2 << 8) + id] = texID;
+    void setTextureMapping(OpenS4::Logic::Map::LandscapeTextureID logicID,
+                           LandscapeTextureID textureID) {
+        m_logicToRenderer[logicID] = textureID;
     }
-
-    void setGameTextureMapping(int id, int id2, std::string name) {
-        m_gameTextureMapping[(id2 << 8) + id] = getOrMake(name);
-    }
-
-    LandscapeTextureID getGameTextureMapping(int id2, int id) {
-        if (m_gameTextureMapping.count((id2 << 8) + id) == 0) {
-            std::cout << "Unknown Texture: " << id << " " << id2 << std::endl;
-        }
-
-        return m_gameTextureMapping[(id2 << 8) + id];
-    }
-
-    /*
-            @param name Name of the texture.
-            @param id ID of the texture in LandscapeTextures.
-    */
-    void setLandscapeTextureID(LandscapeTextureID name, int id) {
-        m_landscapeTextureID[name] = id;
-    }
-
-    void setLandscapeTextureID(std::string name, int id) {
-        setLandscapeTextureID(getOrMake(name), id);
-    }
-
-    LandscapeTextureID getLandscapeTextureID(std::string name) {
-        return getOrMake(name);
+    LandscapeTextureID getRendererTextureID(
+        OpenS4::Logic::Map::LandscapeTextureID logicID) {
+        return m_logicToRenderer[logicID];
     }
 
     void addTextureHexagon(LandscapeTextureID name0, LandscapeTextureID name1,
@@ -322,20 +275,42 @@ class TextureMapper {
             HexPart(tex, HexagonPosition::_5));
     }
 
+    void addTextureHexagon(LandscapeTextureID name0, LandscapeTextureID _1,
+                           LandscapeTextureID _2, LandscapeTextureID _2_2,
+                           LandscapeTextureID _3, LandscapeTextureID _3_2,
+                           LandscapeTextureID _4,
+                           LandscapeTextureID _4_2,
+                           LandscapeTextureID _5,
+                           LandscapeTextureID _5_2,
+                           LandscapeTextureID _6,
+                           LandscapeTextureID _6_2,
+                           LandscapeTextureID _1_2,
+        
+        HexInfo tex) {
+        HexagonPart hexPart;
+        hexPart.hexagonTextureID = tex.hexagon_texture_id;
+
+        m_hexagonTexturesHigh[_2][name0][_1].push_back(
+            HexPart(tex, HexagonPosition::_0));
+
+        m_hexagonTexturesHigh[_3_2][_4][name0].push_back(
+            HexPart(tex, HexagonPosition::_2));
+        
+        m_hexagonTexturesHigh[name0][_5_2][_6].push_back(
+            HexPart(tex, HexagonPosition::_4));
+
+        m_hexagonTexturesLow[_2_2][_3][name0].push_back(
+            HexPart(tex, HexagonPosition::_1));
+        m_hexagonTexturesLow[name0][_4_2][_5].push_back(
+            HexPart(tex, HexagonPosition::_3));
+        m_hexagonTexturesLow[_1_2][name0][_6_2].push_back(
+            HexPart(tex, HexagonPosition::_5));
+    }
+
     void addTextureHexagon(LandscapeTextureID name0, LandscapeTextureID nameAll,
                            HexInfo tex) {
         addTextureHexagon(name0, nameAll, nameAll, nameAll, nameAll, nameAll,
                           nameAll, tex);
-    }
-
-    void addTextureHexagon(std::string name0, std::string nameAll,
-                           HexInfo tex) {
-        LandscapeTextureID n0 =
-            m_landscapeTextureNameToLandscapeTextureID[name0];
-        LandscapeTextureID nAll =
-            m_landscapeTextureNameToLandscapeTextureID[nameAll];
-
-        addTextureHexagon(n0, nAll, nAll, nAll, nAll, nAll, nAll, tex);
     }
 
     const std::vector<HexagonPart>& getTextureMappingsLow(
@@ -351,44 +326,8 @@ class TextureMapper {
         return m_landscapeTextureID[name];
     }
 
-    void addTextureMapping(int t1, int t2, int t3, HexagonInformation tex) {
-        sort(t1, t2, t3);
-        m_textures[t1][t2][t3].push_back(tex);
-    }
-
-    const std::vector<HexagonInformation>& getTextureMappings(int t1, int t2,
-                                                              int t3) {
-        sort(t1, t2, t3);
-        return m_textures[t1][t2][t3];
-    }
-
-    int get_texture_by_game_texture_id(int id) {
-        if (!m_game_texture_id_to_texture.count(id)) {
-            int a = 0x0000ff00 & id;
-            int b = 0x000000ff & id;
-
-            std::cout << "Unknown Texture ID: " << std::dec << id << " "
-                      << std::hex << id << std::dec << " " << (a >> 8) << " "
-                      << b << std::endl;
-            m_game_texture_id_to_texture[id] = 0;  // Textures::UNKNOWN;
-        }
-        return m_game_texture_id_to_texture[id];
-    }
-
-    void set_texture_by_game_texture_id(int id, int texture) {
-        m_game_texture_id_to_texture[id] = texture;
-    }
-
-    void set_texture_by_game_texture_id(int id, int id2, int texture) {
-        m_game_texture_id_to_texture[(id2 << 8) + id] = texture;
-    }
-
-    int get_landscape_id_by_texture(int texture) {
-        return m_texture_to_texture_id[texture];
-    }
-
-    void set_texture_id_by_texture(int texture, int id) {
-        m_texture_to_texture_id[texture] = id;
+    void setLandscapeTextureID(LandscapeTextureID name, int id) {
+        m_landscapeTextureID[name] = id;
     }
 };
 

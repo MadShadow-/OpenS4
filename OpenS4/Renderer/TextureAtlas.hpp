@@ -33,9 +33,6 @@ class TextureAtlas {
     TextureAtlasPosition add_texture_to_atlas(
         const OpenS4::Import::ImageData* img);
 
-    TextureAtlasPosition add_texture_to_atlas_swapped(
-        const OpenS4::Import::ImageData* img);
-
    protected:
     enum class TextureSizeSlot {
         TEXTURE_HEIGHT_66,

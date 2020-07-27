@@ -18,8 +18,8 @@ class LandscapeRenderer {
 
     u64 CHUNK_SIZE = 64;
 
-    const int XSTEP = 32;
-    const int YSTEP = XSTEP / 2;
+    int XSTEP = 24;
+    int YSTEP = 12;
 
     float getGradient(u64 x, u64 y) {
         if (x == 0 || y == 0 || x >= m_landscape->getWidth() - 1 ||
@@ -225,6 +225,18 @@ class LandscapeRenderer {
         m_batches[chunkY][chunkX].updateData(vertices, 2, texture, 2, color, 1);
     }
 
+    void updateAllChunks() {
+        u32 chunksX = m_landscape->getWidth() / CHUNK_SIZE;
+        u32 chunksY = m_landscape->getHeight() / CHUNK_SIZE;
+        for (u32 chunkY = 0; chunkY < chunksY; chunkY++) {
+            for (u32 chunkX = 0; chunkX < chunksX; chunkX++) {
+                updateChunk(chunkX, chunkY);
+            }
+        }
+    }
+
+
+
     __inline glm::vec2 toPixelPosition(glm::vec2 model) {
         glm::vec2 pos;
         pos.x = model.x * XSTEP - (model.y + 1) * XSTEP / 2;
@@ -233,7 +245,8 @@ class LandscapeRenderer {
         if (model.x >= 0 && model.y >= 0 &&
             m_landscape->getHeight() > model.y &&
             m_landscape->getWidth() > model.x)
-            pos.y += m_landscape->getTerrainHeight(model.x, model.y) * 2;
+            pos.y +=
+                m_landscape->getTerrainHeight(model.x, model.y) * g_heightScale;
 
         return pos;
     }
@@ -469,6 +482,18 @@ class LandscapeRenderer {
 
     auto getHeight() { return m_landscape->getHeight(); }
     auto getWidth() { return m_landscape->getWidth(); }
+
+    void setXStep(int step) {
+        XSTEP = step;
+        YSTEP = step / 2;
+        u32 chunksX = m_landscape->getWidth() / CHUNK_SIZE;
+        u32 chunksY = m_landscape->getHeight() / CHUNK_SIZE;
+        for (u32 chunkY = 0; chunkY < chunksY; chunkY++) {
+            for (u32 chunkX = 0; chunkX < chunksX; chunkX++) {
+                updateChunk(chunkX, chunkY);
+            }
+        }
+    }
 
 };  // namespace OpenS4::Renderer
 

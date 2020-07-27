@@ -137,6 +137,10 @@ void MultiAtlas::buildAtlases(u32 atlasSize) {
 
             uv.width = m_images[i].getWidth() - 2;
             uv.height = m_images[i].getHeight() - 2;
+
+            uv.left = m_images[i].getLeft();
+            uv.top = m_images[i].getTop();
+
             uv.uBegin = (rectangles[i].x + 1) / atlasSizeFloat;
             uv.uEnd = (rectangles[i].x + rectangles[i].w - 1) / atlasSizeFloat;
 
@@ -194,6 +198,10 @@ void MultiAtlas::buildAtlasesContinuous(u32 atlasSize) {
 
             uv.width = m_images[i].getWidth() - 2;
             uv.height = m_images[i].getHeight() - 2;
+
+            uv.left = m_images[i].getLeft();
+            uv.top = m_images[i].getTop();
+
             uv.uBegin = (rectangles[i].x + 1) / atlasSizeFloat;
             uv.uEnd = (rectangles[i].x + rectangles[i].w - 1) / atlasSizeFloat;
 
@@ -202,7 +210,7 @@ void MultiAtlas::buildAtlasesContinuous(u32 atlasSize) {
 
             m_uv.push_back(uv);
 
-            m_images[i] = OpenS4::Import::ImageData();
+            m_images[i] = OpenS4::Import::ImageData(0,0,0,0,0,0,0);
         }
 
         m_startIndices.push_back(idx);
@@ -241,6 +249,10 @@ void MultiAtlas::buildAtlasesContinuousFinish(u32 atlasSize) {
 
             uv.width = m_images[i].getWidth() - 2;
             uv.height = m_images[i].getHeight() - 2;
+
+            uv.left = m_images[i].getLeft();
+            uv.top = m_images[i].getTop();
+
             uv.uBegin = (rectangles[i].x + 1) / atlasSizeFloat;
             uv.uEnd = (rectangles[i].x + rectangles[i].w - 1) / atlasSizeFloat;
 
@@ -249,7 +261,7 @@ void MultiAtlas::buildAtlasesContinuousFinish(u32 atlasSize) {
 
             m_uv.push_back(uv);
 
-            m_images[i] = OpenS4::Import::ImageData();
+            m_images[i] = OpenS4::Import::ImageData(0, 0, 0, 0, 0, 0, 0);
         }
 
         m_startIndices.push_back(idx);

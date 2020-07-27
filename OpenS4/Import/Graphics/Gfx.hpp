@@ -39,8 +39,21 @@ class GraphicsRegistry {
             return 0;
     }
 
-    u32 getPalette(u32 id, u32 pic_id) {
-        if (hasGfx(id)) return m_gfxs[id]->getPalette(pic_id);
+    u32 getJobIndex(u32 id, u32 pic_id) {
+        if (hasGfx(id)) return m_gfxs[id]->getJobIndex(pic_id);
+        return 0;
+    }
+
+    u32 getDirection(u32 id, u32 pic_id) {
+        if (hasGfx(id)) {
+
+            auto dir = m_gfxs[id]->getDirection(pic_id);
+            auto ji = m_gfxs[id]->getJobIndex(pic_id);
+
+            while (dir > 5) dir -= 6;
+
+            return dir;
+        }
         return 0;
     }
 };
@@ -49,4 +62,4 @@ class GraphicsRegistry {
 std::string getGraphicsPathByRegistry();
 /* Read gfx by path. */
 GraphicsRegistry getGraphicsRegistry(std::string path);
-}  // namespace OpenS4::Graphics
+}  // namespace OpenS4::Import
