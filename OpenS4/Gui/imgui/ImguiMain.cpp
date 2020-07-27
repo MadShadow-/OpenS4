@@ -43,7 +43,7 @@ namespace OpenS4::Gui::Imgui
 
     void RenderWindows()
     {
-
+        NewFrame();
         
         DemoWindow();
 

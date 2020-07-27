@@ -18,6 +18,7 @@ include_directories("../Dependencies")
 
 target_link_libraries(OpenS4 glew)
 target_link_libraries(OpenS4 glfw)
+target_link_libraries(OpenS4 imgui_lib)
 
 #set(GLFW_INCLUDE_DIR "../Dependencies/GLFW/include" CACHE PATH "GLFW_INCLUDE_DIR")
 #set(GLFW_LIBRARY "../Dependencies/GLFW/glfw3.lib" CACHE FILEPATH "GLFW_LIBRARY")
@@ -41,6 +42,7 @@ include_directories(${glm_INCLUDE_DIR})
 #include_directories(${GLTools_INCLUDE_DIR})
 
 include_directories("../Dependencies/rectpack2D/include")
+include_directories("../Dependencies/imgui")
 
 
 # Copy JSON configuration data
