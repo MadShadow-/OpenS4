@@ -26,6 +26,7 @@ namespace OpenS4::Input
         bool left() const { return m_button == MouseButton::Left; }
         bool right() const { return m_button == MouseButton::Right; }
         bool middle() const { return m_button == MouseButton::Middle; }
+        MouseButton getButton() const { return m_button; }
         bool entered() const { return m_entered == 1; }
         Modifier getModifier() const { return m_modifier; }
         double getMouseScroll() const { return m_scrollOffset; }
