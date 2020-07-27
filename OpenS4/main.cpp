@@ -989,7 +989,7 @@ void drawLoop(GLFWwindow* window, OpenS4::Renderer::Landscape* landscape,
     // JSON
 
     {
-        std::ifstream ifs("Config/romanBuildingsBaseFrame.json");
+        std::ifstream ifs("Config/Buildings/romanBuildingsBaseFrame.json");
         nlohmann::json buildingFrames = nlohmann::json::parse(ifs);
 
         for (auto& jo : buildingFrames) {
@@ -1007,7 +1007,7 @@ void drawLoop(GLFWwindow* window, OpenS4::Renderer::Landscape* landscape,
         }
 
         {
-            std::ifstream ifs("Config/romanBuildings.json");
+            std::ifstream ifs("Config/Buildings/romanBuildings.json");
             nlohmann::json builders = nlohmann::json::parse(ifs);
 
             for (auto& jo : builders) {
