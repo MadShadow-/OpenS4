@@ -1,7 +1,6 @@
 ﻿---
 BasedOnStyle: Google
 IndentWidth: '4'
-ColumnLimit: '120'
 BinPackArguments: 'false'
 BinPackParameters: 'false'
 BreakBeforeBraces: Allman
