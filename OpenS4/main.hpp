@@ -15,4 +15,6 @@
 
 #include "Renderer/OpenGL.hpp"
 
+#include "Gui/imgui/ImguiMain.hpp"
+
 void TERMINATE(u64 errorCode = 1);

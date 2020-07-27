@@ -754,11 +754,15 @@ void drawLoop(GLFWwindow* window, OpenS4::Renderer::Landscape* landscape,
             pointBatch.updateData(points, 2, pointColors, 4);
             pointBatch.draw();
         }
-
+        
+        // tell imgui a new frame starts
+        OpenS4::Gui::Imgui::RenderWindows();
 
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
+
+    OpenS4::Gui::Imgui::Cleanup();
 }
 
 #include "Input/WindowSystem/GLFWInputHandler/GLFWInputHandler.hpp"
@@ -811,6 +815,9 @@ int main(int argc, char* argv[]) {
         OpenS4::getLogger().err("glewInit failed!");
         return 1;
     }
+
+    // Init imgui
+    OpenS4::Gui::Imgui::InitImgui(window);
 
     // Init Landscape Texture Atlas & Texture Mapper
     OpenS4::Renderer::LandscapeTextures landscape_textures(2048, 2048);
