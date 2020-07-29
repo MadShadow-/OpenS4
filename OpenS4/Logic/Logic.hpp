@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Logger/Types.hpp>
+#include "Core/Types.hpp"
 #include <string>
 #include <vector>
 
