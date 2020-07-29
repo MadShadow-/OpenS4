@@ -2,7 +2,7 @@
 
 #include <fstream>
 
-#include "Types.hpp"
+#include <Core/Types.hpp>
 
 namespace OpenS4 {
 

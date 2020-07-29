@@ -5,7 +5,7 @@
 #include <vector>
 
 #include "../../Logger/Logger.hpp"
-#include "../../Logger/Types.hpp"
+#include "Core/Types.hpp"
 
 namespace OpenS4::Logic::Map {
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../Logger/Types.hpp"
+#include "Core/Types.hpp"
 
 namespace OpenS4::Logic::Map {
 

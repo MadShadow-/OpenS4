@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 
-#include "../Logger/Types.hpp"
+#include "Core/Types.hpp"
 #include "../Logic/Map/Landscape.hpp"
 
 namespace OpenS4::Renderer {
