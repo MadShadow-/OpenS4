@@ -10,6 +10,6 @@ namespace OpenS4::Import
         SndFileReader();
 
        private:
-        std::vector<WaveFile*> m_wavFiles;
+        std::vector<WaveFile> m_wavFiles;
     };
 }  // namespace OpenS4::Import

@@ -6,19 +6,26 @@
 int max(int a, int b) { return a > b ? a : b; }
 int min(int a, int b) { return a < b ? a : b; }
 
-static class ChecksumCalculator {
+static class ChecksumCalculator
+{
     static std::vector<uint16_t> key_table;
 
-    static void init_keytable() {
-        for (int i = 0; i < 256; i++) {
+    static void init_keytable()
+    {
+        for (int i = 0; i < 256; i++)
+        {
             /// 1. Round
             int value = i;
             int pos = i;
 
-            for (int j = 7; j >= 0; j -= 1) {
-                if (pos & 1) {
+            for (int j = 7; j >= 0; j -= 1)
+            {
+                if (pos & 1)
+                {
                     value = value | (1 << j);
-                } else {
+                }
+                else
+                {
                     value = value & (~(1 << j));
                 }
                 pos = pos >> 1;
@@ -27,10 +34,14 @@ static class ChecksumCalculator {
             value = value << 8;
 
             /// 2. Round
-            for (int j = 7; j >= 0; j--) {
-                if (value & 0x8000) {
+            for (int j = 7; j >= 0; j--)
+            {
+                if (value & 0x8000)
+                {
                     value = (value + value) ^ 0x8005;
-                } else {
+                }
+                else
+                {
                     value = value << 1;
                 }
             }
@@ -38,10 +49,14 @@ static class ChecksumCalculator {
             /// 3. round
             pos = value;
 
-            for (int j = 15; j > 0; j--) {
-                if (pos & 1) {
+            for (int j = 15; j > 0; j--)
+            {
+                if (pos & 1)
+                {
                     value = value | ((1 << j));
-                } else {
+                }
+                else
+                {
                     value = value & (~(1 << j));
                 }
 
@@ -54,19 +69,24 @@ static class ChecksumCalculator {
     }
 
    public:
-    static uint32_t calculate_checksum(std::shared_ptr<Reader> reader,
-                                       int offset, int length = -1) {
+    static uint32_t calculate_checksum(
+        std::shared_ptr<OpenS4::Import::Reader> reader,
+        int offset,
+        int length = -1)
+    {
         if (key_table.size() == 0) init_keytable();
 
-        if (length == -1) {
+        if (length == -1)
+        {
             length = reader->size() - offset;
         }
 
         uint32_t key = 0;
 
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < length; i++)
+        {
             key = (key >> 8) ^
-                  (key_table[(reader->readByte(offset++) ^ key) & 0xff]);
+                  (key_table[(reader->read_byte(offset++) ^ key) & 0xff]);
         }
 
         return ((key << 8) | (key >> 8)) & 0xffff;
@@ -74,19 +94,22 @@ static class ChecksumCalculator {
 };
 std::vector<uint16_t> ChecksumCalculator::key_table;
 
-static class AraCrypt {
+static class AraCrypt
+{
     int key0;
     int key1;
     int key2;
 
    public:
-    AraCrypt() {
+    AraCrypt()
+    {
         key0 = 0x30313233;
         key1 = 0x34353637;
         key2 = 0x38393031;
     }
 
-    uint32_t get_next_key() {
+    uint32_t get_next_key()
+    {
         uint32_t resultKey = 0;
         uint32_t bit1 = key1 & 1;
         uint32_t bit2 = key2 & 1;
@@ -103,24 +126,34 @@ static class AraCrypt {
         const uint32_t KEY_ROT1_B = 0xC0000000;
         const uint32_t KEY_ROT1_C = 0xF0000000;
 
-        for (int c = 0; c < 8; c++) {
-            if ((key0 & 1) != 0) {
+        for (int c = 0; c < 8; c++)
+        {
+            if ((key0 & 1) != 0)
+            {
                 key0 = ((KEY_MASK_A ^ key0) >> 1) | KEY_ROT1_A;
 
-                if ((key1 & 1) != 0) {
+                if ((key1 & 1) != 0)
+                {
                     key1 = ((KEY_MASK_B ^ key1) >> 1) | KEY_ROT1_B;
                     bit1 = 1;
-                } else {
+                }
+                else
+                {
                     key1 = (key1 >> 1) & KEY_ROT0_B;
                     bit1 = 0;
                 }
-            } else {
+            }
+            else
+            {
                 key0 = (key0 >> 1) & KEY_ROT0_A;
 
-                if ((key2 & 1) != 0) {
+                if ((key2 & 1) != 0)
+                {
                     key2 = ((KEY_MASK_C ^ key2) >> 1) | KEY_ROT1_C;
                     bit2 = 1;
-                } else {
+                }
+                else
+                {
                     key2 = (key2 >> 1) & KEY_ROT0_C;
                     bit2 = 0;
                 }
@@ -133,7 +166,8 @@ static class AraCrypt {
     }
 };
 
-static class BitReader {
+static class BitReader
+{
     std::vector<uint8_t> m_data;
     int m_pos = 0;
 
@@ -141,14 +175,20 @@ static class BitReader {
     uint32_t m_buffer = 0;
 
    public:
-    BitReader(std::shared_ptr<Reader> reader, int offset, int length) {
-        for (int i = 0; i < length; i++) {
-            m_data.push_back(reader->readByte(offset++));
+    BitReader(std::shared_ptr<OpenS4::Import::Reader> reader,
+              int offset,
+              int length)
+    {
+        for (int i = 0; i < length; i++)
+        {
+            m_data.push_back(reader->read_byte(offset++));
         }
     }
 
-    uint32_t read(int length) {
-        if (m_buffer_len < length) {
+    uint32_t read(int length)
+    {
+        if (m_buffer_len < length)
+        {
             uint8_t byte = m_data[m_pos++];
 
             m_buffer |= (byte << (24 - m_buffer_len));
@@ -166,7 +206,8 @@ static class BitReader {
 
     int sourceLeftLength() { return max(0, m_data.size() - m_pos); }
 
-    void resetBitBuffer() {
+    void resetBitBuffer()
+    {
         m_pos =
             (m_pos - m_buffer_len /
                          8);  //- move back the inbuffer for all not used byte
@@ -175,51 +216,88 @@ static class BitReader {
     }
 };
 
-static class ValueBase {
+static class ValueBase
+{
    public:
     std::vector<uint32_t> m_length;
     std::vector<uint32_t> m_value;
 
-    ValueBase(int length) {
-        for (int i = 0; i < length; i++) {
+    ValueBase(int length)
+    {
+        for (int i = 0; i < length; i++)
+        {
             m_length.push_back(0);
             m_value.push_back(0);
         }
     }
 };
 
-static class Uncompress {
+static class Uncompress
+{
     ValueBase m_tab0 = ValueBase(8);
     ValueBase m_tab1 = ValueBase(8);
 
-    void initTables() {
+    void initTables()
+    {
         //-- tab0
         m_tab0.m_length[0] = 0;
         m_tab0.m_value[0] = 0;
 
-        for (int i = 1; i < 8; i++) {
+        for (int i = 1; i < 8; i++)
+        {
             m_tab0.m_length[i] = i - 1;
             m_tab0.m_value[i] = 1 << (i - 1);
         }
 
         //-- tab1
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 8; i++)
+        {
             m_tab1.m_length[i] = i + 1;
             m_tab1.m_value[i] = (1 << (i + 1)) + 6;
         }
     }
 
-    ValueBase initHuffmanTable() {
+    ValueBase initHuffmanTable()
+    {
         ValueBase table(16);
-        table.m_length = {0x2, 0x3, 0x3, 0x4, 0x4, 0x4, 0x4, 0x4,
-                          0x4, 0x4, 0x4, 0x4, 0x4, 0x5, 0x5, 0x5};
-        table.m_value = {0x0,  0x4,  0xC,  0x14, 0x24, 0x34, 0x44, 0x54,
-                         0x64, 0x74, 0x84, 0x94, 0xA4, 0xB4, 0xD4, 0xF4};
+        table.m_length = {0x2,
+                          0x3,
+                          0x3,
+                          0x4,
+                          0x4,
+                          0x4,
+                          0x4,
+                          0x4,
+                          0x4,
+                          0x4,
+                          0x4,
+                          0x4,
+                          0x4,
+                          0x5,
+                          0x5,
+                          0x5};
+        table.m_value = {0x0,
+                         0x4,
+                         0xC,
+                         0x14,
+                         0x24,
+                         0x34,
+                         0x44,
+                         0x54,
+                         0x64,
+                         0x74,
+                         0x84,
+                         0x94,
+                         0xA4,
+                         0xB4,
+                         0xD4,
+                         0xF4};
 
         return table;
     }
 
-    std::vector<uint16_t> init_char_code_table() {
+    std::vector<uint16_t> init_char_code_table()
+    {
         return std::vector<uint16_t>{
             0x100, 0x101, 0x102, 0x103, 0x104, 0x105, 0x106, 0x107, 0x108,
             0x109, 0x10A, 0x10B, 0x10C, 0x10D, 0x10E, 0x10F, 0x0,   0x20,
@@ -254,19 +332,24 @@ static class Uncompress {
             0xFD,  0xFE,  0x110, 0x111};
     }
 
-    class Writer {
+    class Writer
+    {
         std::vector<uint8_t> m_data;
         int m_pos = 0;
 
        public:
-        Writer(int length) {
-            for (int i = 0; i < length; i++) {
+        Writer(int length)
+        {
+            for (int i = 0; i < length; i++)
+            {
                 m_data.push_back(0);
             }
         }
 
-        uint8_t getByte(int offset) {
-            if ((offset < 0) || (offset > m_data.size())) {
+        uint8_t getByte(int offset)
+        {
+            if ((offset < 0) || (offset > m_data.size()))
+            {
                 // TODO
                 return -1;
             }
@@ -282,8 +365,10 @@ static class Uncompress {
 
         auto getLeftSize() { return m_data.size() - m_pos; }
 
-        auto setByte(uint8_t value) {
-            if ((m_pos < 0) || (m_pos > m_data.size())) {
+        auto setByte(uint8_t value)
+        {
+            if ((m_pos < 0) || (m_pos > m_data.size()))
+            {
                 // TODO
                 return false;
             }
@@ -300,8 +385,12 @@ static class Uncompress {
    public:
     Uncompress() { initTables(); }
 
-    Reader unpack(std::shared_ptr<Reader> reader, int inOffset, int inLength,
-                  int outLength) {
+    OpenS4::Import::Reader unpack(
+        std::shared_ptr<OpenS4::Import::Reader> reader,
+        int inOffset,
+        int inLength,
+        int outLength)
+    {
         auto huffmanTable = initHuffmanTable();
 
         std::vector<uint32_t> codeQuantities;
@@ -317,15 +406,18 @@ static class Uncompress {
 
         int counter = 0;
 
-        while (!bitReader.eof()) {
+        while (!bitReader.eof())
+        {
             uint32_t codeType = bitReader.read(4);
 
-            if (counter == 4096) {
+            if (counter == 4096)
+            {
                 int x = 0;
                 x++;
             }
 
-            if (codeType < 0) {
+            if (codeType < 0)
+            {
                 // TODO
                 break;
             }
@@ -334,10 +426,12 @@ static class Uncompress {
             uint32_t codeWord_length = huffmanTable.m_length[codeType];
             uint32_t codeWord_index = huffmanTable.m_value[codeType];
 
-            if (codeWord_length > 0) {
+            if (codeWord_length > 0)
+            {
                 codeWord_index += bitReader.read(codeWord_length);
 
-                if (codeWord_index >= 274) {
+                if (codeWord_index >= 274)
+                {
                     done = false;
                     break;
                 }
@@ -350,25 +444,31 @@ static class Uncompress {
 
             codeQuantities[codeWord]++;
 
-            if (codeWord < 256) {
+            if (codeWord < 256)
+            {
                 // TODO check buffer size here
                 // data.push_back(codeWord);
-                if (writer.eof()) {
+                if (writer.eof())
+                {
                     break;
                 }
 
                 writer.setByte(codeWord);
-            } else if (codeWord == 272) {
+            }
+            else if (codeWord == 272)
+            {
                 createCodeTableFromQuantities(codeTable, codeQuantities);
 
                 int base = 0;
                 int length = 0;
 
-                for (int i = 0; i < 16; i++) {
+                for (int i = 0; i < 16; i++)
+                {
                     length--;
 
                     int bitValue = 0;
-                    do {
+                    do
+                    {
                         length++;
                         bitValue = bitReader.read(1);
                     } while (bitValue == 0);
@@ -378,9 +478,13 @@ static class Uncompress {
 
                     base += (1 << length);
                 }
-            } else if (codeWord == 273) {
-                if (bitReader.sourceLeftLength() > 2) {
-                    if (writer.eof()) {
+            }
+            else if (codeWord == 273)
+            {
+                if (bitReader.sourceLeftLength() > 2)
+                {
+                    if (writer.eof())
+                    {
                         // TODO
                         // std::cout << "End-of-stream but Data buffer is not
                         // empty ("
@@ -391,8 +495,11 @@ static class Uncompress {
                     }
 
                     bitReader.resetBitBuffer();
-                } else {
-                    if (!bitReader.eof()) {
+                }
+                else
+                {
+                    if (!bitReader.eof())
+                    {
                         // TODO
                         // std::cout << "Done uncompress (" <<
                         // bitReader.sourceLeftLength() << " IN bytes left; " <<
@@ -403,28 +510,34 @@ static class Uncompress {
                     done = true;
                     break;
                 }
-            } else {
+            }
+            else
+            {
                 //- copy from dictionary
-                if (!fromDictionary(bitReader, writer, codeWord)) {
+                if (!fromDictionary(bitReader, writer, codeWord))
+                {
                     break;
                 }
             }
         }
 
-        if (!done) {
+        if (!done)
+        {
             OpenS4::getLogger().warn("Error during decompression");
-            return Reader();
+            return OpenS4::Import::Reader();
         }
 
-        return Reader(writer.getData());
+        return OpenS4::Import::Reader(writer.getData());
     }
 
     void createCodeTableFromQuantities(std::vector<uint16_t>& codes,
-                                       std::vector<uint32_t>& quantities) {
+                                       std::vector<uint32_t>& quantities)
+    {
         std::vector<uint32_t> tmpQuantity;
         for (int i = 0; i < 274; i++) tmpQuantity.push_back(0);
 
-        for (int i = 0; i < 274; i++) {
+        for (int i = 0; i < 274; i++)
+        {
             int count = quantities[i];
 
             tmpQuantity[i] = count;
@@ -437,7 +550,9 @@ static class Uncompress {
     }
 
     void sortCodeTable(std::vector<uint16_t>& codes,
-                       std::vector<uint32_t>& quantities, uint32_t length) {
+                       std::vector<uint32_t>& quantities,
+                       uint32_t length)
+    {
         int pos = 0;
         int delta = 0;
         int srcCode = 0;
@@ -445,21 +560,26 @@ static class Uncompress {
         int srcPos = 0;
         int stepSize = 40;
 
-        do {
-            for (int i = stepSize; i < length; i++) {
+        do
+        {
+            for (int i = stepSize; i < length; i++)
+            {
                 srcCode = codes[i];
                 srcQuantity = quantities[i];
 
                 pos = i;
 
-                while (pos >= stepSize) {
+                while (pos >= stepSize)
+                {
                     srcPos = pos - stepSize;
                     delta = quantities[srcPos] - srcQuantity;
-                    if (delta == 0) {
+                    if (delta == 0)
+                    {
                         delta = codes[srcPos] - srcCode;
                     }
 
-                    if (delta >= 0) {
+                    if (delta >= 0)
+                    {
                         break;
                     }
 
@@ -478,19 +598,24 @@ static class Uncompress {
         } while (stepSize > 0);
     }
 
-    bool fromDictionary(BitReader& reader, Writer& writer, int codeword) {
+    bool fromDictionary(BitReader& reader, Writer& writer, int codeword)
+    {
         int entryLenght = 0;
         int bitValue = 0;
         int copyOffset = 0;
 
-        if (codeword < 264) {
+        if (codeword < 264)
+        {
             entryLenght = codeword - 256;
-        } else {
+        }
+        else
+        {
             int length = m_tab1.m_length[codeword - 264];
 
             int ReadInByte = reader.read(length);
 
-            if (ReadInByte < 0) {
+            if (ReadInByte < 0)
+            {
                 // this.log.log("ReadInByte == 0 -> out of sync!");
                 // TODO
                 return false;
@@ -500,7 +625,8 @@ static class Uncompress {
         }
 
         bitValue = reader.read(3);
-        if (bitValue < 0) {
+        if (bitValue < 0)
+        {
             // this.log.log("bitValue < 0 -> out of sync!");
             // TODO
             return false;
@@ -513,7 +639,8 @@ static class Uncompress {
         copyOffset = bitValue << length;
 
         bitValue = reader.read(length);
-        if (bitValue < 0) {
+        if (bitValue < 0)
+        {
             // this.log.log("bit_value < 0 -> out of sync!");
             return false;
         }
@@ -533,7 +660,8 @@ static class Uncompress {
 
         //- we need to use single-byte-copy the data case, the src and dest can
         // be overlaped
-        for (int i = entryLenght; i > 0; i--) {
+        for (int i = entryLenght; i > 0; i--)
+        {
             writer.setByte(writer.getByte(srcPos));
             srcPos++;
         }
@@ -542,168 +670,198 @@ static class Uncompress {
     }
 };
 
-namespace OpenS4::Import::Map {
-std::vector<uint8_t> MapChunk::decode_data(std::shared_ptr<Reader> reader,
-                                           int offset, int size) {
-    std::vector<uint8_t> data;
+namespace OpenS4::Import::Map
+{
+    std::vector<uint8_t> MapChunk::decode_data(std::shared_ptr<Reader> reader,
+                                               int offset,
+                                               int size)
+    {
+        std::vector<uint8_t> data;
 
-    int max_size = max(0, reader->size() - offset);
-    size = min(max_size, size);
+        int max_size = max(0, reader->size() - offset);
+        size = min(max_size, size);
 
-    AraCrypt crypt;
+        AraCrypt crypt;
 
-    for (int i = 0; i < size; i++) {
-        data.push_back((reader->readByte(offset++) ^ crypt.get_next_key()) &
-                       0xFF);
+        for (int i = 0; i < size; i++)
+        {
+            data.push_back(
+                (reader->read_byte(offset++) ^ crypt.get_next_key()) & 0xFF);
+        }
+
+        return data;
     }
 
-    return data;
-}
+    MapChunk::MapChunk(std::shared_ptr<Reader> reader, int offset)
+    {
+        int section_header_size = 24;
+        std::vector<uint8_t> plain =
+            decode_data(reader, offset, section_header_size);
 
-MapChunk::MapChunk(std::shared_ptr<Reader> reader, int offset) {
-    int section_header_size = 24;
-    std::vector<uint8_t> plain =
-        decode_data(reader, offset, section_header_size);
-
-    if (plain.size() != section_header_size) {
-        m_valid = false;
-        return;
-    }
-
-    Reader r(plain);
-
-    m_chunk_type = (MapChunkType)r.readInt32(0);
-    m_length = r.readInt32(4);
-
-    if (m_chunk_type == MapChunkType::EndOfFile) {
-        m_valid = false;
-        return;
-    }
-
-    m_unpacked_length = r.readInt32(8);
-    m_checksum = r.readInt32(12);
-    m_unknown1 = r.readInt32(16);
-    m_unknown2 = r.readInt32(20);
-
-    m_offset = section_header_size + offset;
-
-    m_reader = reader;
-}
-
-Reader MapChunk::get_data_reader() {
-    Uncompress un;
-    std::vector<uint8_t> dest;
-    dest.resize(m_unpacked_length);
-    return un.unpack(m_reader, m_offset, m_length, m_unpacked_length);
-}
-
-std::string Map::getAsString(std::shared_ptr<Reader> reader, int offset,
-                             int length) {
-    std::string str = "";
-
-    for (int i = offset; i < offset + length; i++) {
-        str += (char)reader->readByte(i);
-    }
-
-    return str;
-}
-
-bool Map::isSavegame(std::shared_ptr<Reader> reader) {
-    std::string str = getAsString(reader, 0, 4);
-
-    if (str == "MZ\0x90\x00") {
-        return true;
-    }
-    return false;
-}
-
-int Map::readFileHeader(std::shared_ptr<Reader> reader, int offset) {
-    m_checksum = reader->readInt32(offset);
-    m_mapFileVersion = reader->readInt32(offset + 4);
-
-    return 4 * 2;
-}
-
-void Map::readFileChunks(std::shared_ptr<Reader> reader, int offset) {
-    while (offset > 0) {
-        MapChunk chunk(reader, offset);
-        if (!chunk.is_valid()) {
+        if (plain.size() != section_header_size)
+        {
+            m_valid = false;
             return;
         }
 
-        m_chunks.push_back(chunk);
+        Reader r(plain);
 
-        offset = chunk.calc_next_chunk_offset();
-    }
-}
+        m_chunk_type = (MapChunkType)r.read_int32(0);
+        m_length = r.read_int32(4);
 
-Map::Map(std::shared_ptr<Reader> reader) {
-    int offset = 0;
-    if (isSavegame(reader)) offset = 6656;
+        if (m_chunk_type == MapChunkType::EndOfFile)
+        {
+            m_valid = false;
+            return;
+        }
 
-    offset += readFileHeader(reader, offset);
+        m_unpacked_length = r.read_int32(8);
+        m_checksum = r.read_int32(12);
+        m_unknown1 = r.read_int32(16);
+        m_unknown2 = r.read_int32(20);
 
-    uint32_t actual_checksum =
-        ChecksumCalculator::calculate_checksum(reader, offset);
+        m_offset = section_header_size + offset;
 
-    if (m_checksum != actual_checksum) {
-        OpenS4::getLogger().warn(
-            "Mapfile is broken: Checksums do not match (%d - %d)", m_checksum,
-            actual_checksum);
-        m_isValid = false;
-        return;
+        m_reader = reader;
     }
 
-    readFileChunks(reader, offset);
-}
-
-MapChunk* Map::getChunkByType(MapChunkType type) {
-    for (int i = 0; i < m_chunks.size(); i++) {
-        if (m_chunks[i].get_type() == type) return &m_chunks[i];
+    Reader MapChunk::get_data_reader()
+    {
+        Uncompress un;
+        std::vector<uint8_t> dest;
+        dest.resize(m_unpacked_length);
+        return un.unpack(m_reader, m_offset, m_length, m_unpacked_length);
     }
-    return nullptr;
-}
 
-Map* readMap(std::string file) {
-    Map* map;
+    std::string Map::getAsString(std::shared_ptr<Reader> reader,
+                                 int offset,
+                                 int length)
+    {
+        std::string str = "";
 
-    try {
-        map = new Map(std::shared_ptr<Reader>(new Reader(file)));
-    } catch (std::exception& e) {
-        OpenS4::getLogger().err("read_map failed for file: %s", file.c_str());
-        map = nullptr;
+        for (int i = offset; i < offset + length; i++)
+        {
+            str += (char)reader->read_byte(i);
+        }
+
+        return str;
     }
-    return map;
-}
 
-Landscape* fromMap(Map* map) {
-    MapChunk* chunk =
-        map->getChunkByType(OpenS4::Import::Map::MapChunkType::MapLandscape);
+    bool Map::isSavegame(std::shared_ptr<Reader> reader)
+    {
+        std::string str = getAsString(reader, 0, 4);
 
-    if (chunk == nullptr) return nullptr;
+        if (str == "MZ\0x90\x00")
+        {
+            return true;
+        }
+        return false;
+    }
 
-    auto re = chunk->get_data_reader();
+    int Map::readFileHeader(std::shared_ptr<Reader> reader, int offset)
+    {
+        m_checksum = reader->read_int32(offset);
+        m_mapFileVersion = reader->read_int32(offset + 4);
 
-    int width = (int)sqrt(re.size() / 4);
-    int height = (int)sqrt(re.size() / 4);
+        return 4 * 2;
+    }
 
-    Landscape* landscape = new Landscape();
-    landscape->m_height = height;
-    landscape->m_width = width;
-    landscape->m_landscape.resize(width * height);
+    void Map::readFileChunks(std::shared_ptr<Reader> reader, int offset)
+    {
+        while (offset > 0)
+        {
+            MapChunk chunk(reader, offset);
+            if (!chunk.is_valid())
+            {
+                return;
+            }
 
-    for (uint_fast32_t y = 0; y < height; y++) {
-        for (uint_fast32_t x = 0; x < width; x++) {
-            LandscapePosition pos;
-            pos.height = re.readByte(y * width * 4 + x * 4);
-            pos.terrainType = re.readByte(y * width * 4 + x * 4 + 1);
-            pos.terrainSubtype = re.readByte(y * width * 4 + x * 4 + 2);
+            m_chunks.push_back(chunk);
 
-            // + 3 is always 0x40
-            landscape->m_landscape[y * width + x] = pos;
+            offset = chunk.calc_next_chunk_offset();
         }
     }
 
-    return landscape;
-}
-}  // namespace MapReader
+    Map::Map(std::shared_ptr<Reader> reader)
+    {
+        int offset = 0;
+        if (isSavegame(reader)) offset = 6656;
+
+        offset += readFileHeader(reader, offset);
+
+        uint32_t actual_checksum =
+            ChecksumCalculator::calculate_checksum(reader, offset);
+
+        if (m_checksum != actual_checksum)
+        {
+            OpenS4::getLogger().warn(
+                "Mapfile is broken: Checksums do not match (%d - %d)",
+                m_checksum,
+                actual_checksum);
+            m_isValid = false;
+            return;
+        }
+
+        readFileChunks(reader, offset);
+    }
+
+    MapChunk* Map::getChunkByType(MapChunkType type)
+    {
+        for (int i = 0; i < m_chunks.size(); i++)
+        {
+            if (m_chunks[i].get_type() == type) return &m_chunks[i];
+        }
+        return nullptr;
+    }
+
+    Map* readMap(std::string file)
+    {
+        Map* map;
+
+        try
+        {
+            map = new Map(std::shared_ptr<Reader>(new Reader(file)));
+        }
+        catch (std::exception& e)
+        {
+            OpenS4::getLogger().err("read_map failed for file: %s",
+                                    file.c_str());
+            map = nullptr;
+        }
+        return map;
+    }
+
+    Landscape* fromMap(Map* map)
+    {
+        MapChunk* chunk = map->getChunkByType(
+            OpenS4::Import::Map::MapChunkType::MapLandscape);
+
+        if (chunk == nullptr) return nullptr;
+
+        auto re = chunk->get_data_reader();
+
+        int width = (int)sqrt(re.size() / 4);
+        int height = (int)sqrt(re.size() / 4);
+
+        Landscape* landscape = new Landscape();
+        landscape->m_height = height;
+        landscape->m_width = width;
+        landscape->m_landscape.resize(width * height);
+
+        for (uint_fast32_t y = 0; y < height; y++)
+        {
+            for (uint_fast32_t x = 0; x < width; x++)
+            {
+                LandscapePosition pos;
+                pos.height = re.read_byte(y * width * 4 + x * 4);
+                pos.terrainType = re.read_byte(y * width * 4 + x * 4 + 1);
+                pos.terrainSubtype = re.read_byte(y * width * 4 + x * 4 + 2);
+
+                // + 3 is always 0x40
+                landscape->m_landscape[y * width + x] = pos;
+            }
+        }
+
+        return landscape;
+    }
+}  // namespace OpenS4::Import::Map

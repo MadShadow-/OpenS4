@@ -25,7 +25,7 @@ void SimpleLogger::print(LogLevel level, const char* buffer) {
     sstream << buf;
 
     switch (level) {
-        case LogLevel::ERROR:
+        case LogLevel::LERROR:
             sstream << "[ERROR] ";
             break;
         case LogLevel::WARN:
@@ -55,7 +55,7 @@ void SimpleLogger::warn(const char* fmt, ...) {
         print(LogLevel::WARN, buffer);
         delete[] buffer;
     } else {
-        print(LogLevel::ERROR, "failed to log warning!");
+        print(LogLevel::LERROR, "failed to log warning!");
     }
     va_end(args);
 }
@@ -69,7 +69,7 @@ void SimpleLogger::info(const char* fmt, ...) {
         print(LogLevel::INFO, buffer);
         delete[] buffer;
     } else {
-        print(LogLevel::ERROR, "failed to log warning!");
+        print(LogLevel::LERROR, "failed to log warning!");
     }
     va_end(args);
 }
@@ -80,10 +80,10 @@ void SimpleLogger::err(const char* fmt, ...) {
     char* buffer = new char[len * sizeof(char)];
     if (NULL != buffer) {
         vsprintf_s(buffer, len, fmt, args);
-        print(LogLevel::ERROR, buffer);
+        print(LogLevel::LERROR, buffer);
         delete[] buffer;
     } else {
-        print(LogLevel::ERROR, "failed to log warning!");
+        print(LogLevel::LERROR, "failed to log warning!");
     }
     va_end(args);
 }

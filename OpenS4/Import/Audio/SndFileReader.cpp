@@ -4,6 +4,8 @@
 #include "Core/Registry.hpp"
 #include "Core/Types.hpp"
 
+#include "../../Logger/Logger.hpp"
+
 #include <fstream>
 #include <Core/Timer.hpp>
 #include <iostream>
@@ -50,20 +52,24 @@ namespace OpenS4::Import
             fileStart = offsets.at(i) + 8;
             fileEnd = offsets.at(i + 1) - fileStart;
 
-            pData = wavContainer.read_area(fileStart, fileEnd);
-            m_wavFiles.push_back(new WaveFile(pData, fileEnd));
+            u8* p_data = new u8[fileEnd];
+            memset(p_data, 0, fileEnd);
+            wavContainer.read_range(fileStart, p_data, fileEnd);
+            m_wavFiles.push_back(WaveFile(pData, fileEnd));
         }
 
         // read last file
         fileStart = offsets.at(i) + 8;
         fileEnd = wavContainer.size() - fileStart;
 
-        pData = wavContainer.read_area(fileStart, fileEnd);
-        m_wavFiles.push_back(new WaveFile(pData, fileEnd));
+        u8* p_data = new u8[fileEnd];
+        memset(p_data, 0, fileEnd);
+        wavContainer.read_range(fileStart, p_data, fileEnd);
+        m_wavFiles.push_back(WaveFile(pData, fileEnd));
 
         // logger bugged
-        std::cout << "Reading audio files finished in " << timer.seconds() << " seconds. " << std::endl;
-        //OpenS4::getLogger().info("Reading audio files finished in %d seconds", timer.seconds());
+        
+        OpenS4::getLogger().info("Reading audio files finished in %lf seconds", timer.seconds());
         /*
         std::ofstream file;
         u32 count{};

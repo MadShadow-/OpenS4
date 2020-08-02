@@ -19,7 +19,7 @@ class Reader {
     uint8_t read_byte(uint32_t offset);
     uint16_t read_word(uint32_t offset);
 
-    uint8_t* read_area(uint32_t offset, size_t size);
+    void read_range(uint32_t offset, uint8_t* dest, size_t size);
 
     size_t size() { return m_data.size(); }
 };

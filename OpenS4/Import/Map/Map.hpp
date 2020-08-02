@@ -3,7 +3,7 @@
 #include <memory>
 #include <string>
 
-#include "Reader.hpp"
+#include "../Reader.hpp"
 
 namespace OpenS4::Import::Map {
 enum class MapChunkType {

@@ -50,10 +50,15 @@ namespace OpenS4::Import
         return *(uint16_t*)&b[0];
     }
 
-    uint8_t* Reader::read_area(uint32_t offset, size_t size)
+    void Reader::read_range(uint32_t offset, uint8_t* dest, size_t size)
     {
-        uint8_t* pData = new uint8_t[size];
-        memcpy_s(pData, size, m_data.data() + offset, size);
-        return pData;
+        if (m_data.size() - offset >= size)
+        {
+            memcpy_s(dest, size, m_data.data() + offset, size);
+        }
+        else
+        {
+            throw std::exception("bad read");
+        }
     }
 }  // namespace OpenS4::Import

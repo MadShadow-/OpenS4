@@ -6,7 +6,7 @@
 
 namespace OpenS4 {
 
-enum class LogLevel { ERROR, WARN, INFO };
+enum class LogLevel { LERROR, WARN, INFO };
 
 class SimpleLogger {
     std::ofstream m_output;

@@ -99,5 +99,7 @@ class MultiAtlas {
     const UV* getUV(u32 imageID) { return &m_uv[imageID]; }
 
     GLuint getAtlasTextureID(u32 atlasID);
+
+    ~MultiAtlas();
 };
 }  // namespace OpenS4::Renderer::ObjectRenderer
