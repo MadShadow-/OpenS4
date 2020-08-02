@@ -1,59 +1,32 @@
 #pragma once
+#include <string>
 
 #ifdef _WIN32
+#define WIN32_LEAN_AND_MEAN
+#define NOMINMAX
 #include <Windows.h>
-// TODO: needs global solution?
-namespace OpenS4
-{
-    namespace Core
-    {
-        std::string getGamePath()
-        {
-            char buffer[256] = {0};
-            DWORD buffer_size = 256;
-            auto rc = RegGetValueA(
-                HKEY_LOCAL_MACHINE,
-                "SOFTWARE\\WOW6432Node\\Ubisoft\\Launcher\\Installs\\11785",
-                "InstallDir",
-                RRF_RT_REG_SZ,
-                nullptr,
-                buffer,
-                &buffer_size);
-
-            if (rc != ERROR_SUCCESS)
-            {
-                return "";
-            }
-
-            std::string path = buffer;
-
-            return path;
-        }
-    }  // namespace Core
-}  // namespace OpenS4
 #else
-namespace OpenS4::GraphicsReader
-{
-    std::string getGamePath() { return ""; }
-}  // namespace OpenS4::GraphicsReader
+// TODO :?
 #endif  // _WIN32
 
 namespace OpenS4
 {
     namespace Core
     {
+        std::string getGamePath();
+
         class Registry
         {
            public:
-            static std::string getGamePath()
+            static std::string Registry::getGamePath()
             {
                 return OpenS4::Core::getGamePath();
             }
-            static std::string getSoundFolder()
+            static std::string Registry::getSoundFolder()
             {
                 return OpenS4::Core::getGamePath() + std::string("Snd/");
             }
-            static std::string getGraphicsFolder()
+            static std::string Registry::getGraphicsFolder()
             {
                 return OpenS4::Core::getGamePath() + std::string("Gfx/");
             }
