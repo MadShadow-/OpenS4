@@ -9,6 +9,7 @@
 #include <fstream>
 #include <Core/Timer.hpp>
 #include <iostream>
+#include <exception>
 
 namespace OpenS4::Import
 {
@@ -52,19 +53,20 @@ namespace OpenS4::Import
             fileStart = offsets.at(i) + 8;
             fileEnd = offsets.at(i + 1) - fileStart;
 
-            u8* p_data = new u8[fileEnd];
-            memset(p_data, 0, fileEnd);
-            wavContainer.read_range(fileStart, p_data, fileEnd);
+            pData = new u8[fileEnd];
+            memset(pData, 0, fileEnd);
+            wavContainer.read_range(fileStart, pData, fileEnd);
             m_wavFiles.push_back(WaveFile(pData, fileEnd));
+
         }
 
         // read last file
         fileStart = offsets.at(i) + 8;
         fileEnd = wavContainer.size() - fileStart;
 
-        u8* p_data = new u8[fileEnd];
-        memset(p_data, 0, fileEnd);
-        wavContainer.read_range(fileStart, p_data, fileEnd);
+        pData = new u8[fileEnd];
+        memset(pData, 0, fileEnd);
+        wavContainer.read_range(fileStart, pData, fileEnd);
         m_wavFiles.push_back(WaveFile(pData, fileEnd));
 
         // logger bugged
