@@ -1,0 +1,4853 @@
+[
+ {
+  "animationName": "OBJECT_NO_OBJECT_NOTHING",
+  "frameEnd": 0,
+  "frameStart": 0,
+  "gfxID": 5,
+  "height": 22,
+  "objectName": "OBJECT_NO_OBJECT",
+  "width": 26
+ },
+ {
+  "animationName": "OBJECT_TREE01A_GROW_01",
+  "frameEnd": 1,
+  "frameStart": 1,
+  "gfxID": 5,
+  "height": 63,
+  "objectName": "OBJECT_TREE01A",
+  "width": 85
+ },
+ {
+  "animationName": "OBJECT_TREE01A_GROW_02",
+  "frameEnd": 2,
+  "frameStart": 2,
+  "gfxID": 5,
+  "height": 81,
+  "objectName": "OBJECT_TREE01A",
+  "width": 91
+ },
+ {
+  "animationName": "OBJECT_TREE01A_GROW_03",
+  "frameEnd": 3,
+  "frameStart": 3,
+  "gfxID": 5,
+  "height": 144,
+  "objectName": "OBJECT_TREE01A",
+  "width": 160
+ },
+ {
+  "animationName": "OBJECT_TREE01A_GROWNUP",
+  "frameEnd": 19,
+  "frameStart": 4,
+  "gfxID": 5,
+  "height": 139,
+  "objectName": "OBJECT_TREE01A",
+  "width": 176
+ },
+ {
+  "animationName": "OBJECT_TREE01A_FALLDOWN",
+  "frameEnd": 23,
+  "frameStart": 20,
+  "gfxID": 5,
+  "height": 103,
+  "objectName": "OBJECT_TREE01A",
+  "width": 123
+ },
+ {
+  "animationName": "OBJECT_TREE01A_LYING",
+  "frameEnd": 24,
+  "frameStart": 24,
+  "gfxID": 5,
+  "height": 106,
+  "objectName": "OBJECT_TREE01A",
+  "width": 123
+ },
+ {
+  "animationName": "OBJECT_TREE01A_CHOPLOG_01",
+  "frameEnd": 25,
+  "frameStart": 25,
+  "gfxID": 5,
+  "height": 109,
+  "objectName": "OBJECT_TREE01A",
+  "width": 123
+ },
+ {
+  "animationName": "OBJECT_TREE01A_CHOPLOG_02",
+  "frameEnd": 26,
+  "frameStart": 26,
+  "gfxID": 5,
+  "height": 110,
+  "objectName": "OBJECT_TREE01A",
+  "width": 129
+ },
+ {
+  "animationName": "OBJECT_TREE01A_CHOPLOG_03",
+  "frameEnd": 27,
+  "frameStart": 27,
+  "gfxID": 5,
+  "height": 107,
+  "objectName": "OBJECT_TREE01A",
+  "width": 115
+ },
+ {
+  "animationName": "OBJECT_TREE01A_NO_MORE_LOG",
+  "frameEnd": 28,
+  "frameStart": 28,
+  "gfxID": 5,
+  "height": 95,
+  "objectName": "OBJECT_TREE01A",
+  "width": 116
+ },
+ {
+  "animationName": "OBJECT_TREE01A_DISAPPEAR",
+  "frameEnd": 31,
+  "frameStart": 29,
+  "gfxID": 5,
+  "height": 41,
+  "objectName": "OBJECT_TREE01A",
+  "width": 55
+ },
+ {
+  "animationName": "OBJECT_TREE01B_GROW_01",
+  "frameEnd": 32,
+  "frameStart": 32,
+  "gfxID": 5,
+  "height": 54,
+  "objectName": "OBJECT_TREE01B",
+  "width": 63
+ },
+ {
+  "animationName": "OBJECT_TREE01B_GROW_02",
+  "frameEnd": 33,
+  "frameStart": 33,
+  "gfxID": 5,
+  "height": 111,
+  "objectName": "OBJECT_TREE01B",
+  "width": 130
+ },
+ {
+  "animationName": "OBJECT_TREE01B_GROW_03",
+  "frameEnd": 34,
+  "frameStart": 34,
+  "gfxID": 5,
+  "height": 140,
+  "objectName": "OBJECT_TREE01B",
+  "width": 163
+ },
+ {
+  "animationName": "OBJECT_TREE01B_GROWNUP",
+  "frameEnd": 50,
+  "frameStart": 35,
+  "gfxID": 5,
+  "height": 153,
+  "objectName": "OBJECT_TREE01B",
+  "width": 186
+ },
+ {
+  "animationName": "OBJECT_TREE01B_FALLDOWN",
+  "frameEnd": 54,
+  "frameStart": 51,
+  "gfxID": 5,
+  "height": 124,
+  "objectName": "OBJECT_TREE01B",
+  "width": 131
+ },
+ {
+  "animationName": "OBJECT_TREE01B_LYING",
+  "frameEnd": 55,
+  "frameStart": 55,
+  "gfxID": 5,
+  "height": 120,
+  "objectName": "OBJECT_TREE01B",
+  "width": 142
+ },
+ {
+  "animationName": "OBJECT_TREE01B_CHOPLOG_01",
+  "frameEnd": 56,
+  "frameStart": 56,
+  "gfxID": 5,
+  "height": 121,
+  "objectName": "OBJECT_TREE01B",
+  "width": 142
+ },
+ {
+  "animationName": "OBJECT_TREE01B_CHOPLOG_02",
+  "frameEnd": 57,
+  "frameStart": 57,
+  "gfxID": 5,
+  "height": 122,
+  "objectName": "OBJECT_TREE01B",
+  "width": 142
+ },
+ {
+  "animationName": "OBJECT_TREE01B_CHOPLOG_03",
+  "frameEnd": 58,
+  "frameStart": 58,
+  "gfxID": 5,
+  "height": 120,
+  "objectName": "OBJECT_TREE01B",
+  "width": 139
+ },
+ {
+  "animationName": "OBJECT_TREE01B_NO_MORE_LOG",
+  "frameEnd": 59,
+  "frameStart": 59,
+  "gfxID": 5,
+  "height": 120,
+  "objectName": "OBJECT_TREE01B",
+  "width": 140
+ },
+ {
+  "animationName": "OBJECT_TREE01B_DISAPPEAR",
+  "frameEnd": 62,
+  "frameStart": 60,
+  "gfxID": 5,
+  "height": 41,
+  "objectName": "OBJECT_TREE01B",
+  "width": 55
+ },
+ {
+  "animationName": "OBJECT_TREE02A_GROW_01",
+  "frameEnd": 63,
+  "frameStart": 63,
+  "gfxID": 5,
+  "height": 85,
+  "objectName": "OBJECT_TREE02A",
+  "width": 98
+ },
+ {
+  "animationName": "OBJECT_TREE02A_GROW_02",
+  "frameEnd": 64,
+  "frameStart": 64,
+  "gfxID": 5,
+  "height": 129,
+  "objectName": "OBJECT_TREE02A",
+  "width": 149
+ },
+ {
+  "animationName": "OBJECT_TREE02A_GROW_03",
+  "frameEnd": 65,
+  "frameStart": 65,
+  "gfxID": 5,
+  "height": 176,
+  "objectName": "OBJECT_TREE02A",
+  "width": 210
+ },
+ {
+  "animationName": "OBJECT_TREE02A_GROWNUP",
+  "frameEnd": 81,
+  "frameStart": 66,
+  "gfxID": 5,
+  "height": 174,
+  "objectName": "OBJECT_TREE02A",
+  "width": 233
+ },
+ {
+  "animationName": "OBJECT_TREE02A_FALLDOWN",
+  "frameEnd": 85,
+  "frameStart": 82,
+  "gfxID": 5,
+  "height": 113,
+  "objectName": "OBJECT_TREE02A",
+  "width": 163
+ },
+ {
+  "animationName": "OBJECT_TREE02A_LYING",
+  "frameEnd": 86,
+  "frameStart": 86,
+  "gfxID": 5,
+  "height": 127,
+  "objectName": "OBJECT_TREE02A",
+  "width": 164
+ },
+ {
+  "animationName": "OBJECT_TREE02A_CHOPLOG_01",
+  "frameEnd": 87,
+  "frameStart": 87,
+  "gfxID": 5,
+  "height": 128,
+  "objectName": "OBJECT_TREE02A",
+  "width": 188
+ },
+ {
+  "animationName": "OBJECT_TREE02A_CHOPLOG_02",
+  "frameEnd": 88,
+  "frameStart": 88,
+  "gfxID": 5,
+  "height": 126,
+  "objectName": "OBJECT_TREE02A",
+  "width": 187
+ },
+ {
+  "animationName": "OBJECT_TREE02A_CHOPLOG_03",
+  "frameEnd": 89,
+  "frameStart": 89,
+  "gfxID": 5,
+  "height": 119,
+  "objectName": "OBJECT_TREE02A",
+  "width": 184
+ },
+ {
+  "animationName": "OBJECT_TREE02A_NO_MORE_LOG",
+  "frameEnd": 90,
+  "frameStart": 90,
+  "gfxID": 5,
+  "height": 116,
+  "objectName": "OBJECT_TREE02A",
+  "width": 160
+ },
+ {
+  "animationName": "OBJECT_TREE02A_DISAPPEAR",
+  "frameEnd": 94,
+  "frameStart": 91,
+  "gfxID": 5,
+  "height": 41,
+  "objectName": "OBJECT_TREE02A",
+  "width": 55
+ },
+ {
+  "animationName": "OBJECT_TREE02B_GROW_01",
+  "frameEnd": 95,
+  "frameStart": 95,
+  "gfxID": 5,
+  "height": 73,
+  "objectName": "OBJECT_TREE02B",
+  "width": 99
+ },
+ {
+  "animationName": "OBJECT_TREE02B_GROW_02",
+  "frameEnd": 96,
+  "frameStart": 96,
+  "gfxID": 5,
+  "height": 116,
+  "objectName": "OBJECT_TREE02B",
+  "width": 156
+ },
+ {
+  "animationName": "OBJECT_TREE02B_GROW_03",
+  "frameEnd": 97,
+  "frameStart": 97,
+  "gfxID": 5,
+  "height": 165,
+  "objectName": "OBJECT_TREE02B",
+  "width": 222
+ },
+ {
+  "animationName": "OBJECT_TREE02B_GROWNUP",
+  "frameEnd": 113,
+  "frameStart": 98,
+  "gfxID": 5,
+  "height": 186,
+  "objectName": "OBJECT_TREE02B",
+  "width": 248
+ },
+ {
+  "animationName": "OBJECT_TREE02B_FALLDOWN",
+  "frameEnd": 117,
+  "frameStart": 114,
+  "gfxID": 5,
+  "height": 159,
+  "objectName": "OBJECT_TREE02B",
+  "width": 154
+ },
+ {
+  "animationName": "OBJECT_TREE02B_LYING",
+  "frameEnd": 118,
+  "frameStart": 118,
+  "gfxID": 5,
+  "height": 136,
+  "objectName": "OBJECT_TREE02B",
+  "width": 156
+ },
+ {
+  "animationName": "OBJECT_TREE02B_CHOPLOG_01",
+  "frameEnd": 119,
+  "frameStart": 119,
+  "gfxID": 5,
+  "height": 145,
+  "objectName": "OBJECT_TREE02B",
+  "width": 185
+ },
+ {
+  "animationName": "OBJECT_TREE02B_CHOPLOG_02",
+  "frameEnd": 120,
+  "frameStart": 120,
+  "gfxID": 5,
+  "height": 144,
+  "objectName": "OBJECT_TREE02B",
+  "width": 185
+ },
+ {
+  "animationName": "OBJECT_TREE02B_CHOPLOG_03",
+  "frameEnd": 121,
+  "frameStart": 121,
+  "gfxID": 5,
+  "height": 126,
+  "objectName": "OBJECT_TREE02B",
+  "width": 185
+ },
+ {
+  "animationName": "OBJECT_TREE02B_NO_MORE_LOG",
+  "frameEnd": 122,
+  "frameStart": 122,
+  "gfxID": 5,
+  "height": 126,
+  "objectName": "OBJECT_TREE02B",
+  "width": 157
+ },
+ {
+  "animationName": "OBJECT_TREE02B_DISAPPEAR",
+  "frameEnd": 125,
+  "frameStart": 123,
+  "gfxID": 5,
+  "height": 41,
+  "objectName": "OBJECT_TREE02B",
+  "width": 55
+ },
+ {
+  "animationName": "OBJECT_TREE03A_GROW_01",
+  "frameEnd": 126,
+  "frameStart": 126,
+  "gfxID": 5,
+  "height": 64,
+  "objectName": "OBJECT_TREE03A",
+  "width": 69
+ },
+ {
+  "animationName": "OBJECT_TREE03A_GROW_02",
+  "frameEnd": 127,
+  "frameStart": 127,
+  "gfxID": 5,
+  "height": 111,
+  "objectName": "OBJECT_TREE03A",
+  "width": 117
+ },
+ {
+  "animationName": "OBJECT_TREE03A_GROW_03",
+  "frameEnd": 128,
+  "frameStart": 128,
+  "gfxID": 5,
+  "height": 116,
+  "objectName": "OBJECT_TREE03A",
+  "width": 149
+ },
+ {
+  "animationName": "OBJECT_TREE03A_GROWNUP",
+  "frameEnd": 144,
+  "frameStart": 129,
+  "gfxID": 5,
+  "height": 123,
+  "objectName": "OBJECT_TREE03A",
+  "width": 167
+ },
+ {
+  "animationName": "OBJECT_TREE03A_FALLDOWN",
+  "frameEnd": 148,
+  "frameStart": 145,
+  "gfxID": 5,
+  "height": 97,
+  "objectName": "OBJECT_TREE03A",
+  "width": 113
+ },
+ {
+  "animationName": "OBJECT_TREE03A_LYING",
+  "frameEnd": 149,
+  "frameStart": 149,
+  "gfxID": 5,
+  "height": 121,
+  "objectName": "OBJECT_TREE03A",
+  "width": 113
+ },
+ {
+  "animationName": "OBJECT_TREE03A_CHOPLOG_01",
+  "frameEnd": 150,
+  "frameStart": 150,
+  "gfxID": 5,
+  "height": 121,
+  "objectName": "OBJECT_TREE03A",
+  "width": 145
+ },
+ {
+  "animationName": "OBJECT_TREE03A_CHOPLOG_02",
+  "frameEnd": 151,
+  "frameStart": 151,
+  "gfxID": 5,
+  "height": 121,
+  "objectName": "OBJECT_TREE03A",
+  "width": 145
+ },
+ {
+  "animationName": "OBJECT_TREE03A_CHOPLOG_03",
+  "frameEnd": 152,
+  "frameStart": 152,
+  "gfxID": 5,
+  "height": 121,
+  "objectName": "OBJECT_TREE03A",
+  "width": 145
+ },
+ {
+  "animationName": "OBJECT_TREE03A_NO_MORE_LOG",
+  "frameEnd": 153,
+  "frameStart": 153,
+  "gfxID": 5,
+  "height": 93,
+  "objectName": "OBJECT_TREE03A",
+  "width": 105
+ },
+ {
+  "animationName": "OBJECT_TREE03A_DISAPPEAR",
+  "frameEnd": 156,
+  "frameStart": 154,
+  "gfxID": 5,
+  "height": 41,
+  "objectName": "OBJECT_TREE03A",
+  "width": 55
+ },
+ {
+  "animationName": "OBJECT_TREE03B_GROW_01",
+  "frameEnd": 157,
+  "frameStart": 157,
+  "gfxID": 5,
+  "height": 62,
+  "objectName": "OBJECT_TREE03B",
+  "width": 64
+ },
+ {
+  "animationName": "OBJECT_TREE03B_GROW_02",
+  "frameEnd": 158,
+  "frameStart": 158,
+  "gfxID": 5,
+  "height": 97,
+  "objectName": "OBJECT_TREE03B",
+  "width": 105
+ },
+ {
+  "animationName": "OBJECT_TREE03B_GROW_03",
+  "frameEnd": 159,
+  "frameStart": 159,
+  "gfxID": 5,
+  "height": 122,
+  "objectName": "OBJECT_TREE03B",
+  "width": 163
+ },
+ {
+  "animationName": "OBJECT_TREE03B_GROWNUP",
+  "frameEnd": 175,
+  "frameStart": 160,
+  "gfxID": 5,
+  "height": 141,
+  "objectName": "OBJECT_TREE03B",
+  "width": 169
+ },
+ {
+  "animationName": "OBJECT_TREE03B_FALLDOWN",
+  "frameEnd": 179,
+  "frameStart": 176,
+  "gfxID": 5,
+  "height": 99,
+  "objectName": "OBJECT_TREE03B",
+  "width": 116
+ },
+ {
+  "animationName": "OBJECT_TREE03B_LYING",
+  "frameEnd": 180,
+  "frameStart": 180,
+  "gfxID": 5,
+  "height": 99,
+  "objectName": "OBJECT_TREE03B",
+  "width": 133
+ },
+ {
+  "animationName": "OBJECT_TREE03B_CHOPLOG_01",
+  "frameEnd": 181,
+  "frameStart": 181,
+  "gfxID": 5,
+  "height": 99,
+  "objectName": "OBJECT_TREE03B",
+  "width": 133
+ },
+ {
+  "animationName": "OBJECT_TREE03B_CHOPLOG_02",
+  "frameEnd": 182,
+  "frameStart": 182,
+  "gfxID": 5,
+  "height": 121,
+  "objectName": "OBJECT_TREE03B",
+  "width": 133
+ },
+ {
+  "animationName": "OBJECT_TREE03B_CHOPLOG_03",
+  "frameEnd": 183,
+  "frameStart": 183,
+  "gfxID": 5,
+  "height": 121,
+  "objectName": "OBJECT_TREE03B",
+  "width": 133
+ },
+ {
+  "animationName": "OBJECT_TREE03B_NO_MORE_LOG",
+  "frameEnd": 184,
+  "frameStart": 184,
+  "gfxID": 5,
+  "height": 121,
+  "objectName": "OBJECT_TREE03B",
+  "width": 133
+ },
+ {
+  "animationName": "OBJECT_TREE03B_DISAPPEAR",
+  "frameEnd": 187,
+  "frameStart": 185,
+  "gfxID": 5,
+  "height": 41,
+  "objectName": "OBJECT_TREE03B",
+  "width": 55
+ },
+ {
+  "animationName": "OBJECT_TREE04A_GROW_01",
+  "frameEnd": 188,
+  "frameStart": 188,
+  "gfxID": 5,
+  "height": 61,
+  "objectName": "OBJECT_TREE04A",
+  "width": 83
+ },
+ {
+  "animationName": "OBJECT_TREE04A_GROW_02",
+  "frameEnd": 189,
+  "frameStart": 189,
+  "gfxID": 5,
+  "height": 106,
+  "objectName": "OBJECT_TREE04A",
+  "width": 124
+ },
+ {
+  "animationName": "OBJECT_TREE04A_GROW_03",
+  "frameEnd": 190,
+  "frameStart": 190,
+  "gfxID": 5,
+  "height": 164,
+  "objectName": "OBJECT_TREE04A",
+  "width": 192
+ },
+ {
+  "animationName": "OBJECT_TREE04A_GROWNUP",
+  "frameEnd": 206,
+  "frameStart": 191,
+  "gfxID": 5,
+  "height": 152,
+  "objectName": "OBJECT_TREE04A",
+  "width": 220
+ },
+ {
+  "animationName": "OBJECT_TREE04A_FALLDOWN",
+  "frameEnd": 209,
+  "frameStart": 207,
+  "gfxID": 5,
+  "height": 120,
+  "objectName": "OBJECT_TREE04A",
+  "width": 136
+ },
+ {
+  "animationName": "OBJECT_TREE04A_LYING",
+  "frameEnd": 210,
+  "frameStart": 210,
+  "gfxID": 5,
+  "height": 120,
+  "objectName": "OBJECT_TREE04A",
+  "width": 140
+ },
+ {
+  "animationName": "OBJECT_TREE04A_CHOPLOG_01",
+  "frameEnd": 211,
+  "frameStart": 211,
+  "gfxID": 5,
+  "height": 126,
+  "objectName": "OBJECT_TREE04A",
+  "width": 140
+ },
+ {
+  "animationName": "OBJECT_TREE04A_CHOPLOG_02",
+  "frameEnd": 212,
+  "frameStart": 212,
+  "gfxID": 5,
+  "height": 115,
+  "objectName": "OBJECT_TREE04A",
+  "width": 144
+ },
+ {
+  "animationName": "OBJECT_TREE04A_CHOPLOG_03",
+  "frameEnd": 213,
+  "frameStart": 213,
+  "gfxID": 5,
+  "height": 115,
+  "objectName": "OBJECT_TREE04A",
+  "width": 144
+ },
+ {
+  "animationName": "OBJECT_TREE04A_NO_MORE_LOG",
+  "frameEnd": 214,
+  "frameStart": 214,
+  "gfxID": 5,
+  "height": 109,
+  "objectName": "OBJECT_TREE04A",
+  "width": 144
+ },
+ {
+  "animationName": "OBJECT_TREE04A_DISAPPEAR",
+  "frameEnd": 217,
+  "frameStart": 215,
+  "gfxID": 5,
+  "height": 41,
+  "objectName": "OBJECT_TREE04A",
+  "width": 55
+ },
+ {
+  "animationName": "OBJECT_TREE04B_GROW_01",
+  "frameEnd": 218,
+  "frameStart": 218,
+  "gfxID": 5,
+  "height": 59,
+  "objectName": "OBJECT_TREE04B",
+  "width": 84
+ },
+ {
+  "animationName": "OBJECT_TREE04B_GROW_02",
+  "frameEnd": 219,
+  "frameStart": 219,
+  "gfxID": 5,
+  "height": 113,
+  "objectName": "OBJECT_TREE04B",
+  "width": 128
+ },
+ {
+  "animationName": "OBJECT_TREE04B_GROW_03",
+  "frameEnd": 220,
+  "frameStart": 220,
+  "gfxID": 5,
+  "height": 156,
+  "objectName": "OBJECT_TREE04B",
+  "width": 177
+ },
+ {
+  "animationName": "OBJECT_TREE04B_GROWNUP",
+  "frameEnd": 236,
+  "frameStart": 221,
+  "gfxID": 5,
+  "height": 153,
+  "objectName": "OBJECT_TREE04B",
+  "width": 228
+ },
+ {
+  "animationName": "OBJECT_TREE04B_FALLDOWN",
+  "frameEnd": 239,
+  "frameStart": 237,
+  "gfxID": 5,
+  "height": 126,
+  "objectName": "OBJECT_TREE04B",
+  "width": 151
+ },
+ {
+  "animationName": "OBJECT_TREE04B_LYING",
+  "frameEnd": 240,
+  "frameStart": 240,
+  "gfxID": 5,
+  "height": 149,
+  "objectName": "OBJECT_TREE04B",
+  "width": 157
+ },
+ {
+  "animationName": "OBJECT_TREE04B_CHOPLOG_01",
+  "frameEnd": 241,
+  "frameStart": 241,
+  "gfxID": 5,
+  "height": 149,
+  "objectName": "OBJECT_TREE04B",
+  "width": 163
+ },
+ {
+  "animationName": "OBJECT_TREE04B_CHOPLOG_02",
+  "frameEnd": 242,
+  "frameStart": 242,
+  "gfxID": 5,
+  "height": 149,
+  "objectName": "OBJECT_TREE04B",
+  "width": 163
+ },
+ {
+  "animationName": "OBJECT_TREE04B_CHOPLOG_03",
+  "frameEnd": 243,
+  "frameStart": 243,
+  "gfxID": 5,
+  "height": 149,
+  "objectName": "OBJECT_TREE04B",
+  "width": 163
+ },
+ {
+  "animationName": "OBJECT_TREE04B_NO_MORE_LOG",
+  "frameEnd": 244,
+  "frameStart": 244,
+  "gfxID": 5,
+  "height": 149,
+  "objectName": "OBJECT_TREE04B",
+  "width": 163
+ },
+ {
+  "animationName": "OBJECT_TREE04B_DISAPPEAR",
+  "frameEnd": 247,
+  "frameStart": 245,
+  "gfxID": 5,
+  "height": 24,
+  "objectName": "OBJECT_TREE04B",
+  "width": 23
+ },
+ {
+  "animationName": "OBJECT_TREE05A_GROW_01",
+  "frameEnd": 248,
+  "frameStart": 248,
+  "gfxID": 5,
+  "height": 58,
+  "objectName": "OBJECT_TREE05A",
+  "width": 57
+ },
+ {
+  "animationName": "OBJECT_TREE05A_GROW_02",
+  "frameEnd": 249,
+  "frameStart": 249,
+  "gfxID": 5,
+  "height": 98,
+  "objectName": "OBJECT_TREE05A",
+  "width": 79
+ },
+ {
+  "animationName": "OBJECT_TREE05A_GROW_03",
+  "frameEnd": 250,
+  "frameStart": 250,
+  "gfxID": 5,
+  "height": 125,
+  "objectName": "OBJECT_TREE05A",
+  "width": 125
+ },
+ {
+  "animationName": "OBJECT_TREE05A_GROWNUP",
+  "frameEnd": 266,
+  "frameStart": 251,
+  "gfxID": 5,
+  "height": 128,
+  "objectName": "OBJECT_TREE05A",
+  "width": 140
+ },
+ {
+  "animationName": "OBJECT_TREE05A_FALLDOWN",
+  "frameEnd": 269,
+  "frameStart": 267,
+  "gfxID": 5,
+  "height": 81,
+  "objectName": "OBJECT_TREE05A",
+  "width": 82
+ },
+ {
+  "animationName": "OBJECT_TREE05A_LYING",
+  "frameEnd": 270,
+  "frameStart": 270,
+  "gfxID": 5,
+  "height": 83,
+  "objectName": "OBJECT_TREE05A",
+  "width": 107
+ },
+ {
+  "animationName": "OBJECT_TREE05A_CHOPLOG_01",
+  "frameEnd": 271,
+  "frameStart": 271,
+  "gfxID": 5,
+  "height": 81,
+  "objectName": "OBJECT_TREE05A",
+  "width": 105
+ },
+ {
+  "animationName": "OBJECT_TREE05A_CHOPLOG_02",
+  "frameEnd": 272,
+  "frameStart": 272,
+  "gfxID": 5,
+  "height": 96,
+  "objectName": "OBJECT_TREE05A",
+  "width": 107
+ },
+ {
+  "animationName": "OBJECT_TREE05A_CHOPLOG_03",
+  "frameEnd": 273,
+  "frameStart": 273,
+  "gfxID": 5,
+  "height": 96,
+  "objectName": "OBJECT_TREE05A",
+  "width": 107
+ },
+ {
+  "animationName": "OBJECT_TREE05A_NO_MORE_LOG",
+  "frameEnd": 274,
+  "frameStart": 274,
+  "gfxID": 5,
+  "height": 95,
+  "objectName": "OBJECT_TREE05A",
+  "width": 106
+ },
+ {
+  "animationName": "OBJECT_TREE05A_DISAPPEAR",
+  "frameEnd": 278,
+  "frameStart": 275,
+  "gfxID": 5,
+  "height": 24,
+  "objectName": "OBJECT_TREE05A",
+  "width": 23
+ },
+ {
+  "animationName": "OBJECT_TREE05B_GROW_01",
+  "frameEnd": 279,
+  "frameStart": 279,
+  "gfxID": 5,
+  "height": 58,
+  "objectName": "OBJECT_TREE05B",
+  "width": 57
+ },
+ {
+  "animationName": "OBJECT_TREE05B_GROW_02",
+  "frameEnd": 280,
+  "frameStart": 280,
+  "gfxID": 5,
+  "height": 98,
+  "objectName": "OBJECT_TREE05B",
+  "width": 79
+ },
+ {
+  "animationName": "OBJECT_TREE05B_GROW_03",
+  "frameEnd": 281,
+  "frameStart": 281,
+  "gfxID": 5,
+  "height": 125,
+  "objectName": "OBJECT_TREE05B",
+  "width": 124
+ },
+ {
+  "animationName": "OBJECT_TREE05B_GROWNUP",
+  "frameEnd": 297,
+  "frameStart": 282,
+  "gfxID": 5,
+  "height": 143,
+  "objectName": "OBJECT_TREE05B",
+  "width": 148
+ },
+ {
+  "animationName": "OBJECT_TREE05B_FALLDOWN",
+  "frameEnd": 300,
+  "frameStart": 298,
+  "gfxID": 5,
+  "height": 90,
+  "objectName": "OBJECT_TREE05B",
+  "width": 102
+ },
+ {
+  "animationName": "OBJECT_TREE05B_LYING",
+  "frameEnd": 301,
+  "frameStart": 301,
+  "gfxID": 5,
+  "height": 117,
+  "objectName": "OBJECT_TREE05B",
+  "width": 102
+ },
+ {
+  "animationName": "OBJECT_TREE05B_CHOPLOG_01",
+  "frameEnd": 302,
+  "frameStart": 302,
+  "gfxID": 5,
+  "height": 126,
+  "objectName": "OBJECT_TREE05B",
+  "width": 146
+ },
+ {
+  "animationName": "OBJECT_TREE05B_CHOPLOG_02",
+  "frameEnd": 303,
+  "frameStart": 303,
+  "gfxID": 5,
+  "height": 126,
+  "objectName": "OBJECT_TREE05B",
+  "width": 157
+ },
+ {
+  "animationName": "OBJECT_TREE05B_CHOPLOG_03",
+  "frameEnd": 304,
+  "frameStart": 304,
+  "gfxID": 5,
+  "height": 126,
+  "objectName": "OBJECT_TREE05B",
+  "width": 157
+ },
+ {
+  "animationName": "OBJECT_TREE05B_NO_MORE_LOG",
+  "frameEnd": 305,
+  "frameStart": 305,
+  "gfxID": 5,
+  "height": 127,
+  "objectName": "OBJECT_TREE05B",
+  "width": 146
+ },
+ {
+  "animationName": "OBJECT_TREE05B_DISAPPEAR",
+  "frameEnd": 309,
+  "frameStart": 306,
+  "gfxID": 5,
+  "height": 32,
+  "objectName": "OBJECT_TREE05B",
+  "width": 40
+ },
+ {
+  "animationName": "OBJECT_TREE06A_GROW_01",
+  "frameEnd": 310,
+  "frameStart": 310,
+  "gfxID": 5,
+  "height": 64,
+  "objectName": "OBJECT_TREE06A",
+  "width": 70
+ },
+ {
+  "animationName": "OBJECT_TREE06A_GROW_02",
+  "frameEnd": 311,
+  "frameStart": 311,
+  "gfxID": 5,
+  "height": 114,
+  "objectName": "OBJECT_TREE06A",
+  "width": 134
+ },
+ {
+  "animationName": "OBJECT_TREE06A_GROW_03",
+  "frameEnd": 312,
+  "frameStart": 312,
+  "gfxID": 5,
+  "height": 143,
+  "objectName": "OBJECT_TREE06A",
+  "width": 166
+ },
+ {
+  "animationName": "OBJECT_TREE06A_GROWNUP",
+  "frameEnd": 328,
+  "frameStart": 313,
+  "gfxID": 5,
+  "height": 166,
+  "objectName": "OBJECT_TREE06A",
+  "width": 189
+ },
+ {
+  "animationName": "OBJECT_TREE06A_FALLDOWN",
+  "frameEnd": 331,
+  "frameStart": 329,
+  "gfxID": 5,
+  "height": 85,
+  "objectName": "OBJECT_TREE06A",
+  "width": 136
+ },
+ {
+  "animationName": "OBJECT_TREE06A_LYING",
+  "frameEnd": 332,
+  "frameStart": 332,
+  "gfxID": 5,
+  "height": 92,
+  "objectName": "OBJECT_TREE06A",
+  "width": 153
+ },
+ {
+  "animationName": "OBJECT_TREE06A_CHOPLOG_01",
+  "frameEnd": 333,
+  "frameStart": 333,
+  "gfxID": 5,
+  "height": 113,
+  "objectName": "OBJECT_TREE06A",
+  "width": 152
+ },
+ {
+  "animationName": "OBJECT_TREE06A_CHOPLOG_02",
+  "frameEnd": 334,
+  "frameStart": 334,
+  "gfxID": 5,
+  "height": 106,
+  "objectName": "OBJECT_TREE06A",
+  "width": 152
+ },
+ {
+  "animationName": "OBJECT_TREE06A_CHOPLOG_03",
+  "frameEnd": 335,
+  "frameStart": 335,
+  "gfxID": 5,
+  "height": 106,
+  "objectName": "OBJECT_TREE06A",
+  "width": 152
+ },
+ {
+  "animationName": "OBJECT_TREE06A_NO_MORE_LOG",
+  "frameEnd": 336,
+  "frameStart": 336,
+  "gfxID": 5,
+  "height": 99,
+  "objectName": "OBJECT_TREE06A",
+  "width": 152
+ },
+ {
+  "animationName": "OBJECT_TREE06A_DISAPPEAR",
+  "frameEnd": 339,
+  "frameStart": 337,
+  "gfxID": 5,
+  "height": 32,
+  "objectName": "OBJECT_TREE06A",
+  "width": 40
+ },
+ {
+  "animationName": "OBJECT_TREE06B_GROW_01",
+  "frameEnd": 340,
+  "frameStart": 340,
+  "gfxID": 5,
+  "height": 64,
+  "objectName": "OBJECT_TREE06B",
+  "width": 70
+ },
+ {
+  "animationName": "OBJECT_TREE06B_GROW_02",
+  "frameEnd": 341,
+  "frameStart": 341,
+  "gfxID": 5,
+  "height": 114,
+  "objectName": "OBJECT_TREE06B",
+  "width": 134
+ },
+ {
+  "animationName": "OBJECT_TREE06B_GROW_03",
+  "frameEnd": 342,
+  "frameStart": 342,
+  "gfxID": 5,
+  "height": 153,
+  "objectName": "OBJECT_TREE06B",
+  "width": 144
+ },
+ {
+  "animationName": "OBJECT_TREE06B_GROWNUP",
+  "frameEnd": 358,
+  "frameStart": 343,
+  "gfxID": 5,
+  "height": 166,
+  "objectName": "OBJECT_TREE06B",
+  "width": 189
+ },
+ {
+  "animationName": "OBJECT_TREE06B_FALLDOWN",
+  "frameEnd": 361,
+  "frameStart": 359,
+  "gfxID": 5,
+  "height": 85,
+  "objectName": "OBJECT_TREE06B",
+  "width": 136
+ },
+ {
+  "animationName": "OBJECT_TREE06B_LYING",
+  "frameEnd": 362,
+  "frameStart": 362,
+  "gfxID": 5,
+  "height": 92,
+  "objectName": "OBJECT_TREE06B",
+  "width": 153
+ },
+ {
+  "animationName": "OBJECT_TREE06B_CHOPLOG_01",
+  "frameEnd": 363,
+  "frameStart": 363,
+  "gfxID": 5,
+  "height": 113,
+  "objectName": "OBJECT_TREE06B",
+  "width": 152
+ },
+ {
+  "animationName": "OBJECT_TREE06B_CHOPLOG_02",
+  "frameEnd": 364,
+  "frameStart": 364,
+  "gfxID": 5,
+  "height": 106,
+  "objectName": "OBJECT_TREE06B",
+  "width": 152
+ },
+ {
+  "animationName": "OBJECT_TREE06B_CHOPLOG_03",
+  "frameEnd": 365,
+  "frameStart": 365,
+  "gfxID": 5,
+  "height": 106,
+  "objectName": "OBJECT_TREE06B",
+  "width": 152
+ },
+ {
+  "animationName": "OBJECT_TREE06B_NO_MORE_LOG",
+  "frameEnd": 366,
+  "frameStart": 366,
+  "gfxID": 5,
+  "height": 99,
+  "objectName": "OBJECT_TREE06B",
+  "width": 152
+ },
+ {
+  "animationName": "OBJECT_TREE06B_DISAPPEAR",
+  "frameEnd": 369,
+  "frameStart": 367,
+  "gfxID": 5,
+  "height": 35,
+  "objectName": "OBJECT_TREE06B",
+  "width": 37
+ },
+ {
+  "animationName": "OBJECT_TREE07A_GROW_01",
+  "frameEnd": 370,
+  "frameStart": 370,
+  "gfxID": 5,
+  "height": 74,
+  "objectName": "OBJECT_TREE07A",
+  "width": 84
+ },
+ {
+  "animationName": "OBJECT_TREE07A_GROW_02",
+  "frameEnd": 371,
+  "frameStart": 371,
+  "gfxID": 5,
+  "height": 108,
+  "objectName": "OBJECT_TREE07A",
+  "width": 124
+ },
+ {
+  "animationName": "OBJECT_TREE07A_GROW_03",
+  "frameEnd": 372,
+  "frameStart": 372,
+  "gfxID": 5,
+  "height": 145,
+  "objectName": "OBJECT_TREE07A",
+  "width": 166
+ },
+ {
+  "animationName": "OBJECT_TREE07A_GROWNUP",
+  "frameEnd": 388,
+  "frameStart": 373,
+  "gfxID": 5,
+  "height": 158,
+  "objectName": "OBJECT_TREE07A",
+  "width": 192
+ },
+ {
+  "animationName": "OBJECT_TREE07A_FALLDOWN",
+  "frameEnd": 391,
+  "frameStart": 389,
+  "gfxID": 5,
+  "height": 92,
+  "objectName": "OBJECT_TREE07A",
+  "width": 127
+ },
+ {
+  "animationName": "OBJECT_TREE07A_LYING",
+  "frameEnd": 392,
+  "frameStart": 392,
+  "gfxID": 5,
+  "height": 92,
+  "objectName": "OBJECT_TREE07A",
+  "width": 127
+ },
+ {
+  "animationName": "OBJECT_TREE07A_CHOPLOG_01",
+  "frameEnd": 393,
+  "frameStart": 393,
+  "gfxID": 5,
+  "height": 92,
+  "objectName": "OBJECT_TREE07A",
+  "width": 127
+ },
+ {
+  "animationName": "OBJECT_TREE07A_CHOPLOG_02",
+  "frameEnd": 394,
+  "frameStart": 394,
+  "gfxID": 5,
+  "height": 92,
+  "objectName": "OBJECT_TREE07A",
+  "width": 118
+ },
+ {
+  "animationName": "OBJECT_TREE07A_CHOPLOG_03",
+  "frameEnd": 395,
+  "frameStart": 395,
+  "gfxID": 5,
+  "height": 92,
+  "objectName": "OBJECT_TREE07A",
+  "width": 118
+ },
+ {
+  "animationName": "OBJECT_TREE07A_NO_MORE_LOG",
+  "frameEnd": 396,
+  "frameStart": 396,
+  "gfxID": 5,
+  "height": 91,
+  "objectName": "OBJECT_TREE07A",
+  "width": 113
+ },
+ {
+  "animationName": "OBJECT_TREE07A_DISAPPEAR",
+  "frameEnd": 399,
+  "frameStart": 397,
+  "gfxID": 5,
+  "height": 34,
+  "objectName": "OBJECT_TREE07A",
+  "width": 32
+ },
+ {
+  "animationName": "OBJECT_TREE07B_GROW_01",
+  "frameEnd": 400,
+  "frameStart": 400,
+  "gfxID": 5,
+  "height": 62,
+  "objectName": "OBJECT_TREE07B",
+  "width": 66
+ },
+ {
+  "animationName": "OBJECT_TREE07B_GROW_02",
+  "frameEnd": 401,
+  "frameStart": 401,
+  "gfxID": 5,
+  "height": 84,
+  "objectName": "OBJECT_TREE07B",
+  "width": 89
+ },
+ {
+  "animationName": "OBJECT_TREE07B_GROW_03",
+  "frameEnd": 402,
+  "frameStart": 402,
+  "gfxID": 5,
+  "height": 153,
+  "objectName": "OBJECT_TREE07B",
+  "width": 164
+ },
+ {
+  "animationName": "OBJECT_TREE07B_GROWNUP",
+  "frameEnd": 418,
+  "frameStart": 403,
+  "gfxID": 5,
+  "height": 158,
+  "objectName": "OBJECT_TREE07B",
+  "width": 172
+ },
+ {
+  "animationName": "OBJECT_TREE07B_FALLDOWN",
+  "frameEnd": 421,
+  "frameStart": 419,
+  "gfxID": 5,
+  "height": 87,
+  "objectName": "OBJECT_TREE07B",
+  "width": 122
+ },
+ {
+  "animationName": "OBJECT_TREE07B_LYING",
+  "frameEnd": 422,
+  "frameStart": 422,
+  "gfxID": 5,
+  "height": 87,
+  "objectName": "OBJECT_TREE07B",
+  "width": 114
+ },
+ {
+  "animationName": "OBJECT_TREE07B_CHOPLOG_01",
+  "frameEnd": 423,
+  "frameStart": 423,
+  "gfxID": 5,
+  "height": 87,
+  "objectName": "OBJECT_TREE07B",
+  "width": 114
+ },
+ {
+  "animationName": "OBJECT_TREE07B_CHOPLOG_02",
+  "frameEnd": 424,
+  "frameStart": 424,
+  "gfxID": 5,
+  "height": 92,
+  "objectName": "OBJECT_TREE07B",
+  "width": 114
+ },
+ {
+  "animationName": "OBJECT_TREE07B_CHOPLOG_03",
+  "frameEnd": 425,
+  "frameStart": 425,
+  "gfxID": 5,
+  "height": 92,
+  "objectName": "OBJECT_TREE07B",
+  "width": 114
+ },
+ {
+  "animationName": "OBJECT_TREE07B_NO_MORE_LOG",
+  "frameEnd": 426,
+  "frameStart": 426,
+  "gfxID": 5,
+  "height": 92,
+  "objectName": "OBJECT_TREE07B",
+  "width": 114
+ },
+ {
+  "animationName": "OBJECT_TREE07B_DISAPPEAR",
+  "frameEnd": 429,
+  "frameStart": 427,
+  "gfxID": 5,
+  "height": 33,
+  "objectName": "OBJECT_TREE07B",
+  "width": 42
+ },
+ {
+  "animationName": "OBJECT_TREE08A_GROW_01",
+  "frameEnd": 430,
+  "frameStart": 430,
+  "gfxID": 5,
+  "height": 75,
+  "objectName": "OBJECT_TREE08A",
+  "width": 100
+ },
+ {
+  "animationName": "OBJECT_TREE08A_GROW_02",
+  "frameEnd": 431,
+  "frameStart": 431,
+  "gfxID": 5,
+  "height": 116,
+  "objectName": "OBJECT_TREE08A",
+  "width": 158
+ },
+ {
+  "animationName": "OBJECT_TREE08A_GROW_03",
+  "frameEnd": 432,
+  "frameStart": 432,
+  "gfxID": 5,
+  "height": 156,
+  "objectName": "OBJECT_TREE08A",
+  "width": 207
+ },
+ {
+  "animationName": "OBJECT_TREE08A_GROWNUP",
+  "frameEnd": 448,
+  "frameStart": 433,
+  "gfxID": 5,
+  "height": 169,
+  "objectName": "OBJECT_TREE08A",
+  "width": 217
+ },
+ {
+  "animationName": "OBJECT_TREE08A_FALLDOWN",
+  "frameEnd": 453,
+  "frameStart": 449,
+  "gfxID": 5,
+  "height": 150,
+  "objectName": "OBJECT_TREE08A",
+  "width": 166
+ },
+ {
+  "animationName": "OBJECT_TREE08A_LYING",
+  "frameEnd": 454,
+  "frameStart": 454,
+  "gfxID": 5,
+  "height": 150,
+  "objectName": "OBJECT_TREE08A",
+  "width": 154
+ },
+ {
+  "animationName": "OBJECT_TREE08A_CHOPLOG_01",
+  "frameEnd": 455,
+  "frameStart": 455,
+  "gfxID": 5,
+  "height": 112,
+  "objectName": "OBJECT_TREE08A",
+  "width": 142
+ },
+ {
+  "animationName": "OBJECT_TREE08A_CHOPLOG_02",
+  "frameEnd": 456,
+  "frameStart": 456,
+  "gfxID": 5,
+  "height": 112,
+  "objectName": "OBJECT_TREE08A",
+  "width": 142
+ },
+ {
+  "animationName": "OBJECT_TREE08A_CHOPLOG_03",
+  "frameEnd": 457,
+  "frameStart": 457,
+  "gfxID": 5,
+  "height": 112,
+  "objectName": "OBJECT_TREE08A",
+  "width": 142
+ },
+ {
+  "animationName": "OBJECT_TREE08A_NO_MORE_LOG",
+  "frameEnd": 458,
+  "frameStart": 458,
+  "gfxID": 5,
+  "height": 105,
+  "objectName": "OBJECT_TREE08A",
+  "width": 143
+ },
+ {
+  "animationName": "OBJECT_TREE08A_DISAPPEAR",
+  "frameEnd": 461,
+  "frameStart": 459,
+  "gfxID": 5,
+  "height": 28,
+  "objectName": "OBJECT_TREE08A",
+  "width": 34
+ },
+ {
+  "animationName": "OBJECT_TREE08B_GROW_01",
+  "frameEnd": 462,
+  "frameStart": 462,
+  "gfxID": 5,
+  "height": 81,
+  "objectName": "OBJECT_TREE08B",
+  "width": 114
+ },
+ {
+  "animationName": "OBJECT_TREE08B_GROW_02",
+  "frameEnd": 463,
+  "frameStart": 463,
+  "gfxID": 5,
+  "height": 116,
+  "objectName": "OBJECT_TREE08B",
+  "width": 171
+ },
+ {
+  "animationName": "OBJECT_TREE08B_GROW_03",
+  "frameEnd": 464,
+  "frameStart": 464,
+  "gfxID": 5,
+  "height": 144,
+  "objectName": "OBJECT_TREE08B",
+  "width": 228
+ },
+ {
+  "animationName": "OBJECT_TREE08B_GROWNUP",
+  "frameEnd": 480,
+  "frameStart": 465,
+  "gfxID": 5,
+  "height": 159,
+  "objectName": "OBJECT_TREE08B",
+  "width": 230
+ },
+ {
+  "animationName": "OBJECT_TREE08B_FALLDOWN",
+  "frameEnd": 485,
+  "frameStart": 481,
+  "gfxID": 5,
+  "height": 133,
+  "objectName": "OBJECT_TREE08B",
+  "width": 155
+ },
+ {
+  "animationName": "OBJECT_TREE08B_LYING",
+  "frameEnd": 486,
+  "frameStart": 486,
+  "gfxID": 5,
+  "height": 133,
+  "objectName": "OBJECT_TREE08B",
+  "width": 155
+ },
+ {
+  "animationName": "OBJECT_TREE08B_CHOPLOG_01",
+  "frameEnd": 487,
+  "frameStart": 487,
+  "gfxID": 5,
+  "height": 118,
+  "objectName": "OBJECT_TREE08B",
+  "width": 155
+ },
+ {
+  "animationName": "OBJECT_TREE08B_CHOPLOG_02",
+  "frameEnd": 488,
+  "frameStart": 488,
+  "gfxID": 5,
+  "height": 103,
+  "objectName": "OBJECT_TREE08B",
+  "width": 151
+ },
+ {
+  "animationName": "OBJECT_TREE08B_CHOPLOG_03",
+  "frameEnd": 489,
+  "frameStart": 489,
+  "gfxID": 5,
+  "height": 103,
+  "objectName": "OBJECT_TREE08B",
+  "width": 151
+ },
+ {
+  "animationName": "OBJECT_TREE08B_NO_MORE_LOG",
+  "frameEnd": 490,
+  "frameStart": 490,
+  "gfxID": 5,
+  "height": 102,
+  "objectName": "OBJECT_TREE08B",
+  "width": 150
+ },
+ {
+  "animationName": "OBJECT_TREE08B_DISAPPEAR",
+  "frameEnd": 493,
+  "frameStart": 491,
+  "gfxID": 5,
+  "height": 36,
+  "objectName": "OBJECT_TREE08B",
+  "width": 36
+ },
+ {
+  "animationName": "OBJECT_TREE09A_GROW_01",
+  "frameEnd": 494,
+  "frameStart": 494,
+  "gfxID": 5,
+  "height": 97,
+  "objectName": "OBJECT_TREE09A",
+  "width": 128
+ },
+ {
+  "animationName": "OBJECT_TREE09A_GROW_02",
+  "frameEnd": 495,
+  "frameStart": 495,
+  "gfxID": 5,
+  "height": 141,
+  "objectName": "OBJECT_TREE09A",
+  "width": 208
+ },
+ {
+  "animationName": "OBJECT_TREE09A_GROW_03",
+  "frameEnd": 496,
+  "frameStart": 496,
+  "gfxID": 5,
+  "height": 183,
+  "objectName": "OBJECT_TREE09A",
+  "width": 260
+ },
+ {
+  "animationName": "OBJECT_TREE09A_GROWNUP",
+  "frameEnd": 512,
+  "frameStart": 497,
+  "gfxID": 5,
+  "height": 206,
+  "objectName": "OBJECT_TREE09A",
+  "width": 282
+ },
+ {
+  "animationName": "OBJECT_TREE09A_FALLDOWN",
+  "frameEnd": 517,
+  "frameStart": 513,
+  "gfxID": 5,
+  "height": 169,
+  "objectName": "OBJECT_TREE09A",
+  "width": 237
+ },
+ {
+  "animationName": "OBJECT_TREE09A_LYING",
+  "frameEnd": 518,
+  "frameStart": 518,
+  "gfxID": 5,
+  "height": 167,
+  "objectName": "OBJECT_TREE09A",
+  "width": 222
+ },
+ {
+  "animationName": "OBJECT_TREE09A_CHOPLOG_01",
+  "frameEnd": 519,
+  "frameStart": 519,
+  "gfxID": 5,
+  "height": 167,
+  "objectName": "OBJECT_TREE09A",
+  "width": 222
+ },
+ {
+  "animationName": "OBJECT_TREE09A_CHOPLOG_02",
+  "frameEnd": 520,
+  "frameStart": 520,
+  "gfxID": 5,
+  "height": 144,
+  "objectName": "OBJECT_TREE09A",
+  "width": 185
+ },
+ {
+  "animationName": "OBJECT_TREE09A_CHOPLOG_03",
+  "frameEnd": 521,
+  "frameStart": 521,
+  "gfxID": 5,
+  "height": 144,
+  "objectName": "OBJECT_TREE09A",
+  "width": 185
+ },
+ {
+  "animationName": "OBJECT_TREE09A_NO_MORE_LOG",
+  "frameEnd": 522,
+  "frameStart": 522,
+  "gfxID": 5,
+  "height": 128,
+  "objectName": "OBJECT_TREE09A",
+  "width": 182
+ },
+ {
+  "animationName": "OBJECT_TREE09A_DISAPPEAR",
+  "frameEnd": 525,
+  "frameStart": 523,
+  "gfxID": 5,
+  "height": 38,
+  "objectName": "OBJECT_TREE09A",
+  "width": 32
+ },
+ {
+  "animationName": "OBJECT_TREE09B_GROW_01",
+  "frameEnd": 526,
+  "frameStart": 526,
+  "gfxID": 5,
+  "height": 87,
+  "objectName": "OBJECT_TREE09B",
+  "width": 119
+ },
+ {
+  "animationName": "OBJECT_TREE09B_GROW_02",
+  "frameEnd": 527,
+  "frameStart": 527,
+  "gfxID": 5,
+  "height": 123,
+  "objectName": "OBJECT_TREE09B",
+  "width": 169
+ },
+ {
+  "animationName": "OBJECT_TREE09B_GROW_03",
+  "frameEnd": 528,
+  "frameStart": 528,
+  "gfxID": 5,
+  "height": 168,
+  "objectName": "OBJECT_TREE09B",
+  "width": 201
+ },
+ {
+  "animationName": "OBJECT_TREE09B_GROWNUP",
+  "frameEnd": 544,
+  "frameStart": 529,
+  "gfxID": 5,
+  "height": 178,
+  "objectName": "OBJECT_TREE09B",
+  "width": 218
+ },
+ {
+  "animationName": "OBJECT_TREE09B_FALLDOWN",
+  "frameEnd": 549,
+  "frameStart": 545,
+  "gfxID": 5,
+  "height": 128,
+  "objectName": "OBJECT_TREE09B",
+  "width": 152
+ },
+ {
+  "animationName": "OBJECT_TREE09B_LYING",
+  "frameEnd": 550,
+  "frameStart": 550,
+  "gfxID": 5,
+  "height": 138,
+  "objectName": "OBJECT_TREE09B",
+  "width": 162
+ },
+ {
+  "animationName": "OBJECT_TREE09B_CHOPLOG_01",
+  "frameEnd": 551,
+  "frameStart": 551,
+  "gfxID": 5,
+  "height": 129,
+  "objectName": "OBJECT_TREE09B",
+  "width": 151
+ },
+ {
+  "animationName": "OBJECT_TREE09B_CHOPLOG_02",
+  "frameEnd": 552,
+  "frameStart": 552,
+  "gfxID": 5,
+  "height": 140,
+  "objectName": "OBJECT_TREE09B",
+  "width": 151
+ },
+ {
+  "animationName": "OBJECT_TREE09B_CHOPLOG_03",
+  "frameEnd": 553,
+  "frameStart": 553,
+  "gfxID": 5,
+  "height": 140,
+  "objectName": "OBJECT_TREE09B",
+  "width": 151
+ },
+ {
+  "animationName": "OBJECT_TREE09B_NO_MORE_LOG",
+  "frameEnd": 554,
+  "frameStart": 554,
+  "gfxID": 5,
+  "height": 139,
+  "objectName": "OBJECT_TREE09B",
+  "width": 131
+ },
+ {
+  "animationName": "OBJECT_TREE09B_DISAPPEAR",
+  "frameEnd": 557,
+  "frameStart": 555,
+  "gfxID": 5,
+  "height": 31,
+  "objectName": "OBJECT_TREE09B",
+  "width": 33
+ },
+ {
+  "animationName": "OBJECT_TREE10A_GROW_01",
+  "frameEnd": 558,
+  "frameStart": 558,
+  "gfxID": 5,
+  "height": 102,
+  "objectName": "OBJECT_TREE10A",
+  "width": 89
+ },
+ {
+  "animationName": "OBJECT_TREE10A_GROW_02",
+  "frameEnd": 559,
+  "frameStart": 559,
+  "gfxID": 5,
+  "height": 140,
+  "objectName": "OBJECT_TREE10A",
+  "width": 123
+ },
+ {
+  "animationName": "OBJECT_TREE10A_GROW_03",
+  "frameEnd": 560,
+  "frameStart": 560,
+  "gfxID": 5,
+  "height": 201,
+  "objectName": "OBJECT_TREE10A",
+  "width": 175
+ },
+ {
+  "animationName": "OBJECT_TREE10A_GROWNUP",
+  "frameEnd": 576,
+  "frameStart": 561,
+  "gfxID": 5,
+  "height": 211,
+  "objectName": "OBJECT_TREE10A",
+  "width": 244
+ },
+ {
+  "animationName": "OBJECT_TREE10A_FALLDOWN",
+  "frameEnd": 581,
+  "frameStart": 577,
+  "gfxID": 5,
+  "height": 124,
+  "objectName": "OBJECT_TREE10A",
+  "width": 168
+ },
+ {
+  "animationName": "OBJECT_TREE10A_LYING",
+  "frameEnd": 582,
+  "frameStart": 582,
+  "gfxID": 5,
+  "height": 122,
+  "objectName": "OBJECT_TREE10A",
+  "width": 167
+ },
+ {
+  "animationName": "OBJECT_TREE10A_CHOPLOG_01",
+  "frameEnd": 583,
+  "frameStart": 583,
+  "gfxID": 5,
+  "height": 122,
+  "objectName": "OBJECT_TREE10A",
+  "width": 171
+ },
+ {
+  "animationName": "OBJECT_TREE10A_CHOPLOG_02",
+  "frameEnd": 584,
+  "frameStart": 584,
+  "gfxID": 5,
+  "height": 129,
+  "objectName": "OBJECT_TREE10A",
+  "width": 172
+ },
+ {
+  "animationName": "OBJECT_TREE10A_CHOPLOG_03",
+  "frameEnd": 585,
+  "frameStart": 585,
+  "gfxID": 5,
+  "height": 129,
+  "objectName": "OBJECT_TREE10A",
+  "width": 172
+ },
+ {
+  "animationName": "OBJECT_TREE10A_NO_MORE_LOG",
+  "frameEnd": 586,
+  "frameStart": 586,
+  "gfxID": 5,
+  "height": 129,
+  "objectName": "OBJECT_TREE10A",
+  "width": 172
+ },
+ {
+  "animationName": "OBJECT_TREE10A_DISAPPEAR",
+  "frameEnd": 589,
+  "frameStart": 587,
+  "gfxID": 5,
+  "height": 30,
+  "objectName": "OBJECT_TREE10A",
+  "width": 32
+ },
+ {
+  "animationName": "OBJECT_TREE10B_GROW_01",
+  "frameEnd": 590,
+  "frameStart": 590,
+  "gfxID": 5,
+  "height": 98,
+  "objectName": "OBJECT_TREE10B",
+  "width": 98
+ },
+ {
+  "animationName": "OBJECT_TREE10B_GROW_02",
+  "frameEnd": 591,
+  "frameStart": 591,
+  "gfxID": 5,
+  "height": 128,
+  "objectName": "OBJECT_TREE10B",
+  "width": 139
+ },
+ {
+  "animationName": "OBJECT_TREE10B_GROW_03",
+  "frameEnd": 592,
+  "frameStart": 592,
+  "gfxID": 5,
+  "height": 173,
+  "objectName": "OBJECT_TREE10B",
+  "width": 179
+ },
+ {
+  "animationName": "OBJECT_TREE10B_GROWNUP",
+  "frameEnd": 608,
+  "frameStart": 593,
+  "gfxID": 5,
+  "height": 183,
+  "objectName": "OBJECT_TREE10B",
+  "width": 218
+ },
+ {
+  "animationName": "OBJECT_TREE10B_FALLDOWN",
+  "frameEnd": 613,
+  "frameStart": 609,
+  "gfxID": 5,
+  "height": 115,
+  "objectName": "OBJECT_TREE10B",
+  "width": 141
+ },
+ {
+  "animationName": "OBJECT_TREE10B_LYING",
+  "frameEnd": 614,
+  "frameStart": 614,
+  "gfxID": 5,
+  "height": 115,
+  "objectName": "OBJECT_TREE10B",
+  "width": 176
+ },
+ {
+  "animationName": "OBJECT_TREE10B_CHOPLOG_01",
+  "frameEnd": 615,
+  "frameStart": 615,
+  "gfxID": 5,
+  "height": 116,
+  "objectName": "OBJECT_TREE10B",
+  "width": 145
+ },
+ {
+  "animationName": "OBJECT_TREE10B_CHOPLOG_02",
+  "frameEnd": 616,
+  "frameStart": 616,
+  "gfxID": 5,
+  "height": 119,
+  "objectName": "OBJECT_TREE10B",
+  "width": 146
+ },
+ {
+  "animationName": "OBJECT_TREE10B_CHOPLOG_03",
+  "frameEnd": 617,
+  "frameStart": 617,
+  "gfxID": 5,
+  "height": 119,
+  "objectName": "OBJECT_TREE10B",
+  "width": 146
+ },
+ {
+  "animationName": "OBJECT_TREE10B_NO_MORE_LOG",
+  "frameEnd": 618,
+  "frameStart": 618,
+  "gfxID": 5,
+  "height": 120,
+  "objectName": "OBJECT_TREE10B",
+  "width": 146
+ },
+ {
+  "animationName": "OBJECT_TREE10B_DISAPPEAR",
+  "frameEnd": 621,
+  "frameStart": 619,
+  "gfxID": 5,
+  "height": 23,
+  "objectName": "OBJECT_TREE10B",
+  "width": 25
+ },
+ {
+  "animationName": "OBJECT_TREE11A_GROW_01",
+  "frameEnd": 622,
+  "frameStart": 622,
+  "gfxID": 5,
+  "height": 60,
+  "objectName": "OBJECT_TREE11A",
+  "width": 63
+ },
+ {
+  "animationName": "OBJECT_TREE11A_GROW_02",
+  "frameEnd": 623,
+  "frameStart": 623,
+  "gfxID": 5,
+  "height": 113,
+  "objectName": "OBJECT_TREE11A",
+  "width": 107
+ },
+ {
+  "animationName": "OBJECT_TREE11A_GROW_03",
+  "frameEnd": 624,
+  "frameStart": 624,
+  "gfxID": 5,
+  "height": 150,
+  "objectName": "OBJECT_TREE11A",
+  "width": 140
+ },
+ {
+  "animationName": "OBJECT_TREE11A_GROWNUP",
+  "frameEnd": 640,
+  "frameStart": 625,
+  "gfxID": 5,
+  "height": 161,
+  "objectName": "OBJECT_TREE11A",
+  "width": 171
+ },
+ {
+  "animationName": "OBJECT_TREE11A_FALLDOWN",
+  "frameEnd": 645,
+  "frameStart": 641,
+  "gfxID": 5,
+  "height": 110,
+  "objectName": "OBJECT_TREE11A",
+  "width": 134
+ },
+ {
+  "animationName": "OBJECT_TREE11A_LYING",
+  "frameEnd": 646,
+  "frameStart": 646,
+  "gfxID": 5,
+  "height": 110,
+  "objectName": "OBJECT_TREE11A",
+  "width": 129
+ },
+ {
+  "animationName": "OBJECT_TREE11A_CHOPLOG_01",
+  "frameEnd": 647,
+  "frameStart": 647,
+  "gfxID": 5,
+  "height": 110,
+  "objectName": "OBJECT_TREE11A",
+  "width": 129
+ },
+ {
+  "animationName": "OBJECT_TREE11A_CHOPLOG_02",
+  "frameEnd": 648,
+  "frameStart": 648,
+  "gfxID": 5,
+  "height": 102,
+  "objectName": "OBJECT_TREE11A",
+  "width": 126
+ },
+ {
+  "animationName": "OBJECT_TREE11A_CHOPLOG_03",
+  "frameEnd": 649,
+  "frameStart": 649,
+  "gfxID": 5,
+  "height": 102,
+  "objectName": "OBJECT_TREE11A",
+  "width": 126
+ },
+ {
+  "animationName": "OBJECT_TREE11A_NO_MORE_LOG",
+  "frameEnd": 650,
+  "frameStart": 650,
+  "gfxID": 5,
+  "height": 102,
+  "objectName": "OBJECT_TREE11A",
+  "width": 126
+ },
+ {
+  "animationName": "OBJECT_TREE11A_DISAPPEAR",
+  "frameEnd": 653,
+  "frameStart": 651,
+  "gfxID": 5,
+  "height": 24,
+  "objectName": "OBJECT_TREE11A",
+  "width": 26
+ },
+ {
+  "animationName": "OBJECT_TREE11B_GROW_01",
+  "frameEnd": 654,
+  "frameStart": 654,
+  "gfxID": 5,
+  "height": 64,
+  "objectName": "OBJECT_TREE11B",
+  "width": 67
+ },
+ {
+  "animationName": "OBJECT_TREE11B_GROW_02",
+  "frameEnd": 655,
+  "frameStart": 655,
+  "gfxID": 5,
+  "height": 94,
+  "objectName": "OBJECT_TREE11B",
+  "width": 95
+ },
+ {
+  "animationName": "OBJECT_TREE11B_GROW_03",
+  "frameEnd": 656,
+  "frameStart": 656,
+  "gfxID": 5,
+  "height": 135,
+  "objectName": "OBJECT_TREE11B",
+  "width": 135
+ },
+ {
+  "animationName": "OBJECT_TREE11B_GROWNUP",
+  "frameEnd": 672,
+  "frameStart": 657,
+  "gfxID": 5,
+  "height": 138,
+  "objectName": "OBJECT_TREE11B",
+  "width": 158
+ },
+ {
+  "animationName": "OBJECT_TREE11B_FALLDOWN",
+  "frameEnd": 677,
+  "frameStart": 673,
+  "gfxID": 5,
+  "height": 98,
+  "objectName": "OBJECT_TREE11B",
+  "width": 120
+ },
+ {
+  "animationName": "OBJECT_TREE11B_LYING",
+  "frameEnd": 678,
+  "frameStart": 678,
+  "gfxID": 5,
+  "height": 98,
+  "objectName": "OBJECT_TREE11B",
+  "width": 126
+ },
+ {
+  "animationName": "OBJECT_TREE11B_CHOPLOG_01",
+  "frameEnd": 679,
+  "frameStart": 679,
+  "gfxID": 5,
+  "height": 88,
+  "objectName": "OBJECT_TREE11B",
+  "width": 126
+ },
+ {
+  "animationName": "OBJECT_TREE11B_CHOPLOG_02",
+  "frameEnd": 680,
+  "frameStart": 680,
+  "gfxID": 5,
+  "height": 95,
+  "objectName": "OBJECT_TREE11B",
+  "width": 131
+ },
+ {
+  "animationName": "OBJECT_TREE11B_CHOPLOG_03",
+  "frameEnd": 681,
+  "frameStart": 681,
+  "gfxID": 5,
+  "height": 95,
+  "objectName": "OBJECT_TREE11B",
+  "width": 131
+ },
+ {
+  "animationName": "OBJECT_TREE11B_NO_MORE_LOG",
+  "frameEnd": 682,
+  "frameStart": 682,
+  "gfxID": 5,
+  "height": 95,
+  "objectName": "OBJECT_TREE11B",
+  "width": 100
+ },
+ {
+  "animationName": "OBJECT_TREE11B_DISAPPEAR",
+  "frameEnd": 685,
+  "frameStart": 683,
+  "gfxID": 5,
+  "height": 153,
+  "objectName": "OBJECT_TREE11B",
+  "width": 217
+ },
+ {
+  "animationName": "OBJECT_DARKTREE01A_OBJECT",
+  "frameEnd": 701,
+  "frameStart": 686,
+  "gfxID": 5,
+  "height": 159,
+  "objectName": "OBJECT_DARKTREE01A",
+  "width": 194
+ },
+ {
+  "animationName": "OBJECT_DARKTREE01B_OBJECT",
+  "frameEnd": 717,
+  "frameStart": 702,
+  "gfxID": 5,
+  "height": 114,
+  "objectName": "OBJECT_DARKTREE01B",
+  "width": 176
+ },
+ {
+  "animationName": "OBJECT_DARKTREE02A_OBJECT",
+  "frameEnd": 733,
+  "frameStart": 718,
+  "gfxID": 5,
+  "height": 124,
+  "objectName": "OBJECT_DARKTREE02A",
+  "width": 163
+ },
+ {
+  "animationName": "OBJECT_DARKTREE02B_OBJECT",
+  "frameEnd": 749,
+  "frameStart": 734,
+  "gfxID": 5,
+  "height": 167,
+  "objectName": "OBJECT_DARKTREE02B",
+  "width": 136
+ },
+ {
+  "animationName": "OBJECT_DARKTREE03A_OBJECT",
+  "frameEnd": 765,
+  "frameStart": 750,
+  "gfxID": 5,
+  "height": 145,
+  "objectName": "OBJECT_DARKTREE03A",
+  "width": 142
+ },
+ {
+  "animationName": "OBJECT_DARKTREE03B_OBJECT",
+  "frameEnd": 781,
+  "frameStart": 766,
+  "gfxID": 5,
+  "height": 123,
+  "objectName": "OBJECT_DARKTREE03B",
+  "width": 127
+ },
+ {
+  "animationName": "OBJECT_DARKTREE04A_OBJECT",
+  "frameEnd": 782,
+  "frameStart": 782,
+  "gfxID": 5,
+  "height": 95,
+  "objectName": "OBJECT_DARKTREE04A",
+  "width": 127
+ },
+ {
+  "animationName": "OBJECT_DARKTREE04B_OBJECT",
+  "frameEnd": 783,
+  "frameStart": 783,
+  "gfxID": 5,
+  "height": 105,
+  "objectName": "OBJECT_DARKTREE04B",
+  "width": 121
+ },
+ {
+  "animationName": "OBJECT_MINESET1_OBJECT",
+  "frameEnd": 796,
+  "frameStart": 784,
+  "gfxID": 5,
+  "height": 294,
+  "objectName": "OBJECT_MINESET1",
+  "width": 403
+ },
+ {
+  "animationName": "OBJECT_TROJANHORSEDESTR_OBJECT",
+  "frameEnd": 797,
+  "frameStart": 797,
+  "gfxID": 5,
+  "height": 42,
+  "objectName": "OBJECT_TROJANHORSEDESTR",
+  "width": 54
+ },
+ {
+  "animationName": "OBJECT_BUSH1_OBJECT",
+  "frameEnd": 805,
+  "frameStart": 798,
+  "gfxID": 5,
+  "height": 76,
+  "objectName": "OBJECT_BUSH1",
+  "width": 88
+ },
+ {
+  "animationName": "OBJECT_BUSH2_OBJECT",
+  "frameEnd": 813,
+  "frameStart": 806,
+  "gfxID": 5,
+  "height": 62,
+  "objectName": "OBJECT_BUSH2",
+  "width": 80
+ },
+ {
+  "animationName": "OBJECT_BUSH3_OBJECT",
+  "frameEnd": 821,
+  "frameStart": 814,
+  "gfxID": 5,
+  "height": 51,
+  "objectName": "OBJECT_BUSH3",
+  "width": 59
+ },
+ {
+  "animationName": "OBJECT_BUSH4_OBJECT",
+  "frameEnd": 829,
+  "frameStart": 822,
+  "gfxID": 5,
+  "height": 57,
+  "objectName": "OBJECT_BUSH4",
+  "width": 70
+ },
+ {
+  "animationName": "OBJECT_BUSH5_OBJECT",
+  "frameEnd": 837,
+  "frameStart": 830,
+  "gfxID": 5,
+  "height": 41,
+  "objectName": "OBJECT_BUSH5",
+  "width": 70
+ },
+ {
+  "animationName": "OBJECT_BUSH6_OBJECT",
+  "frameEnd": 845,
+  "frameStart": 838,
+  "gfxID": 5,
+  "height": 51,
+  "objectName": "OBJECT_BUSH6",
+  "width": 58
+ },
+ {
+  "animationName": "OBJECT_BUSH7_OBJECT",
+  "frameEnd": 853,
+  "frameStart": 846,
+  "gfxID": 5,
+  "height": 87,
+  "objectName": "OBJECT_BUSH7",
+  "width": 103
+ },
+ {
+  "animationName": "OBJECT_CACTUS1_OBJECT",
+  "frameEnd": 854,
+  "frameStart": 854,
+  "gfxID": 5,
+  "height": 107,
+  "objectName": "OBJECT_CACTUS1",
+  "width": 117
+ },
+ {
+  "animationName": "OBJECT_CELTICCROSS_OBJECT",
+  "frameEnd": 855,
+  "frameStart": 855,
+  "gfxID": 5,
+  "height": 56,
+  "objectName": "OBJECT_CELTICCROSS",
+  "width": 108
+ },
+ {
+  "animationName": "OBJECT_SKELETONDESERT1_OBJECT",
+  "frameEnd": 856,
+  "frameStart": 856,
+  "gfxID": 5,
+  "height": 70,
+  "objectName": "OBJECT_SKELETONDESERT1",
+  "width": 77
+ },
+ {
+  "animationName": "OBJECT_SKELETONDESERT2_OBJECT",
+  "frameEnd": 857,
+  "frameStart": 857,
+  "gfxID": 5,
+  "height": 88,
+  "objectName": "OBJECT_SKELETONDESERT2",
+  "width": 118
+ },
+ {
+  "animationName": "OBJECT_WAGGONDESTR_OBJECT",
+  "frameEnd": 858,
+  "frameStart": 858,
+  "gfxID": 5,
+  "height": 106,
+  "objectName": "OBJECT_WAGGONDESTR",
+  "width": 118
+ },
+ {
+  "animationName": "OBJECT_WRECK1_OBJECT",
+  "frameEnd": 859,
+  "frameStart": 859,
+  "gfxID": 5,
+  "height": 39,
+  "objectName": "OBJECT_WRECK1",
+  "width": 56
+ },
+ {
+  "animationName": "OBJECT_STONEBROWNISH1_OBJECT",
+  "frameEnd": 860,
+  "frameStart": 860,
+  "gfxID": 5,
+  "height": 53,
+  "objectName": "OBJECT_STONEBROWNISH1",
+  "width": 82
+ },
+ {
+  "animationName": "OBJECT_STONEBROWNISH2_OBJECT",
+  "frameEnd": 861,
+  "frameStart": 861,
+  "gfxID": 5,
+  "height": 50,
+  "objectName": "OBJECT_STONEBROWNISH2",
+  "width": 71
+ },
+ {
+  "animationName": "OBJECT_STONEBROWNISH3_OBJECT",
+  "frameEnd": 862,
+  "frameStart": 862,
+  "gfxID": 5,
+  "height": 82,
+  "objectName": "OBJECT_STONEBROWNISH3",
+  "width": 80
+ },
+ {
+  "animationName": "OBJECT_STONEBROWNISH4_OBJECT",
+  "frameEnd": 863,
+  "frameStart": 863,
+  "gfxID": 5,
+  "height": 37,
+  "objectName": "OBJECT_STONEBROWNISH4",
+  "width": 38
+ },
+ {
+  "animationName": "OBJECT_STONEBROWNISH5_OBJECT",
+  "frameEnd": 864,
+  "frameStart": 864,
+  "gfxID": 5,
+  "height": 99,
+  "objectName": "OBJECT_STONEBROWNISH5",
+  "width": 89
+ },
+ {
+  "animationName": "OBJECT_STONEBROWNISH6_OBJECT",
+  "frameEnd": 865,
+  "frameStart": 865,
+  "gfxID": 5,
+  "height": 38,
+  "objectName": "OBJECT_STONEBROWNISH6",
+  "width": 61
+ },
+ {
+  "animationName": "OBJECT_STONEBROWNISH7_OBJECT",
+  "frameEnd": 866,
+  "frameStart": 866,
+  "gfxID": 5,
+  "height": 110,
+  "objectName": "OBJECT_STONEBROWNISH7",
+  "width": 97
+ },
+ {
+  "animationName": "OBJECT_STONEBROWNISH8_OBJECT",
+  "frameEnd": 867,
+  "frameStart": 867,
+  "gfxID": 5,
+  "height": 32,
+  "objectName": "OBJECT_STONEBROWNISH8",
+  "width": 46
+ },
+ {
+  "animationName": "OBJECT_STONEBROWNISH9_OBJECT",
+  "frameEnd": 868,
+  "frameStart": 868,
+  "gfxID": 5,
+  "height": 49,
+  "objectName": "OBJECT_STONEBROWNISH9",
+  "width": 61
+ },
+ {
+  "animationName": "OBJECT_STONEBROWNISH10_OBJECT",
+  "frameEnd": 869,
+  "frameStart": 869,
+  "gfxID": 5,
+  "height": 59,
+  "objectName": "OBJECT_STONEBROWNISH1",
+  "width": 80
+ },
+ {
+  "animationName": "OBJECT_STONEGREYISH1_OBJECT",
+  "frameEnd": 870,
+  "frameStart": 870,
+  "gfxID": 5,
+  "height": 38,
+  "objectName": "OBJECT_STONEGREYISH1",
+  "width": 58
+ },
+ {
+  "animationName": "OBJECT_STONEGREYISH2_OBJECT",
+  "frameEnd": 871,
+  "frameStart": 871,
+  "gfxID": 5,
+  "height": 92,
+  "objectName": "OBJECT_STONEGREYISH2",
+  "width": 96
+ },
+ {
+  "animationName": "OBJECT_STONEGREYISH3_OBJECT",
+  "frameEnd": 872,
+  "frameStart": 872,
+  "gfxID": 5,
+  "height": 49,
+  "objectName": "OBJECT_STONEGREYISH3",
+  "width": 75
+ },
+ {
+  "animationName": "OBJECT_STONEGREYISH4_OBJECT",
+  "frameEnd": 873,
+  "frameStart": 873,
+  "gfxID": 5,
+  "height": 49,
+  "objectName": "OBJECT_STONEGREYISH4",
+  "width": 68
+ },
+ {
+  "animationName": "OBJECT_STONEGREYISH5_OBJECT",
+  "frameEnd": 874,
+  "frameStart": 874,
+  "gfxID": 5,
+  "height": 46,
+  "objectName": "OBJECT_STONEGREYISH5",
+  "width": 73
+ },
+ {
+  "animationName": "OBJECT_STONEGREYISH6_OBJECT",
+  "frameEnd": 875,
+  "frameStart": 875,
+  "gfxID": 5,
+  "height": 94,
+  "objectName": "OBJECT_STONEGREYISH6",
+  "width": 87
+ },
+ {
+  "animationName": "OBJECT_STONEGREYISH7_OBJECT",
+  "frameEnd": 876,
+  "frameStart": 876,
+  "gfxID": 5,
+  "height": 76,
+  "objectName": "OBJECT_STONEGREYISH7",
+  "width": 81
+ },
+ {
+  "animationName": "OBJECT_STONEGREYISH8_OBJECT",
+  "frameEnd": 877,
+  "frameStart": 877,
+  "gfxID": 5,
+  "height": 30,
+  "objectName": "OBJECT_STONEGREYISH8",
+  "width": 31
+ },
+ {
+  "animationName": "OBJECT_STONEGREYISH9_OBJECT",
+  "frameEnd": 878,
+  "frameStart": 878,
+  "gfxID": 5,
+  "height": 88,
+  "objectName": "OBJECT_STONEGREYISH9",
+  "width": 74
+ },
+ {
+  "animationName": "OBJECT_STONEGREYISH10_OBJECT",
+  "frameEnd": 879,
+  "frameStart": 879,
+  "gfxID": 5,
+  "height": 71,
+  "objectName": "OBJECT_STONEGREYISH1",
+  "width": 117
+ },
+ {
+  "animationName": "OBJECT_GRASS1_OBJECT",
+  "frameEnd": 887,
+  "frameStart": 880,
+  "gfxID": 5,
+  "height": 67,
+  "objectName": "OBJECT_GRASS1",
+  "width": 103
+ },
+ {
+  "animationName": "OBJECT_GRASS2_OBJECT",
+  "frameEnd": 895,
+  "frameStart": 888,
+  "gfxID": 5,
+  "height": 57,
+  "objectName": "OBJECT_GRASS2",
+  "width": 66
+ },
+ {
+  "animationName": "OBJECT_GRASS3_OBJECT",
+  "frameEnd": 903,
+  "frameStart": 896,
+  "gfxID": 5,
+  "height": 39,
+  "objectName": "OBJECT_GRASS3",
+  "width": 43
+ },
+ {
+  "animationName": "OBJECT_GRASS4_OBJECT",
+  "frameEnd": 911,
+  "frameStart": 904,
+  "gfxID": 5,
+  "height": 32,
+  "objectName": "OBJECT_GRASS4",
+  "width": 45
+ },
+ {
+  "animationName": "OBJECT_GRASS5_OBJECT",
+  "frameEnd": 919,
+  "frameStart": 912,
+  "gfxID": 5,
+  "height": 83,
+  "objectName": "OBJECT_GRASS5",
+  "width": 130
+ },
+ {
+  "animationName": "OBJECT_GRASS6_OBJECT",
+  "frameEnd": 927,
+  "frameStart": 920,
+  "gfxID": 5,
+  "height": 57,
+  "objectName": "OBJECT_GRASS6",
+  "width": 99
+ },
+ {
+  "animationName": "OBJECT_GRASS7_OBJECT",
+  "frameEnd": 935,
+  "frameStart": 928,
+  "gfxID": 5,
+  "height": 69,
+  "objectName": "OBJECT_GRASS7",
+  "width": 111
+ },
+ {
+  "animationName": "OBJECT_GRASS8_OBJECT",
+  "frameEnd": 943,
+  "frameStart": 936,
+  "gfxID": 5,
+  "height": 65,
+  "objectName": "OBJECT_GRASS8",
+  "width": 100
+ },
+ {
+  "animationName": "OBJECT_GRASS9_OBJECT",
+  "frameEnd": 951,
+  "frameStart": 944,
+  "gfxID": 5,
+  "height": 44,
+  "objectName": "OBJECT_GRASS9",
+  "width": 70
+ },
+ {
+  "animationName": "OBJECT_GRASS10_OBJECT",
+  "frameEnd": 959,
+  "frameStart": 952,
+  "gfxID": 5,
+  "height": 75,
+  "objectName": "OBJECT_GRASS1",
+  "width": 114
+ },
+ {
+  "animationName": "OBJECT_WELL_OBJECT",
+  "frameEnd": 960,
+  "frameStart": 960,
+  "gfxID": 5,
+  "height": 88,
+  "objectName": "OBJECT_WELL",
+  "width": 147
+ },
+ {
+  "animationName": "OBJECT_POND_OBJECT",
+  "frameEnd": 976,
+  "frameStart": 961,
+  "gfxID": 5,
+  "height": 124,
+  "objectName": "OBJECT_POND",
+  "width": 128
+ },
+ {
+  "animationName": "OBJECT_RUIN1_OBJECT",
+  "frameEnd": 987,
+  "frameStart": 977,
+  "gfxID": 5,
+  "height": 75,
+  "objectName": "OBJECT_RUIN1",
+  "width": 83
+ },
+ {
+  "animationName": "OBJECT_SCARECROW_OBJECT",
+  "frameEnd": 988,
+  "frameStart": 988,
+  "gfxID": 5,
+  "height": 80,
+  "objectName": "OBJECT_SCARECROW",
+  "width": 112
+ },
+ {
+  "animationName": "OBJECT_MUSHROOMCYCLE_OBJECT",
+  "frameEnd": 989,
+  "frameStart": 989,
+  "gfxID": 5,
+  "height": 54,
+  "objectName": "OBJECT_MUSHROOMCYCLE",
+  "width": 54
+ },
+ {
+  "animationName": "OBJECT_STONEDARKISH1_OBJECT",
+  "frameEnd": 990,
+  "frameStart": 990,
+  "gfxID": 5,
+  "height": 45,
+  "objectName": "OBJECT_STONEDARKISH1",
+  "width": 55
+ },
+ {
+  "animationName": "OBJECT_STONEDARKISH2_OBJECT",
+  "frameEnd": 991,
+  "frameStart": 991,
+  "gfxID": 5,
+  "height": 57,
+  "objectName": "OBJECT_STONEDARKISH2",
+  "width": 54
+ },
+ {
+  "animationName": "OBJECT_STONEDARKISH3_OBJECT",
+  "frameEnd": 992,
+  "frameStart": 992,
+  "gfxID": 5,
+  "height": 109,
+  "objectName": "OBJECT_STONEDARKISH3",
+  "width": 87
+ },
+ {
+  "animationName": "OBJECT_STONEDARKISH4_OBJECT",
+  "frameEnd": 993,
+  "frameStart": 993,
+  "gfxID": 5,
+  "height": 80,
+  "objectName": "OBJECT_STONEDARKISH4",
+  "width": 68
+ },
+ {
+  "animationName": "OBJECT_STONEDARKISH5_OBJECT",
+  "frameEnd": 994,
+  "frameStart": 994,
+  "gfxID": 5,
+  "height": 50,
+  "objectName": "OBJECT_STONEDARKISH5",
+  "width": 49
+ },
+ {
+  "animationName": "OBJECT_STONEDARKISH6_OBJECT",
+  "frameEnd": 995,
+  "frameStart": 995,
+  "gfxID": 5,
+  "height": 87,
+  "objectName": "OBJECT_STONEDARKISH6",
+  "width": 102
+ },
+ {
+  "animationName": "OBJECT_STONEDARKISH7_OBJECT",
+  "frameEnd": 996,
+  "frameStart": 996,
+  "gfxID": 5,
+  "height": 58,
+  "objectName": "OBJECT_STONEDARKISH7",
+  "width": 79
+ },
+ {
+  "animationName": "OBJECT_STONEDARKISH8_OBJECT",
+  "frameEnd": 997,
+  "frameStart": 997,
+  "gfxID": 5,
+  "height": 116,
+  "objectName": "OBJECT_STONEDARKISH8",
+  "width": 114
+ },
+ {
+  "animationName": "OBJECT_STONEDARKISH9_OBJECT",
+  "frameEnd": 998,
+  "frameStart": 998,
+  "gfxID": 5,
+  "height": 66,
+  "objectName": "OBJECT_STONEDARKISH9",
+  "width": 66
+ },
+ {
+  "animationName": "OBJECT_STONEDARKISH10_OBJECT",
+  "frameEnd": 999,
+  "frameStart": 999,
+  "gfxID": 5,
+  "height": 81,
+  "objectName": "OBJECT_STONEDARKISH1",
+  "width": 123
+ },
+ {
+  "animationName": "OBJECT_DARKROPE1_OBJECT",
+  "frameEnd": 1000,
+  "frameStart": 1000,
+  "gfxID": 5,
+  "height": 122,
+  "objectName": "OBJECT_DARKROPE1",
+  "width": 138
+ },
+ {
+  "animationName": "OBJECT_EVILMUSHROOM1_OBJECT",
+  "frameEnd": 1001,
+  "frameStart": 1001,
+  "gfxID": 5,
+  "height": 104,
+  "objectName": "OBJECT_EVILMUSHROOM1",
+  "width": 139
+ },
+ {
+  "animationName": "OBJECT_EVILMUSHROOM2_OBJECT",
+  "frameEnd": 1002,
+  "frameStart": 1002,
+  "gfxID": 5,
+  "height": 120,
+  "objectName": "OBJECT_EVILMUSHROOM2",
+  "width": 134
+ },
+ {
+  "animationName": "OBJECT_EVILMUSHROOM3_OBJECT",
+  "frameEnd": 1003,
+  "frameStart": 1003,
+  "gfxID": 5,
+  "height": 79,
+  "objectName": "OBJECT_EVILMUSHROOM3",
+  "width": 75
+ },
+ {
+  "animationName": "OBJECT_REEVE1_OBJECT",
+  "frameEnd": 1013,
+  "frameStart": 1004,
+  "gfxID": 5,
+  "height": 67,
+  "objectName": "OBJECT_REEVE1",
+  "width": 61
+ },
+ {
+  "animationName": "OBJECT_REEVE2_OBJECT",
+  "frameEnd": 1023,
+  "frameStart": 1014,
+  "gfxID": 5,
+  "height": 71,
+  "objectName": "OBJECT_REEVE2",
+  "width": 54
+ },
+ {
+  "animationName": "OBJECT_REEVE3_OBJECT",
+  "frameEnd": 1033,
+  "frameStart": 1024,
+  "gfxID": 5,
+  "height": 64,
+  "objectName": "OBJECT_REEVE3",
+  "width": 48
+ },
+ {
+  "animationName": "OBJECT_REEVE4_OBJECT",
+  "frameEnd": 1043,
+  "frameStart": 1034,
+  "gfxID": 5,
+  "height": 62,
+  "objectName": "OBJECT_REEVE4",
+  "width": 77
+ },
+ {
+  "animationName": "OBJECT_DARKBUSH1_OBJECT",
+  "frameEnd": 1044,
+  "frameStart": 1044,
+  "gfxID": 5,
+  "height": 69,
+  "objectName": "OBJECT_DARKBUSH1",
+  "width": 72
+ },
+ {
+  "animationName": "OBJECT_DARKBUSH2_OBJECT",
+  "frameEnd": 1045,
+  "frameStart": 1045,
+  "gfxID": 5,
+  "height": 57,
+  "objectName": "OBJECT_DARKBUSH2",
+  "width": 70
+ },
+ {
+  "animationName": "OBJECT_DARKBUSH3_OBJECT",
+  "frameEnd": 1046,
+  "frameStart": 1046,
+  "gfxID": 5,
+  "height": 51,
+  "objectName": "OBJECT_DARKBUSH3",
+  "width": 58
+ },
+ {
+  "animationName": "OBJECT_DARKBUSH4_OBJECT",
+  "frameEnd": 1047,
+  "frameStart": 1047,
+  "gfxID": 5,
+  "height": 55,
+  "objectName": "OBJECT_DARKBUSH4",
+  "width": 66
+ },
+ {
+  "animationName": "OBJECT_BASE_MORBUS_OBJECT",
+  "frameEnd": 1048,
+  "frameStart": 1048,
+  "gfxID": 5,
+  "height": 106,
+  "objectName": "OBJECT_BASE_MORBUS",
+  "width": 82
+ },
+ {
+  "animationName": "OBJECT_COLUMNRUINS_A1_OBJECT",
+  "frameEnd": 1049,
+  "frameStart": 1049,
+  "gfxID": 5,
+  "height": 318,
+  "objectName": "OBJECT_COLUMNRUINS_A1",
+  "width": 415
+ },
+ {
+  "animationName": "OBJECT_TROJANHORSE_BUILD_OBJECT",
+  "frameEnd": 1057,
+  "frameStart": 1050,
+  "gfxID": 5,
+  "height": 228,
+  "objectName": "OBJECT_TROJANHORSE_BUILD",
+  "width": 375
+ },
+ {
+  "animationName": "OBJECT_TROJANHORSE_STANDARD_OBJECT",
+  "frameEnd": 1058,
+  "frameStart": 1058,
+  "gfxID": 5,
+  "height": 240,
+  "objectName": "OBJECT_TROJANHORSE_STANDARD",
+  "width": 190
+ },
+ {
+  "animationName": "OBJECT_GATE_OBJECT",
+  "frameEnd": 1075,
+  "frameStart": 1059,
+  "gfxID": 5,
+  "height": 84,
+  "objectName": "OBJECT_GATE",
+  "width": 92
+ },
+ {
+  "animationName": "OBJECT_CACTUS2_OBJECT",
+  "frameEnd": 1076,
+  "frameStart": 1076,
+  "gfxID": 5,
+  "height": 60,
+  "objectName": "OBJECT_CACTUS2",
+  "width": 72
+ },
+ {
+  "animationName": "OBJECT_CACTUS3_OBJECT",
+  "frameEnd": 1077,
+  "frameStart": 1077,
+  "gfxID": 5,
+  "height": 41,
+  "objectName": "OBJECT_CACTUS3",
+  "width": 55
+ },
+ {
+  "animationName": "OBJECT_CACTUS4_OBJECT",
+  "frameEnd": 1078,
+  "frameStart": 1078,
+  "gfxID": 5,
+  "height": 18,
+  "objectName": "OBJECT_CACTUS4",
+  "width": 27
+ },
+ {
+  "animationName": "OBJECT_PEG01_OBJECT",
+  "frameEnd": 1079,
+  "frameStart": 1079,
+  "gfxID": 5,
+  "height": 49,
+  "objectName": "OBJECT_PEG01",
+  "width": 79
+ },
+ {
+  "animationName": "OBJECT_STONEMINE1_00_OBJECT",
+  "frameEnd": 1080,
+  "frameStart": 1080,
+  "gfxID": 5,
+  "height": 49,
+  "objectName": "OBJECT_STONEMINE1_00",
+  "width": 79
+ },
+ {
+  "animationName": "OBJECT_STONEMINE1_01_OBJECT",
+  "frameEnd": 1081,
+  "frameStart": 1081,
+  "gfxID": 5,
+  "height": 49,
+  "objectName": "OBJECT_STONEMINE1_01",
+  "width": 79
+ },
+ {
+  "animationName": "OBJECT_STONEMINE1_02_OBJECT",
+  "frameEnd": 1082,
+  "frameStart": 1082,
+  "gfxID": 5,
+  "height": 66,
+  "objectName": "OBJECT_STONEMINE1_02",
+  "width": 79
+ },
+ {
+  "animationName": "OBJECT_STONEMINE1_03_OBJECT",
+  "frameEnd": 1083,
+  "frameStart": 1083,
+  "gfxID": 5,
+  "height": 66,
+  "objectName": "OBJECT_STONEMINE1_03",
+  "width": 83
+ },
+ {
+  "animationName": "OBJECT_STONEMINE1_04_OBJECT",
+  "frameEnd": 1084,
+  "frameStart": 1084,
+  "gfxID": 5,
+  "height": 66,
+  "objectName": "OBJECT_STONEMINE1_04",
+  "width": 83
+ },
+ {
+  "animationName": "OBJECT_STONEMINE1_05_OBJECT",
+  "frameEnd": 1085,
+  "frameStart": 1085,
+  "gfxID": 5,
+  "height": 66,
+  "objectName": "OBJECT_STONEMINE1_05",
+  "width": 83
+ },
+ {
+  "animationName": "OBJECT_STONEMINE1_06_OBJECT",
+  "frameEnd": 1086,
+  "frameStart": 1086,
+  "gfxID": 5,
+  "height": 74,
+  "objectName": "OBJECT_STONEMINE1_06",
+  "width": 83
+ },
+ {
+  "animationName": "OBJECT_STONEMINE1_07_OBJECT",
+  "frameEnd": 1087,
+  "frameStart": 1087,
+  "gfxID": 5,
+  "height": 93,
+  "objectName": "OBJECT_STONEMINE1_07",
+  "width": 83
+ },
+ {
+  "animationName": "OBJECT_STONEMINE1_08_OBJECT",
+  "frameEnd": 1088,
+  "frameStart": 1088,
+  "gfxID": 5,
+  "height": 93,
+  "objectName": "OBJECT_STONEMINE1_08",
+  "width": 83
+ },
+ {
+  "animationName": "OBJECT_STONEMINE1_09_OBJECT",
+  "frameEnd": 1089,
+  "frameStart": 1089,
+  "gfxID": 5,
+  "height": 93,
+  "objectName": "OBJECT_STONEMINE1_09",
+  "width": 83
+ },
+ {
+  "animationName": "OBJECT_STONEMINE1_10_OBJECT",
+  "frameEnd": 1090,
+  "frameStart": 1090,
+  "gfxID": 5,
+  "height": 103,
+  "objectName": "OBJECT_STONEMINE1_10",
+  "width": 83
+ },
+ {
+  "animationName": "OBJECT_STONEMINE1_11_OBJECT",
+  "frameEnd": 1091,
+  "frameStart": 1091,
+  "gfxID": 5,
+  "height": 107,
+  "objectName": "OBJECT_STONEMINE1_11",
+  "width": 85
+ },
+ {
+  "animationName": "OBJECT_STONEMINE1_12_OBJECT",
+  "frameEnd": 1092,
+  "frameStart": 1092,
+  "gfxID": 5,
+  "height": 51,
+  "objectName": "OBJECT_STONEMINE1_12",
+  "width": 82
+ },
+ {
+  "animationName": "OBJECT_DARKSTONEMINE1_00_OBJECT",
+  "frameEnd": 1093,
+  "frameStart": 1093,
+  "gfxID": 5,
+  "height": 51,
+  "objectName": "OBJECT_DARKSTONEMINE1_00",
+  "width": 82
+ },
+ {
+  "animationName": "OBJECT_DARKSTONEMINE1_01_OBJECT",
+  "frameEnd": 1094,
+  "frameStart": 1094,
+  "gfxID": 5,
+  "height": 68,
+  "objectName": "OBJECT_DARKSTONEMINE1_01",
+  "width": 82
+ },
+ {
+  "animationName": "OBJECT_DARKSTONEMINE1_02_OBJECT",
+  "frameEnd": 1095,
+  "frameStart": 1095,
+  "gfxID": 5,
+  "height": 68,
+  "objectName": "OBJECT_DARKSTONEMINE1_02",
+  "width": 82
+ },
+ {
+  "animationName": "OBJECT_DARKSTONEMINE1_03_OBJECT",
+  "frameEnd": 1096,
+  "frameStart": 1096,
+  "gfxID": 5,
+  "height": 68,
+  "objectName": "OBJECT_DARKSTONEMINE1_03",
+  "width": 91
+ },
+ {
+  "animationName": "OBJECT_DARKSTONEMINE1_04_OBJECT",
+  "frameEnd": 1097,
+  "frameStart": 1097,
+  "gfxID": 5,
+  "height": 68,
+  "objectName": "OBJECT_DARKSTONEMINE1_04",
+  "width": 91
+ },
+ {
+  "animationName": "OBJECT_DARKSTONEMINE1_05_OBJECT",
+  "frameEnd": 1098,
+  "frameStart": 1098,
+  "gfxID": 5,
+  "height": 68,
+  "objectName": "OBJECT_DARKSTONEMINE1_05",
+  "width": 97
+ },
+ {
+  "animationName": "OBJECT_DARKSTONEMINE1_06_OBJECT",
+  "frameEnd": 1099,
+  "frameStart": 1099,
+  "gfxID": 5,
+  "height": 76,
+  "objectName": "OBJECT_DARKSTONEMINE1_06",
+  "width": 97
+ },
+ {
+  "animationName": "OBJECT_DARKSTONEMINE1_07_OBJECT",
+  "frameEnd": 1100,
+  "frameStart": 1100,
+  "gfxID": 5,
+  "height": 95,
+  "objectName": "OBJECT_DARKSTONEMINE1_07",
+  "width": 97
+ },
+ {
+  "animationName": "OBJECT_DARKSTONEMINE1_08_OBJECT",
+  "frameEnd": 1101,
+  "frameStart": 1101,
+  "gfxID": 5,
+  "height": 95,
+  "objectName": "OBJECT_DARKSTONEMINE1_08",
+  "width": 97
+ },
+ {
+  "animationName": "OBJECT_DARKSTONEMINE1_09_OBJECT",
+  "frameEnd": 1102,
+  "frameStart": 1102,
+  "gfxID": 5,
+  "height": 95,
+  "objectName": "OBJECT_DARKSTONEMINE1_09",
+  "width": 108
+ },
+ {
+  "animationName": "OBJECT_DARKSTONEMINE1_10_OBJECT",
+  "frameEnd": 1103,
+  "frameStart": 1103,
+  "gfxID": 5,
+  "height": 105,
+  "objectName": "OBJECT_DARKSTONEMINE1_10",
+  "width": 121
+ },
+ {
+  "animationName": "OBJECT_DARKSTONEMINE1_11_OBJECT",
+  "frameEnd": 1104,
+  "frameStart": 1104,
+  "gfxID": 5,
+  "height": 105,
+  "objectName": "OBJECT_DARKSTONEMINE1_11",
+  "width": 121
+ },
+ {
+  "animationName": "OBJECT_DARKSTONEMINE1_12_OBJECT",
+  "frameEnd": 1105,
+  "frameStart": 1105,
+  "gfxID": 5,
+  "height": 83,
+  "objectName": "OBJECT_DARKSTONEMINE1_12",
+  "width": 134
+ },
+ {
+  "animationName": "OBJECT_DARKPOND_OBJECT",
+  "frameEnd": 1106,
+  "frameStart": 1106,
+  "gfxID": 5,
+  "height": 50,
+  "objectName": "OBJECT_DARKPOND",
+  "width": 64
+ },
+ {
+  "animationName": "OBJECT_DARKSNOWMAN_OBJECT",
+  "frameEnd": 1107,
+  "frameStart": 1107,
+  "gfxID": 5,
+  "height": 103,
+  "objectName": "OBJECT_DARKSNOWMAN",
+  "width": 82
+ },
+ {
+  "animationName": "OBJECT_COLUMNRUINS_A2_OBJECT",
+  "frameEnd": 1108,
+  "frameStart": 1108,
+  "gfxID": 5,
+  "height": 153,
+  "objectName": "OBJECT_COLUMNRUINS_A2",
+  "width": 79
+ },
+ {
+  "animationName": "OBJECT_COLUMNRUINS_E1_OBJECT",
+  "frameEnd": 1109,
+  "frameStart": 1109,
+  "gfxID": 5,
+  "height": 157,
+  "objectName": "OBJECT_COLUMNRUINS_E1",
+  "width": 133
+ },
+ {
+  "animationName": "OBJECT_COLUMNRUINS_E2_OBJECT",
+  "frameEnd": 1110,
+  "frameStart": 1110,
+  "gfxID": 5,
+  "height": 167,
+  "objectName": "OBJECT_COLUMNRUINS_E2",
+  "width": 127
+ },
+ {
+  "animationName": "OBJECT_COLUMNRUINS_E3_OBJECT",
+  "frameEnd": 1111,
+  "frameStart": 1111,
+  "gfxID": 5,
+  "height": 144,
+  "objectName": "OBJECT_COLUMNRUINS_E3",
+  "width": 180
+ },
+ {
+  "animationName": "OBJECT_COLUMNRUINS_E4_OBJECT",
+  "frameEnd": 1112,
+  "frameStart": 1112,
+  "gfxID": 5,
+  "height": 103,
+  "objectName": "OBJECT_COLUMNRUINS_E4",
+  "width": 110
+ },
+ {
+  "animationName": "OBJECT_COLUMNRUINS_S1_OBJECT",
+  "frameEnd": 1113,
+  "frameStart": 1113,
+  "gfxID": 5,
+  "height": 79,
+  "objectName": "OBJECT_COLUMNRUINS_S1",
+  "width": 65
+ },
+ {
+  "animationName": "OBJECT_COLUMNRUINS_S2_OBJECT",
+  "frameEnd": 1114,
+  "frameStart": 1114,
+  "gfxID": 5,
+  "height": 76,
+  "objectName": "OBJECT_COLUMNRUINS_S2",
+  "width": 140
+ },
+ {
+  "animationName": "OBJECT_COLUMNRUINS_S3_OBJECT",
+  "frameEnd": 1115,
+  "frameStart": 1115,
+  "gfxID": 5,
+  "height": 54,
+  "objectName": "OBJECT_COLUMNRUINS_S3",
+  "width": 59
+ },
+ {
+  "animationName": "OBJECT_BUSH8_OBJECT",
+  "frameEnd": 1123,
+  "frameStart": 1116,
+  "gfxID": 5,
+  "height": 71,
+  "objectName": "OBJECT_BUSH8",
+  "width": 86
+ },
+ {
+  "animationName": "OBJECT_GRAVE1_OBJECT",
+  "frameEnd": 1124,
+  "frameStart": 1124,
+  "gfxID": 5,
+  "height": 108,
+  "objectName": "OBJECT_GRAVE1",
+  "width": 76
+ },
+ {
+  "animationName": "OBJECT_GRAPE_GROW_01",
+  "frameEnd": 1125,
+  "frameStart": 1125,
+  "gfxID": 5,
+  "height": 106,
+  "objectName": "OBJECT_GRAPE",
+  "width": 76
+ },
+ {
+  "animationName": "OBJECT_GRAPE_GROW_02",
+  "frameEnd": 1126,
+  "frameStart": 1126,
+  "gfxID": 5,
+  "height": 117,
+  "objectName": "OBJECT_GRAPE",
+  "width": 91
+ },
+ {
+  "animationName": "OBJECT_GRAPE_GROW_03",
+  "frameEnd": 1127,
+  "frameStart": 1127,
+  "gfxID": 5,
+  "height": 118,
+  "objectName": "OBJECT_GRAPE",
+  "width": 101
+ },
+ {
+  "animationName": "OBJECT_GRAPE_GROWNUP",
+  "frameEnd": 1128,
+  "frameStart": 1128,
+  "gfxID": 5,
+  "height": 107,
+  "objectName": "OBJECT_GRAPE",
+  "width": 89
+ },
+ {
+  "animationName": "OBJECT_GRAPE_CUT",
+  "frameEnd": 1129,
+  "frameStart": 1129,
+  "gfxID": 5,
+  "height": 132,
+  "objectName": "OBJECT_GRAPE",
+  "width": 123
+ },
+ {
+  "animationName": "OBJECT_SEEWEED1_OBJECT",
+  "frameEnd": 1138,
+  "frameStart": 1130,
+  "gfxID": 5,
+  "height": 85,
+  "objectName": "OBJECT_SEEWEED1",
+  "width": 129
+ },
+ {
+  "animationName": "OBJECT_SEEWEED2_OBJECT",
+  "frameEnd": 1147,
+  "frameStart": 1139,
+  "gfxID": 5,
+  "height": 168,
+  "objectName": "OBJECT_SEEWEED2",
+  "width": 217
+ },
+ {
+  "animationName": "OBJECT_SEEWEED3_OBJECT",
+  "frameEnd": 1156,
+  "frameStart": 1148,
+  "gfxID": 5,
+  "height": 112,
+  "objectName": "OBJECT_SEEWEED3",
+  "width": 113
+ },
+ {
+  "animationName": "OBJECT_REED1_OBJECT",
+  "frameEnd": 1165,
+  "frameStart": 1157,
+  "gfxID": 5,
+  "height": 118,
+  "objectName": "OBJECT_REED1",
+  "width": 134
+ },
+ {
+  "animationName": "OBJECT_REED2_OBJECT",
+  "frameEnd": 1174,
+  "frameStart": 1166,
+  "gfxID": 5,
+  "height": 130,
+  "objectName": "OBJECT_REED2",
+  "width": 125
+ },
+ {
+  "animationName": "OBJECT_REED3_OBJECT",
+  "frameEnd": 1183,
+  "frameStart": 1175,
+  "gfxID": 5,
+  "height": 47,
+  "objectName": "OBJECT_REED3",
+  "width": 71
+ },
+ {
+  "animationName": "OBJECT_MUSSEL1_OBJECT",
+  "frameEnd": 1184,
+  "frameStart": 1184,
+  "gfxID": 5,
+  "height": 58,
+  "objectName": "OBJECT_MUSSEL1",
+  "width": 70
+ },
+ {
+  "animationName": "OBJECT_MUSSEL2_OBJECT",
+  "frameEnd": 1185,
+  "frameStart": 1185,
+  "gfxID": 5,
+  "height": 35,
+  "objectName": "OBJECT_MUSSEL2",
+  "width": 41
+ },
+ {
+  "animationName": "OBJECT_WATERLILY1_OBJECT",
+  "frameEnd": 1186,
+  "frameStart": 1186,
+  "gfxID": 5,
+  "height": 33,
+  "objectName": "OBJECT_WATERLILY1",
+  "width": 35
+ },
+ {
+  "animationName": "OBJECT_WATERLILY2_OBJECT",
+  "frameEnd": 1187,
+  "frameStart": 1187,
+  "gfxID": 5,
+  "height": 48,
+  "objectName": "OBJECT_WATERLILY2",
+  "width": 70
+ },
+ {
+  "animationName": "OBJECT_WATERLILY3_OBJECT",
+  "frameEnd": 1188,
+  "frameStart": 1188,
+  "gfxID": 5,
+  "height": 65,
+  "objectName": "OBJECT_WATERLILY3",
+  "width": 74
+ },
+ {
+  "animationName": "OBJECT_BRANCH1_OBJECT",
+  "frameEnd": 1189,
+  "frameStart": 1189,
+  "gfxID": 5,
+  "height": 59,
+  "objectName": "OBJECT_BRANCH1",
+  "width": 41
+ },
+ {
+  "animationName": "OBJECT_BRANCH2_OBJECT",
+  "frameEnd": 1190,
+  "frameStart": 1190,
+  "gfxID": 5,
+  "height": 26,
+  "objectName": "OBJECT_BRANCH2",
+  "width": 67
+ },
+ {
+  "animationName": "OBJECT_BRANCH3_OBJECT",
+  "frameEnd": 1191,
+  "frameStart": 1191,
+  "gfxID": 5,
+  "height": 58,
+  "objectName": "OBJECT_BRANCH3",
+  "width": 64
+ },
+ {
+  "animationName": "OBJECT_BRANCH4_OBJECT",
+  "frameEnd": 1192,
+  "frameStart": 1192,
+  "gfxID": 5,
+  "height": 73,
+  "objectName": "OBJECT_BRANCH4",
+  "width": 81
+ },
+ {
+  "animationName": "OBJECT_DESERTBUSH1_OBJECT",
+  "frameEnd": 1193,
+  "frameStart": 1193,
+  "gfxID": 5,
+  "height": 93,
+  "objectName": "OBJECT_DESERTBUSH1",
+  "width": 122
+ },
+ {
+  "animationName": "OBJECT_DESERTBUSH2_OBJECT",
+  "frameEnd": 1194,
+  "frameStart": 1194,
+  "gfxID": 5,
+  "height": 85,
+  "objectName": "OBJECT_DESERTBUSH2",
+  "width": 118
+ },
+ {
+  "animationName": "OBJECT_DESERTBUSH3_OBJECT",
+  "frameEnd": 1195,
+  "frameStart": 1195,
+  "gfxID": 5,
+  "height": 87,
+  "objectName": "OBJECT_DESERTBUSH3",
+  "width": 75
+ },
+ {
+  "animationName": "OBJECT_MUSHROOM1_OBJECT",
+  "frameEnd": 1196,
+  "frameStart": 1196,
+  "gfxID": 5,
+  "height": 27,
+  "objectName": "OBJECT_MUSHROOM1",
+  "width": 42
+ },
+ {
+  "animationName": "OBJECT_MUSHROOM2_OBJECT",
+  "frameEnd": 1197,
+  "frameStart": 1197,
+  "gfxID": 5,
+  "height": 30,
+  "objectName": "OBJECT_MUSHROOM2",
+  "width": 40
+ },
+ {
+  "animationName": "OBJECT_MUSHROOM3_OBJECT",
+  "frameEnd": 1198,
+  "frameStart": 1198,
+  "gfxID": 5,
+  "height": 44,
+  "objectName": "OBJECT_MUSHROOM3",
+  "width": 77
+ },
+ {
+  "animationName": "OBJECT_FLOWER1_OBJECT",
+  "frameEnd": 1199,
+  "frameStart": 1199,
+  "gfxID": 5,
+  "height": 51,
+  "objectName": "OBJECT_FLOWER1",
+  "width": 81
+ },
+ {
+  "animationName": "OBJECT_FLOWER2_OBJECT",
+  "frameEnd": 1200,
+  "frameStart": 1200,
+  "gfxID": 5,
+  "height": 57,
+  "objectName": "OBJECT_FLOWER2",
+  "width": 86
+ },
+ {
+  "animationName": "OBJECT_FLOWER3_OBJECT",
+  "frameEnd": 1201,
+  "frameStart": 1201,
+  "gfxID": 5,
+  "height": 55,
+  "objectName": "OBJECT_FLOWER3",
+  "width": 82
+ },
+ {
+  "animationName": "OBJECT_FLOWER4_OBJECT",
+  "frameEnd": 1202,
+  "frameStart": 1202,
+  "gfxID": 5,
+  "height": 60,
+  "objectName": "OBJECT_FLOWER4",
+  "width": 65
+ },
+ {
+  "animationName": "OBJECT_FLOWER5_OBJECT",
+  "frameEnd": 1203,
+  "frameStart": 1203,
+  "gfxID": 5,
+  "height": 95,
+  "objectName": "OBJECT_FLOWER5",
+  "width": 107
+ },
+ {
+  "animationName": "OBJECT_FOLIAGE1_OBJECT",
+  "frameEnd": 1204,
+  "frameStart": 1204,
+  "gfxID": 5,
+  "height": 87,
+  "objectName": "OBJECT_FOLIAGE1",
+  "width": 150
+ },
+ {
+  "animationName": "OBJECT_FOLIAGE2_OBJECT",
+  "frameEnd": 1205,
+  "frameStart": 1205,
+  "gfxID": 5,
+  "height": 161,
+  "objectName": "OBJECT_FOLIAGE2",
+  "width": 202
+ },
+ {
+  "animationName": "OBJECT_FOLIAGE3_OBJECT",
+  "frameEnd": 1206,
+  "frameStart": 1206,
+  "gfxID": 5,
+  "height": 148,
+  "objectName": "OBJECT_FOLIAGE3",
+  "width": 176
+ },
+ {
+  "animationName": "OBJECT_COLUMNRUINS_W1_OBJECT",
+  "frameEnd": 1207,
+  "frameStart": 1207,
+  "gfxID": 5,
+  "height": 27,
+  "objectName": "OBJECT_COLUMNRUINS_W1",
+  "width": 28
+ },
+ {
+  "animationName": "OBJECT_SHIELD_EMPTY_OBJECT",
+  "frameEnd": 1208,
+  "frameStart": 1208,
+  "gfxID": 5,
+  "height": 27,
+  "objectName": "OBJECT_SHIELD_EMPTY",
+  "width": 28
+ },
+ {
+  "animationName": "OBJECT_SHIELD_COAL1_OBJECT",
+  "frameEnd": 1209,
+  "frameStart": 1209,
+  "gfxID": 5,
+  "height": 27,
+  "objectName": "OBJECT_SHIELD_COAL1",
+  "width": 28
+ },
+ {
+  "animationName": "OBJECT_SHIELD_COAL2_OBJECT",
+  "frameEnd": 1210,
+  "frameStart": 1210,
+  "gfxID": 5,
+  "height": 27,
+  "objectName": "OBJECT_SHIELD_COAL2",
+  "width": 28
+ },
+ {
+  "animationName": "OBJECT_SHIELD_COAL3_OBJECT",
+  "frameEnd": 1211,
+  "frameStart": 1211,
+  "gfxID": 5,
+  "height": 27,
+  "objectName": "OBJECT_SHIELD_COAL3",
+  "width": 28
+ },
+ {
+  "animationName": "OBJECT_SHIELD_GOLD1_OBJECT",
+  "frameEnd": 1212,
+  "frameStart": 1212,
+  "gfxID": 5,
+  "height": 27,
+  "objectName": "OBJECT_SHIELD_GOLD1",
+  "width": 28
+ },
+ {
+  "animationName": "OBJECT_SHIELD_GOLD2_OBJECT",
+  "frameEnd": 1213,
+  "frameStart": 1213,
+  "gfxID": 5,
+  "height": 27,
+  "objectName": "OBJECT_SHIELD_GOLD2",
+  "width": 28
+ },
+ {
+  "animationName": "OBJECT_SHIELD_GOLD3_OBJECT",
+  "frameEnd": 1214,
+  "frameStart": 1214,
+  "gfxID": 5,
+  "height": 27,
+  "objectName": "OBJECT_SHIELD_GOLD3",
+  "width": 28
+ },
+ {
+  "animationName": "OBJECT_SHIELD_IRON1_OBJECT",
+  "frameEnd": 1215,
+  "frameStart": 1215,
+  "gfxID": 5,
+  "height": 27,
+  "objectName": "OBJECT_SHIELD_IRON1",
+  "width": 28
+ },
+ {
+  "animationName": "OBJECT_SHIELD_IRON2_OBJECT",
+  "frameEnd": 1216,
+  "frameStart": 1216,
+  "gfxID": 5,
+  "height": 27,
+  "objectName": "OBJECT_SHIELD_IRON2",
+  "width": 28
+ },
+ {
+  "animationName": "OBJECT_SHIELD_IRON3_OBJECT",
+  "frameEnd": 1217,
+  "frameStart": 1217,
+  "gfxID": 5,
+  "height": 27,
+  "objectName": "OBJECT_SHIELD_IRON3",
+  "width": 28
+ },
+ {
+  "animationName": "OBJECT_SHIELD_STONE1_OBJECT",
+  "frameEnd": 1218,
+  "frameStart": 1218,
+  "gfxID": 5,
+  "height": 27,
+  "objectName": "OBJECT_SHIELD_STONE1",
+  "width": 28
+ },
+ {
+  "animationName": "OBJECT_SHIELD_STONE2_OBJECT",
+  "frameEnd": 1219,
+  "frameStart": 1219,
+  "gfxID": 5,
+  "height": 27,
+  "objectName": "OBJECT_SHIELD_STONE2",
+  "width": 28
+ },
+ {
+  "animationName": "OBJECT_SHIELD_STONE3_OBJECT",
+  "frameEnd": 1220,
+  "frameStart": 1220,
+  "gfxID": 5,
+  "height": 27,
+  "objectName": "OBJECT_SHIELD_STONE3",
+  "width": 28
+ },
+ {
+  "animationName": "OBJECT_SHIELD_SULFUR1_OBJECT",
+  "frameEnd": 1221,
+  "frameStart": 1221,
+  "gfxID": 5,
+  "height": 27,
+  "objectName": "OBJECT_SHIELD_SULFUR1",
+  "width": 28
+ },
+ {
+  "animationName": "OBJECT_SHIELD_SULFUR2_OBJECT",
+  "frameEnd": 1222,
+  "frameStart": 1222,
+  "gfxID": 5,
+  "height": 27,
+  "objectName": "OBJECT_SHIELD_SULFUR2",
+  "width": 28
+ },
+ {
+  "animationName": "OBJECT_SHIELD_SULFUR3_OBJECT",
+  "frameEnd": 1223,
+  "frameStart": 1223,
+  "gfxID": 5,
+  "height": 66,
+  "objectName": "OBJECT_SHIELD_SULFUR3",
+  "width": 96
+ },
+ {
+  "animationName": "OBJECT_WHEAT1_GROW_01",
+  "frameEnd": 1224,
+  "frameStart": 1224,
+  "gfxID": 5,
+  "height": 87,
+  "objectName": "OBJECT_WHEAT1",
+  "width": 130
+ },
+ {
+  "animationName": "OBJECT_WHEAT1_GROW_02",
+  "frameEnd": 1225,
+  "frameStart": 1225,
+  "gfxID": 5,
+  "height": 123,
+  "objectName": "OBJECT_WHEAT1",
+  "width": 162
+ },
+ {
+  "animationName": "OBJECT_WHEAT1_GROW_03",
+  "frameEnd": 1226,
+  "frameStart": 1226,
+  "gfxID": 5,
+  "height": 148,
+  "objectName": "OBJECT_WHEAT1",
+  "width": 186
+ },
+ {
+  "animationName": "OBJECT_WHEAT1_GROWNUP",
+  "frameEnd": 1234,
+  "frameStart": 1227,
+  "gfxID": 5,
+  "height": 101,
+  "objectName": "OBJECT_WHEAT1",
+  "width": 134
+ },
+ {
+  "animationName": "OBJECT_WHEAT1_CUT",
+  "frameEnd": 1235,
+  "frameStart": 1235,
+  "gfxID": 5,
+  "height": 131,
+  "objectName": "OBJECT_WHEAT1",
+  "width": 171
+ },
+ {
+  "animationName": "OBJECT_WHEAT1_ROT",
+  "frameEnd": 1243,
+  "frameStart": 1236,
+  "gfxID": 5,
+  "height": 66,
+  "objectName": "OBJECT_WHEAT1",
+  "width": 96
+ },
+ {
+  "animationName": "OBJECT_WHEAT2_GROW_01",
+  "frameEnd": 1244,
+  "frameStart": 1244,
+  "gfxID": 5,
+  "height": 89,
+  "objectName": "OBJECT_WHEAT2",
+  "width": 129
+ },
+ {
+  "animationName": "OBJECT_WHEAT2_GROW_02",
+  "frameEnd": 1245,
+  "frameStart": 1245,
+  "gfxID": 5,
+  "height": 116,
+  "objectName": "OBJECT_WHEAT2",
+  "width": 165
+ },
+ {
+  "animationName": "OBJECT_WHEAT2_GROW_03",
+  "frameEnd": 1246,
+  "frameStart": 1246,
+  "gfxID": 5,
+  "height": 146,
+  "objectName": "OBJECT_WHEAT2",
+  "width": 191
+ },
+ {
+  "animationName": "OBJECT_WHEAT2_GROWNUP",
+  "frameEnd": 1254,
+  "frameStart": 1247,
+  "gfxID": 5,
+  "height": 101,
+  "objectName": "OBJECT_WHEAT2",
+  "width": 138
+ },
+ {
+  "animationName": "OBJECT_WHEAT2_CUT",
+  "frameEnd": 1255,
+  "frameStart": 1255,
+  "gfxID": 5,
+  "height": 129,
+  "objectName": "OBJECT_WHEAT2",
+  "width": 184
+ },
+ {
+  "animationName": "OBJECT_WHEAT2_ROT",
+  "frameEnd": 1263,
+  "frameStart": 1256,
+  "gfxID": 5,
+  "height": 43,
+  "objectName": "OBJECT_WHEAT2",
+  "width": 51
+ },
+ {
+  "animationName": "OBJECT_AGAVE_GROW_01",
+  "frameEnd": 1264,
+  "frameStart": 1264,
+  "gfxID": 5,
+  "height": 87,
+  "objectName": "OBJECT_AGAVE",
+  "width": 75
+ },
+ {
+  "animationName": "OBJECT_AGAVE_GROW_02",
+  "frameEnd": 1265,
+  "frameStart": 1265,
+  "gfxID": 5,
+  "height": 111,
+  "objectName": "OBJECT_AGAVE",
+  "width": 94
+ },
+ {
+  "animationName": "OBJECT_AGAVE_GROW_03",
+  "frameEnd": 1266,
+  "frameStart": 1266,
+  "gfxID": 5,
+  "height": 130,
+  "objectName": "OBJECT_AGAVE",
+  "width": 104
+ },
+ {
+  "animationName": "OBJECT_AGAVE_GROWNUP",
+  "frameEnd": 1282,
+  "frameStart": 1267,
+  "gfxID": 5,
+  "height": 93,
+  "objectName": "OBJECT_AGAVE",
+  "width": 82
+ },
+ {
+  "animationName": "OBJECT_AGAVE_ROT",
+  "frameEnd": 1283,
+  "frameStart": 1283,
+  "gfxID": 5,
+  "height": 17,
+  "objectName": "OBJECT_AGAVE",
+  "width": 23
+ },
+ {
+  "animationName": "OBJECT_MUSHROOM_DARK1_GROW_01",
+  "frameEnd": 1284,
+  "frameStart": 1284,
+  "gfxID": 5,
+  "height": 24,
+  "objectName": "OBJECT_MUSHROOM_DARK1",
+  "width": 34
+ },
+ {
+  "animationName": "OBJECT_MUSHROOM_DARK1_GROW_02",
+  "frameEnd": 1285,
+  "frameStart": 1285,
+  "gfxID": 5,
+  "height": 25,
+  "objectName": "OBJECT_MUSHROOM_DARK1",
+  "width": 34
+ },
+ {
+  "animationName": "OBJECT_MUSHROOM_DARK1_GROW_03",
+  "frameEnd": 1286,
+  "frameStart": 1286,
+  "gfxID": 5,
+  "height": 34,
+  "objectName": "OBJECT_MUSHROOM_DARK1",
+  "width": 45
+ },
+ {
+  "animationName": "OBJECT_MUSHROOM_DARK1_GROWNUP",
+  "frameEnd": 1287,
+  "frameStart": 1287,
+  "gfxID": 5,
+  "height": 37,
+  "objectName": "OBJECT_MUSHROOM_DARK1",
+  "width": 44
+ },
+ {
+  "animationName": "OBJECT_MUSHROOM_DARK1_ROT",
+  "frameEnd": 1288,
+  "frameStart": 1288,
+  "gfxID": 5,
+  "height": 13,
+  "objectName": "OBJECT_MUSHROOM_DARK1",
+  "width": 18
+ },
+ {
+  "animationName": "OBJECT_MUSHROOM_DARK2_GROW_01",
+  "frameEnd": 1289,
+  "frameStart": 1289,
+  "gfxID": 5,
+  "height": 22,
+  "objectName": "OBJECT_MUSHROOM_DARK2",
+  "width": 29
+ },
+ {
+  "animationName": "OBJECT_MUSHROOM_DARK2_GROW_02",
+  "frameEnd": 1290,
+  "frameStart": 1290,
+  "gfxID": 5,
+  "height": 29,
+  "objectName": "OBJECT_MUSHROOM_DARK2",
+  "width": 41
+ },
+ {
+  "animationName": "OBJECT_MUSHROOM_DARK2_GROW_03",
+  "frameEnd": 1291,
+  "frameStart": 1291,
+  "gfxID": 5,
+  "height": 33,
+  "objectName": "OBJECT_MUSHROOM_DARK2",
+  "width": 44
+ },
+ {
+  "animationName": "OBJECT_MUSHROOM_DARK2_GROWNUP",
+  "frameEnd": 1292,
+  "frameStart": 1292,
+  "gfxID": 5,
+  "height": 37,
+  "objectName": "OBJECT_MUSHROOM_DARK2",
+  "width": 42
+ },
+ {
+  "animationName": "OBJECT_MUSHROOM_DARK2_ROT",
+  "frameEnd": 1293,
+  "frameStart": 1293,
+  "gfxID": 5,
+  "height": 12,
+  "objectName": "OBJECT_MUSHROOM_DARK2",
+  "width": 15
+ },
+ {
+  "animationName": "OBJECT_MUSHROOM_DARK3_GROW_01",
+  "frameEnd": 1294,
+  "frameStart": 1294,
+  "gfxID": 5,
+  "height": 17,
+  "objectName": "OBJECT_MUSHROOM_DARK3",
+  "width": 22
+ },
+ {
+  "animationName": "OBJECT_MUSHROOM_DARK3_GROW_02",
+  "frameEnd": 1295,
+  "frameStart": 1295,
+  "gfxID": 5,
+  "height": 22,
+  "objectName": "OBJECT_MUSHROOM_DARK3",
+  "width": 28
+ },
+ {
+  "animationName": "OBJECT_MUSHROOM_DARK3_GROW_03",
+  "frameEnd": 1296,
+  "frameStart": 1296,
+  "gfxID": 5,
+  "height": 31,
+  "objectName": "OBJECT_MUSHROOM_DARK3",
+  "width": 39
+ },
+ {
+  "animationName": "OBJECT_MUSHROOM_DARK3_GROWNUP",
+  "frameEnd": 1297,
+  "frameStart": 1297,
+  "gfxID": 5,
+  "height": 37,
+  "objectName": "OBJECT_MUSHROOM_DARK3",
+  "width": 42
+ },
+ {
+  "animationName": "OBJECT_MUSHROOM_DARK3_ROT",
+  "frameEnd": 1298,
+  "frameStart": 1298,
+  "gfxID": 5,
+  "height": 57,
+  "objectName": "OBJECT_MUSHROOM_DARK3",
+  "width": 63
+ },
+ {
+  "animationName": "OBJECT_SNOWMAN_OBJECT",
+  "frameEnd": 1299,
+  "frameStart": 1299,
+  "gfxID": 5,
+  "height": 107,
+  "objectName": "OBJECT_SNOWMAN",
+  "width": 94
+ },
+ {
+  "animationName": "OBJECT_SHADOWHERB_GROW",
+  "frameEnd": 1313,
+  "frameStart": 1300,
+  "gfxID": 5,
+  "height": 99,
+  "objectName": "OBJECT_SHADOWHERB",
+  "width": 132
+ },
+ {
+  "animationName": "OBJECT_SHADOWHERB_GROWNUP",
+  "frameEnd": 1344,
+  "frameStart": 1314,
+  "gfxID": 5,
+  "height": 116,
+  "objectName": "OBJECT_SHADOWHERB",
+  "width": 114
+ },
+ {
+  "animationName": "OBJECT_SHADOWHERB_ROT",
+  "frameEnd": 1360,
+  "frameStart": 1345,
+  "gfxID": 5,
+  "height": 75,
+  "objectName": "OBJECT_SHADOWHERB",
+  "width": 70
+ },
+ {
+  "animationName": "OBJECT_HIVE_GROW",
+  "frameEnd": 1372,
+  "frameStart": 1361,
+  "gfxID": 5,
+  "height": 45,
+  "objectName": "OBJECT_HIVE",
+  "width": 34
+ },
+ {
+  "animationName": "OBJECT_HIVE_FULL",
+  "frameEnd": 1373,
+  "frameStart": 1373,
+  "gfxID": 5,
+  "height": 47,
+  "objectName": "OBJECT_HIVE",
+  "width": 59
+ },
+ {
+  "animationName": "OBJECT_HIVE_ROT1",
+  "frameEnd": 1374,
+  "frameStart": 1374,
+  "gfxID": 5,
+  "height": 31,
+  "objectName": "OBJECT_HIVE",
+  "width": 41
+ },
+ {
+  "animationName": "OBJECT_HIVE_ROT2",
+  "frameEnd": 1375,
+  "frameStart": 1375,
+  "gfxID": 5,
+  "height": 145,
+  "objectName": "OBJECT_HIVE",
+  "width": 172
+ },
+ {
+  "animationName": "OBJECT_COLUMNRUINS_W2_OBJECT",
+  "frameEnd": 1376,
+  "frameStart": 1376,
+  "gfxID": 5,
+  "height": 139,
+  "objectName": "OBJECT_COLUMNRUINS_W2",
+  "width": 116
+ },
+ {
+  "animationName": "OBJECT_COLUMNRUINS_W3_OBJECT",
+  "frameEnd": 1377,
+  "frameStart": 1377,
+  "gfxID": 5,
+  "height": 137,
+  "objectName": "OBJECT_COLUMNRUINS_W3",
+  "width": 144
+ },
+ {
+  "animationName": "OBJECT_COLUMNRUINS_W4_OBJECT",
+  "frameEnd": 1378,
+  "frameStart": 1378,
+  "gfxID": 5,
+  "height": 41,
+  "objectName": "OBJECT_COLUMNRUINS_W4",
+  "width": 48
+ },
+ {
+  "animationName": "OBJECT_SPECIAL_FLOWER_OBJECT",
+  "frameEnd": 1387,
+  "frameStart": 1379,
+  "gfxID": 5,
+  "height": 55,
+  "objectName": "OBJECT_SPECIAL_FLOWER",
+  "width": 75
+ },
+ {
+  "animationName": "OBJECT_BUSH9_OBJECT",
+  "frameEnd": 1395,
+  "frameStart": 1388,
+  "gfxID": 5,
+  "height": 431,
+  "objectName": "OBJECT_BUSH9",
+  "width": 381
+ },
+ {
+  "animationName": "OBJECT_CASTLE_OBJECT",
+  "frameEnd": 1407,
+  "frameStart": 1396,
+  "gfxID": 5,
+  "height": 404,
+  "objectName": "OBJECT_CASTLE",
+  "width": 290
+ },
+ {
+  "animationName": "OBJECT_PHAROS_OBJECT",
+  "frameEnd": 1424,
+  "frameStart": 1408,
+  "gfxID": 5,
+  "height": 428,
+  "objectName": "OBJECT_PHAROS",
+  "width": 402
+ },
+ {
+  "animationName": "OBJECT_COLOSSUS_OBJECT",
+  "frameEnd": 1441,
+  "frameStart": 1425,
+  "gfxID": 5,
+  "height": 135,
+  "objectName": "OBJECT_COLOSSUS",
+  "width": 107
+ },
+ {
+  "animationName": "OBJECT_MOAI01_OBJECT",
+  "frameEnd": 1442,
+  "frameStart": 1442,
+  "gfxID": 5,
+  "height": 128,
+  "objectName": "OBJECT_MOAI01",
+  "width": 114
+ },
+ {
+  "animationName": "OBJECT_MOAI02_OBJECT",
+  "frameEnd": 1472,
+  "frameStart": 1443,
+  "gfxID": 5,
+  "height": 213,
+  "objectName": "OBJECT_MOAI02",
+  "width": 164
+ },
+ {
+  "animationName": "OBJECT_ALCHEMIST_OBJECT",
+  "frameEnd": 1504,
+  "frameStart": 1473,
+  "gfxID": 5,
+  "height": 74,
+  "objectName": "OBJECT_ALCHEMIST",
+  "width": 126
+ },
+ {
+  "animationName": "OBJECT_PALMPLANT_OBJECT",
+  "frameEnd": 1520,
+  "frameStart": 1505,
+  "gfxID": 5,
+  "height": 65,
+  "objectName": "OBJECT_PALMPLANT",
+  "width": 75
+ },
+ {
+  "animationName": "OBJECT_GRAVE2_OBJECT",
+  "frameEnd": 1521,
+  "frameStart": 1521,
+  "gfxID": 5,
+  "height": 58,
+  "objectName": "OBJECT_GRAVE2",
+  "width": 56
+ },
+ {
+  "animationName": "OBJECT_RUNESTONE_OBJECT",
+  "frameEnd": 1522,
+  "frameStart": 1522,
+  "gfxID": 5,
+  "height": 34,
+  "objectName": "OBJECT_RUNESTONE",
+  "width": 54
+ },
+ {
+  "animationName": "OBJECT_STONEDARKISH_B01_OBJECT",
+  "frameEnd": 1523,
+  "frameStart": 1523,
+  "gfxID": 5,
+  "height": 52,
+  "objectName": "OBJECT_STONEDARKISH_B01",
+  "width": 81
+ },
+ {
+  "animationName": "OBJECT_STONEDARKISH_B02_OBJECT",
+  "frameEnd": 1524,
+  "frameStart": 1524,
+  "gfxID": 5,
+  "height": 48,
+  "objectName": "OBJECT_STONEDARKISH_B02",
+  "width": 68
+ },
+ {
+  "animationName": "OBJECT_STONEDARKISH_B03_OBJECT",
+  "frameEnd": 1525,
+  "frameStart": 1525,
+  "gfxID": 5,
+  "height": 82,
+  "objectName": "OBJECT_STONEDARKISH_B03",
+  "width": 79
+ },
+ {
+  "animationName": "OBJECT_STONEDARKISH_B04_OBJECT",
+  "frameEnd": 1526,
+  "frameStart": 1526,
+  "gfxID": 5,
+  "height": 37,
+  "objectName": "OBJECT_STONEDARKISH_B04",
+  "width": 38
+ },
+ {
+  "animationName": "OBJECT_STONEDARKISH_B05_OBJECT",
+  "frameEnd": 1527,
+  "frameStart": 1527,
+  "gfxID": 5,
+  "height": 99,
+  "objectName": "OBJECT_STONEDARKISH_B05",
+  "width": 95
+ },
+ {
+  "animationName": "OBJECT_STONEDARKISH_B06_OBJECT",
+  "frameEnd": 1528,
+  "frameStart": 1528,
+  "gfxID": 5,
+  "height": 28,
+  "objectName": "OBJECT_STONEDARKISH_B06",
+  "width": 42
+ },
+ {
+  "animationName": "OBJECT_STONEDARKISH_B07_OBJECT",
+  "frameEnd": 1529,
+  "frameStart": 1529,
+  "gfxID": 5,
+  "height": 110,
+  "objectName": "OBJECT_STONEDARKISH_B07",
+  "width": 97
+ },
+ {
+  "animationName": "OBJECT_STONEDARKISH_B08_OBJECT",
+  "frameEnd": 1530,
+  "frameStart": 1530,
+  "gfxID": 5,
+  "height": 31,
+  "objectName": "OBJECT_STONEDARKISH_B08",
+  "width": 46
+ },
+ {
+  "animationName": "OBJECT_STONEDARKISH_B09_OBJECT",
+  "frameEnd": 1531,
+  "frameStart": 1531,
+  "gfxID": 5,
+  "height": 49,
+  "objectName": "OBJECT_STONEDARKISH_B09",
+  "width": 62
+ },
+ {
+  "animationName": "OBJECT_STONEDARKISH_B10_OBJECT",
+  "frameEnd": 1532,
+  "frameStart": 1532,
+  "gfxID": 5,
+  "height": 59,
+  "objectName": "OBJECT_STONEDARKISH_B10",
+  "width": 79
+ },
+ {
+  "animationName": "OBJECT_STONEDARKISH_G01_OBJECT",
+  "frameEnd": 1533,
+  "frameStart": 1533,
+  "gfxID": 5,
+  "height": 38,
+  "objectName": "OBJECT_STONEDARKISH_G01",
+  "width": 59
+ },
+ {
+  "animationName": "OBJECT_STONEDARKISH_G02_OBJECT",
+  "frameEnd": 1534,
+  "frameStart": 1534,
+  "gfxID": 5,
+  "height": 92,
+  "objectName": "OBJECT_STONEDARKISH_G02",
+  "width": 103
+ },
+ {
+  "animationName": "OBJECT_STONEDARKISH_G03_OBJECT",
+  "frameEnd": 1535,
+  "frameStart": 1535,
+  "gfxID": 5,
+  "height": 49,
+  "objectName": "OBJECT_STONEDARKISH_G03",
+  "width": 77
+ },
+ {
+  "animationName": "OBJECT_STONEDARKISH_G04_OBJECT",
+  "frameEnd": 1536,
+  "frameStart": 1536,
+  "gfxID": 5,
+  "height": 49,
+  "objectName": "OBJECT_STONEDARKISH_G04",
+  "width": 69
+ },
+ {
+  "animationName": "OBJECT_STONEDARKISH_G05_OBJECT",
+  "frameEnd": 1537,
+  "frameStart": 1537,
+  "gfxID": 5,
+  "height": 46,
+  "objectName": "OBJECT_STONEDARKISH_G05",
+  "width": 74
+ },
+ {
+  "animationName": "OBJECT_STONEDARKISH_G06_OBJECT",
+  "frameEnd": 1538,
+  "frameStart": 1538,
+  "gfxID": 5,
+  "height": 94,
+  "objectName": "OBJECT_STONEDARKISH_G06",
+  "width": 95
+ },
+ {
+  "animationName": "OBJECT_STONEDARKISH_G07_OBJECT",
+  "frameEnd": 1539,
+  "frameStart": 1539,
+  "gfxID": 5,
+  "height": 75,
+  "objectName": "OBJECT_STONEDARKISH_G07",
+  "width": 84
+ },
+ {
+  "animationName": "OBJECT_STONEDARKISH_G08_OBJECT",
+  "frameEnd": 1540,
+  "frameStart": 1540,
+  "gfxID": 5,
+  "height": 32,
+  "objectName": "OBJECT_STONEDARKISH_G08",
+  "width": 34
+ },
+ {
+  "animationName": "OBJECT_STONEDARKISH_G09_OBJECT",
+  "frameEnd": 1541,
+  "frameStart": 1541,
+  "gfxID": 5,
+  "height": 89,
+  "objectName": "OBJECT_STONEDARKISH_G09",
+  "width": 80
+ },
+ {
+  "animationName": "OBJECT_STONEDARKISH_G10_OBJECT",
+  "frameEnd": 1542,
+  "frameStart": 1542,
+  "gfxID": 5,
+  "height": 105,
+  "objectName": "OBJECT_STONEDARKISH_G10",
+  "width": 121
+ },
+ {
+  "animationName": "OBJECT_DARKMINESET1_OBJECT",
+  "frameEnd": 1555,
+  "frameStart": 1543,
+  "gfxID": 5,
+  "height": 38,
+  "objectName": "OBJECT_DARKMINESET1",
+  "width": 43
+ },
+ {
+  "animationName": "OBJECT_DARKSPITTER_PULSE",
+  "frameEnd": 1587,
+  "frameStart": 1556,
+  "gfxID": 5,
+  "height": 115,
+  "objectName": "OBJECT_DARKSPITTER",
+  "width": 138
+ },
+ {
+  "animationName": "OBJECT_DARKSPITTER_SPIT",
+  "frameEnd": 1619,
+  "frameStart": 1588,
+  "gfxID": 5,
+  "height": 76,
+  "objectName": "OBJECT_DARKSPITTER",
+  "width": 98
+ },
+ {
+  "animationName": "OBJECT_SUNFLOWER_GROW_01",
+  "frameEnd": 1620,
+  "frameStart": 1620,
+  "gfxID": 5,
+  "height": 75,
+  "objectName": "OBJECT_SUNFLOWER",
+  "width": 100
+ },
+ {
+  "animationName": "OBJECT_SUNFLOWER_GROW_02",
+  "frameEnd": 1621,
+  "frameStart": 1621,
+  "gfxID": 5,
+  "height": 100,
+  "objectName": "OBJECT_SUNFLOWER",
+  "width": 117
+ },
+ {
+  "animationName": "OBJECT_SUNFLOWER_GROW_03",
+  "frameEnd": 1622,
+  "frameStart": 1622,
+  "gfxID": 5,
+  "height": 105,
+  "objectName": "OBJECT_SUNFLOWER",
+  "width": 143
+ },
+ {
+  "animationName": "OBJECT_SUNFLOWER_GROWNUP",
+  "frameEnd": 1630,
+  "frameStart": 1623,
+  "gfxID": 5,
+  "height": 62,
+  "objectName": "OBJECT_SUNFLOWER",
+  "width": 75
+ },
+ {
+  "animationName": "OBJECT_SUNFLOWER_CUT",
+  "frameEnd": 1631,
+  "frameStart": 1631,
+  "gfxID": 5,
+  "height": 78,
+  "objectName": "OBJECT_SUNFLOWER",
+  "width": 104
+ },
+ {
+  "animationName": "OBJECT_SUNFLOWER_ROT",
+  "frameEnd": 1639,
+  "frameStart": 1632,
+  "gfxID": 5,
+  "height": 17,
+  "objectName": "OBJECT_SUNFLOWER",
+  "width": 31
+ },
+ {
+  "animationName": "OBJECT_WAVE_LAKE24X12_OBJECT",
+  "frameEnd": 1654,
+  "frameStart": 1640,
+  "gfxID": 5,
+  "height": 28,
+  "objectName": "OBJECT_WAVE_LAKE24X12",
+  "width": 41
+ },
+ {
+  "animationName": "OBJECT_WAVE_LAKE28X22_OBJECT",
+  "frameEnd": 1669,
+  "frameStart": 1655,
+  "gfxID": 5,
+  "height": 29,
+  "objectName": "OBJECT_WAVE_LAKE28X22",
+  "width": 47
+ },
+ {
+  "animationName": "OBJECT_WAVE_LAKE40X24_OBJECT",
+  "frameEnd": 1684,
+  "frameStart": 1670,
+  "gfxID": 5,
+  "height": 38,
+  "objectName": "OBJECT_WAVE_LAKE40X24",
+  "width": 59
+ },
+ {
+  "animationName": "OBJECT_WAVE_LAKE37X19_OBJECT",
+  "frameEnd": 1699,
+  "frameStart": 1685,
+  "gfxID": 5,
+  "height": 27,
+  "objectName": "OBJECT_WAVE_LAKE37X19",
+  "width": 78
+ },
+ {
+  "animationName": "OBJECT_WAVE_LAKE48X19_OBJECT",
+  "frameEnd": 1714,
+  "frameStart": 1700,
+  "gfxID": 5,
+  "height": 53,
+  "objectName": "OBJECT_WAVE_LAKE48X19",
+  "width": 76
+ },
+ {
+  "animationName": "OBJECT_WAVE_LAKE49X18_OBJECT",
+  "frameEnd": 1729,
+  "frameStart": 1715,
+  "gfxID": 5,
+  "height": 27,
+  "objectName": "OBJECT_WAVE_LAKE49X18",
+  "width": 49
+ },
+ {
+  "animationName": "OBJECT_WAVE_LAKE51X29_OBJECT",
+  "frameEnd": 1741,
+  "frameStart": 1730,
+  "gfxID": 5,
+  "height": 64,
+  "objectName": "OBJECT_WAVE_LAKE51X29",
+  "width": 118
+ },
+ {
+  "animationName": "OBJECT_WAVE120X63_OBJECT",
+  "frameEnd": 1753,
+  "frameStart": 1742,
+  "gfxID": 5,
+  "height": 96,
+  "objectName": "OBJECT_WAVE120X63",
+  "width": 211
+ },
+ {
+  "animationName": "OBJECT_WAVE216X99_OBJECT",
+  "frameEnd": 1765,
+  "frameStart": 1754,
+  "gfxID": 5,
+  "height": 11,
+  "objectName": "OBJECT_WAVE216X99",
+  "width": 26
+ },
+ {
+  "animationName": "OBJECT_WAVE24X9_OBJECT",
+  "frameEnd": 1777,
+  "frameStart": 1766,
+  "gfxID": 5,
+  "height": 20,
+  "objectName": "OBJECT_WAVE24X9",
+  "width": 50
+ },
+ {
+  "animationName": "OBJECT_WAVE48X18_OBJECT",
+  "frameEnd": 1789,
+  "frameStart": 1778,
+  "gfxID": 5,
+  "height": 56,
+  "objectName": "OBJECT_WAVE48X18",
+  "width": 98
+ },
+ {
+  "animationName": "OBJECT_WAVE96X54_OBJECT",
+  "frameEnd": 1801,
+  "frameStart": 1790,
+  "gfxID": 5,
+  "height": 60,
+  "objectName": "OBJECT_WAVE96X54",
+  "width": 97
+ },
+ {
+  "animationName": "OBJECT_WAVE96X63_OBJECT",
+  "frameEnd": 1813,
+  "frameStart": 1802,
+  "gfxID": 5,
+  "height": 20,
+  "objectName": "OBJECT_WAVE96X63",
+  "width": 50
+ },
+ {
+  "animationName": "OBJECT_WAVE48X18_V1_OBJECT",
+  "frameEnd": 1825,
+  "frameStart": 1814,
+  "gfxID": 5,
+  "height": 20,
+  "objectName": "OBJECT_WAVE48X18",
+  "width": 50
+ },
+ {
+  "animationName": "OBJECT_WAVE48X18_V2_OBJECT",
+  "frameEnd": 1837,
+  "frameStart": 1826,
+  "gfxID": 5,
+  "height": 20,
+  "objectName": "OBJECT_WAVE48X18",
+  "width": 50
+ },
+ {
+  "animationName": "OBJECT_WAVE48X18_V3_OBJECT",
+  "frameEnd": 1849,
+  "frameStart": 1838,
+  "gfxID": 5,
+  "height": 16,
+  "objectName": "OBJECT_WAVE48X18",
+  "width": 14
+ },
+ {
+  "animationName": "OBJECT_BOUNDARY_OBJECT",
+  "frameEnd": 1857,
+  "frameStart": 1850,
+  "gfxID": 5,
+  "height": 16,
+  "objectName": "OBJECT_BOUNDARY",
+  "width": 20
+ },
+ {
+  "animationName": "OBJECT_RESGOLD_OBJECT",
+  "frameEnd": 1858,
+  "frameStart": 1858,
+  "gfxID": 5,
+  "height": 16,
+  "objectName": "OBJECT_RESGOLD",
+  "width": 19
+ },
+ {
+  "animationName": "OBJECT_RESIRON_OBJECT",
+  "frameEnd": 1859,
+  "frameStart": 1859,
+  "gfxID": 5,
+  "height": 18,
+  "objectName": "OBJECT_RESIRON",
+  "width": 13
+ },
+ {
+  "animationName": "OBJECT_RESCOAL_OBJECT",
+  "frameEnd": 1860,
+  "frameStart": 1860,
+  "gfxID": 5,
+  "height": 23,
+  "objectName": "OBJECT_RESCOAL",
+  "width": 22
+ },
+ {
+  "animationName": "OBJECT_RESSTONE_OBJECT",
+  "frameEnd": 1861,
+  "frameStart": 1861,
+  "gfxID": 5,
+  "height": 20,
+  "objectName": "OBJECT_RESSTONE",
+  "width": 29
+ },
+ {
+  "animationName": "OBJECT_RESSULFUR_OBJECT",
+  "frameEnd": 1862,
+  "frameStart": 1862,
+  "gfxID": 5,
+  "height": 20,
+  "objectName": "OBJECT_RESSULFUR",
+  "width": 28
+ },
+ {
+  "animationName": "OBJECT_RESFISH_OBJECT",
+  "frameEnd": 1863,
+  "frameStart": 1863,
+  "gfxID": 5,
+  "height": 106,
+  "objectName": "OBJECT_RESFISH",
+  "width": 94
+ },
+ {
+  "animationName": "OBJECT_FLAG_OBJECT",
+  "frameEnd": 1871,
+  "frameStart": 1864,
+  "gfxID": 5,
+  "height": 63,
+  "objectName": "OBJECT_FLAG",
+  "width": 45
+ },
+ {
+  "animationName": "OBJECT_STANDARTE_R_OBJECT",
+  "frameEnd": 1872,
+  "frameStart": 1872,
+  "gfxID": 5,
+  "height": 63,
+  "objectName": "OBJECT_STANDARTE_R",
+  "width": 45
+ },
+ {
+  "animationName": "OBJECT_STANDARTE_M_OBJECT",
+  "frameEnd": 1873,
+  "frameStart": 1873,
+  "gfxID": 5,
+  "height": 63,
+  "objectName": "OBJECT_STANDARTE_M",
+  "width": 45
+ },
+ {
+  "animationName": "OBJECT_STANDARTE_V_OBJECT",
+  "frameEnd": 1874,
+  "frameStart": 1874,
+  "gfxID": 5,
+  "height": 29,
+  "objectName": "OBJECT_STANDARTE_V",
+  "width": 43
+ },
+ {
+  "animationName": "OBJECT_FLAG01_OBJECT",
+  "frameEnd": 1898,
+  "frameStart": 1875,
+  "gfxID": 5,
+  "height": 29,
+  "objectName": "OBJECT_FLAG",
+  "width": 43
+ },
+ {
+  "animationName": "OBJECT_FLAG02_OBJECT",
+  "frameEnd": 1922,
+  "frameStart": 1899,
+  "gfxID": 5,
+  "height": 29,
+  "objectName": "OBJECT_FLAG",
+  "width": 43
+ },
+ {
+  "animationName": "OBJECT_FLAG03_OBJECT",
+  "frameEnd": 1946,
+  "frameStart": 1923,
+  "gfxID": 5,
+  "height": 29,
+  "objectName": "OBJECT_FLAG",
+  "width": 43
+ },
+ {
+  "animationName": "OBJECT_FLAG04_OBJECT",
+  "frameEnd": 1970,
+  "frameStart": 1947,
+  "gfxID": 5,
+  "height": 29,
+  "objectName": "OBJECT_FLAG",
+  "width": 43
+ },
+ {
+  "animationName": "OBJECT_FLAG05_OBJECT",
+  "frameEnd": 1994,
+  "frameStart": 1971,
+  "gfxID": 5,
+  "height": 29,
+  "objectName": "OBJECT_FLAG",
+  "width": 43
+ },
+ {
+  "animationName": "OBJECT_FLAG06_OBJECT",
+  "frameEnd": 2018,
+  "frameStart": 1995,
+  "gfxID": 5,
+  "height": 29,
+  "objectName": "OBJECT_FLAG",
+  "width": 43
+ },
+ {
+  "animationName": "OBJECT_FLAG07_OBJECT",
+  "frameEnd": 2042,
+  "frameStart": 2019,
+  "gfxID": 5,
+  "height": 29,
+  "objectName": "OBJECT_FLAG",
+  "width": 43
+ },
+ {
+  "animationName": "OBJECT_FLAG08_OBJECT",
+  "frameEnd": 2065,
+  "frameStart": 2042,
+  "gfxID": 5,
+  "height": 29,
+  "objectName": "OBJECT_FLAG",
+  "width": 43
+ }
+]

@@ -1,0 +1,1166 @@
+[
+ {
+  "ID": 0,
+  "name": "OBJECT_NO_OBJECT"
+ },
+ {
+  "ID": 1,
+  "name": "OBJECT_TREE01A"
+ },
+ {
+  "ID": 2,
+  "name": "OBJECT_TREE01B"
+ },
+ {
+  "ID": 3,
+  "name": "OBJECT_TREE02A"
+ },
+ {
+  "ID": 4,
+  "name": "OBJECT_TREE02B"
+ },
+ {
+  "ID": 5,
+  "name": "OBJECT_TREE03A"
+ },
+ {
+  "ID": 6,
+  "name": "OBJECT_TREE03B"
+ },
+ {
+  "ID": 7,
+  "name": "OBJECT_TREE04A"
+ },
+ {
+  "ID": 8,
+  "name": "OBJECT_TREE04B"
+ },
+ {
+  "ID": 9,
+  "name": "OBJECT_TREE05A"
+ },
+ {
+  "ID": 10,
+  "name": "OBJECT_TREE05B"
+ },
+ {
+  "ID": 11,
+  "name": "OBJECT_TREE06A"
+ },
+ {
+  "ID": 12,
+  "name": "OBJECT_TREE06B"
+ },
+ {
+  "ID": 13,
+  "name": "OBJECT_TREE07A"
+ },
+ {
+  "ID": 14,
+  "name": "OBJECT_TREE07B"
+ },
+ {
+  "ID": 15,
+  "name": "OBJECT_TREE08A"
+ },
+ {
+  "ID": 16,
+  "name": "OBJECT_TREE08B"
+ },
+ {
+  "ID": 17,
+  "name": "OBJECT_TREE09A"
+ },
+ {
+  "ID": 18,
+  "name": "OBJECT_TREE09B"
+ },
+ {
+  "ID": 19,
+  "name": "OBJECT_TREE10A"
+ },
+ {
+  "ID": 20,
+  "name": "OBJECT_TREE10B"
+ },
+ {
+  "ID": 21,
+  "name": "OBJECT_TREE11A"
+ },
+ {
+  "ID": 22,
+  "name": "OBJECT_TREE11B"
+ },
+ {
+  "ID": 23,
+  "name": "OBJECT_DARKTREE01A"
+ },
+ {
+  "ID": 24,
+  "name": "OBJECT_DARKTREE01B"
+ },
+ {
+  "ID": 25,
+  "name": "OBJECT_DARKTREE02A"
+ },
+ {
+  "ID": 26,
+  "name": "OBJECT_DARKTREE02B"
+ },
+ {
+  "ID": 27,
+  "name": "OBJECT_DARKTREE03A"
+ },
+ {
+  "ID": 28,
+  "name": "OBJECT_DARKTREE03B"
+ },
+ {
+  "ID": 29,
+  "name": "OBJECT_DARKTREE04A"
+ },
+ {
+  "ID": 30,
+  "name": "OBJECT_DARKTREE04B"
+ },
+ {
+  "ID": 31,
+  "name": "OBJECT_DARKTREE05A"
+ },
+ {
+  "ID": 32,
+  "name": "OBJECT_DARKTREE05B"
+ },
+ {
+  "ID": 33,
+  "name": "OBJECT_DARKTREE06A"
+ },
+ {
+  "ID": 34,
+  "name": "OBJECT_DARKTREE06B"
+ },
+ {
+  "ID": 35,
+  "name": "OBJECT_DARKTREE07A"
+ },
+ {
+  "ID": 36,
+  "name": "OBJECT_DARKTREE07B"
+ },
+ {
+  "ID": 37,
+  "name": "OBJECT_DARKTREE08A"
+ },
+ {
+  "ID": 38,
+  "name": "OBJECT_DARKTREE08B"
+ },
+ {
+  "ID": 39,
+  "name": "OBJECT_DARKTREE09A"
+ },
+ {
+  "ID": 40,
+  "name": "OBJECT_DARKTREE09B"
+ },
+ {
+  "ID": 41,
+  "name": "OBJECT_MINESET1"
+ },
+ {
+  "ID": 42,
+  "name": "OBJECT_TROJANHORSEDESTR"
+ },
+ {
+  "ID": 43,
+  "name": "OBJECT_BUSH1"
+ },
+ {
+  "ID": 44,
+  "name": "OBJECT_BUSH2"
+ },
+ {
+  "ID": 45,
+  "name": "OBJECT_BUSH3"
+ },
+ {
+  "ID": 46,
+  "name": "OBJECT_BUSH4"
+ },
+ {
+  "ID": 47,
+  "name": "OBJECT_BUSH5"
+ },
+ {
+  "ID": 48,
+  "name": "OBJECT_BUSH6"
+ },
+ {
+  "ID": 49,
+  "name": "OBJECT_BUSH7"
+ },
+ {
+  "ID": 50,
+  "name": "OBJECT_CACTUS1"
+ },
+ {
+  "ID": 51,
+  "name": "OBJECT_CELTICCROSS"
+ },
+ {
+  "ID": 52,
+  "name": "OBJECT_SKELETONDESERT1"
+ },
+ {
+  "ID": 53,
+  "name": "OBJECT_SKELETONDESERT2"
+ },
+ {
+  "ID": 54,
+  "name": "OBJECT_WAGGONDESTR"
+ },
+ {
+  "ID": 55,
+  "name": "OBJECT_WRECK1"
+ },
+ {
+  "ID": 56,
+  "name": "OBJECT_STONEBROWNISH1"
+ },
+ {
+  "ID": 57,
+  "name": "OBJECT_STONEBROWNISH2"
+ },
+ {
+  "ID": 58,
+  "name": "OBJECT_STONEBROWNISH3"
+ },
+ {
+  "ID": 59,
+  "name": "OBJECT_STONEBROWNISH4"
+ },
+ {
+  "ID": 60,
+  "name": "OBJECT_STONEBROWNISH5"
+ },
+ {
+  "ID": 61,
+  "name": "OBJECT_STONEBROWNISH6"
+ },
+ {
+  "ID": 62,
+  "name": "OBJECT_STONEBROWNISH7"
+ },
+ {
+  "ID": 63,
+  "name": "OBJECT_STONEBROWNISH8"
+ },
+ {
+  "ID": 64,
+  "name": "OBJECT_STONEBROWNISH9"
+ },
+ {
+  "ID": 65,
+  "name": "OBJECT_STONEBROWNISH10"
+ },
+ {
+  "ID": 66,
+  "name": "OBJECT_STONEGREYISH1"
+ },
+ {
+  "ID": 67,
+  "name": "OBJECT_STONEGREYISH2"
+ },
+ {
+  "ID": 68,
+  "name": "OBJECT_STONEGREYISH3"
+ },
+ {
+  "ID": 69,
+  "name": "OBJECT_STONEGREYISH4"
+ },
+ {
+  "ID": 70,
+  "name": "OBJECT_STONEGREYISH5"
+ },
+ {
+  "ID": 71,
+  "name": "OBJECT_STONEGREYISH6"
+ },
+ {
+  "ID": 72,
+  "name": "OBJECT_STONEGREYISH7"
+ },
+ {
+  "ID": 73,
+  "name": "OBJECT_STONEGREYISH8"
+ },
+ {
+  "ID": 74,
+  "name": "OBJECT_STONEGREYISH9"
+ },
+ {
+  "ID": 75,
+  "name": "OBJECT_STONEGREYISH10"
+ },
+ {
+  "ID": 76,
+  "name": "OBJECT_GRASS1"
+ },
+ {
+  "ID": 77,
+  "name": "OBJECT_GRASS2"
+ },
+ {
+  "ID": 78,
+  "name": "OBJECT_GRASS3"
+ },
+ {
+  "ID": 79,
+  "name": "OBJECT_GRASS4"
+ },
+ {
+  "ID": 80,
+  "name": "OBJECT_GRASS5"
+ },
+ {
+  "ID": 81,
+  "name": "OBJECT_GRASS6"
+ },
+ {
+  "ID": 82,
+  "name": "OBJECT_GRASS7"
+ },
+ {
+  "ID": 83,
+  "name": "OBJECT_GRASS8"
+ },
+ {
+  "ID": 84,
+  "name": "OBJECT_GRASS9"
+ },
+ {
+  "ID": 85,
+  "name": "OBJECT_GRASS10"
+ },
+ {
+  "ID": 86,
+  "name": "OBJECT_STATUSPOINT"
+ },
+ {
+  "ID": 87,
+  "name": "OBJECT_WELL"
+ },
+ {
+  "ID": 88,
+  "name": "OBJECT_FLOWERPATCH"
+ },
+ {
+  "ID": 89,
+  "name": "OBJECT_POND"
+ },
+ {
+  "ID": 90,
+  "name": "OBJECT_RUIN1"
+ },
+ {
+  "ID": 91,
+  "name": "OBJECT_SCARECROW"
+ },
+ {
+  "ID": 92,
+  "name": "OBJECT_MUSHROOMCYCLE"
+ },
+ {
+  "ID": 93,
+  "name": "OBJECT_STONEDARKISH1"
+ },
+ {
+  "ID": 94,
+  "name": "OBJECT_STONEDARKISH2"
+ },
+ {
+  "ID": 95,
+  "name": "OBJECT_STONEDARKISH3"
+ },
+ {
+  "ID": 96,
+  "name": "OBJECT_STONEDARKISH4"
+ },
+ {
+  "ID": 97,
+  "name": "OBJECT_STONEDARKISH5"
+ },
+ {
+  "ID": 98,
+  "name": "OBJECT_STONEDARKISH6"
+ },
+ {
+  "ID": 99,
+  "name": "OBJECT_STONEDARKISH7"
+ },
+ {
+  "ID": 100,
+  "name": "OBJECT_STONEDARKISH8"
+ },
+ {
+  "ID": 101,
+  "name": "OBJECT_STONEDARKISH9"
+ },
+ {
+  "ID": 102,
+  "name": "OBJECT_STONEDARKISH10"
+ },
+ {
+  "ID": 103,
+  "name": "OBJECT_DARKROPE1"
+ },
+ {
+  "ID": 104,
+  "name": "OBJECT_EVILMUSHROOM1"
+ },
+ {
+  "ID": 105,
+  "name": "OBJECT_EVILMUSHROOM2"
+ },
+ {
+  "ID": 106,
+  "name": "OBJECT_EVILMUSHROOM3"
+ },
+ {
+  "ID": 107,
+  "name": "OBJECT_REEVE1"
+ },
+ {
+  "ID": 108,
+  "name": "OBJECT_REEVE2"
+ },
+ {
+  "ID": 109,
+  "name": "OBJECT_REEVE3"
+ },
+ {
+  "ID": 110,
+  "name": "OBJECT_REEVE4"
+ },
+ {
+  "ID": 111,
+  "name": "OBJECT_DARKBUSH1"
+ },
+ {
+  "ID": 112,
+  "name": "OBJECT_DARKBUSH2"
+ },
+ {
+  "ID": 113,
+  "name": "OBJECT_DARKBUSH3"
+ },
+ {
+  "ID": 114,
+  "name": "OBJECT_DARKBUSH4"
+ },
+ {
+  "ID": 115,
+  "name": "OBJECT_BASE_MORBUS"
+ },
+ {
+  "ID": 116,
+  "name": "OBJECT_COLUMNRUINS_A1"
+ },
+ {
+  "ID": 117,
+  "name": "OBJECT_TROJANHORSE_BUILD"
+ },
+ {
+  "ID": 118,
+  "name": "OBJECT_TROJANHORSE_STANDARD"
+ },
+ {
+  "ID": 119,
+  "name": "OBJECT_GATE"
+ },
+ {
+  "ID": 120,
+  "name": "OBJECT_CACTUS2"
+ },
+ {
+  "ID": 121,
+  "name": "OBJECT_CACTUS3"
+ },
+ {
+  "ID": 122,
+  "name": "OBJECT_CACTUS4"
+ },
+ {
+  "ID": 123,
+  "name": "OBJECT_PEG01"
+ },
+ {
+  "ID": 124,
+  "name": "OBJECT_STONEMINE1_00"
+ },
+ {
+  "ID": 125,
+  "name": "OBJECT_STONEMINE1_01"
+ },
+ {
+  "ID": 126,
+  "name": "OBJECT_STONEMINE1_02"
+ },
+ {
+  "ID": 127,
+  "name": "OBJECT_STONEMINE1_03"
+ },
+ {
+  "ID": 128,
+  "name": "OBJECT_STONEMINE1_04"
+ },
+ {
+  "ID": 129,
+  "name": "OBJECT_STONEMINE1_05"
+ },
+ {
+  "ID": 130,
+  "name": "OBJECT_STONEMINE1_06"
+ },
+ {
+  "ID": 131,
+  "name": "OBJECT_STONEMINE1_07"
+ },
+ {
+  "ID": 132,
+  "name": "OBJECT_STONEMINE1_08"
+ },
+ {
+  "ID": 133,
+  "name": "OBJECT_STONEMINE1_09"
+ },
+ {
+  "ID": 134,
+  "name": "OBJECT_STONEMINE1_10"
+ },
+ {
+  "ID": 135,
+  "name": "OBJECT_STONEMINE1_11"
+ },
+ {
+  "ID": 136,
+  "name": "OBJECT_STONEMINE1_12"
+ },
+ {
+  "ID": 137,
+  "name": "OBJECT_DARKSTONEMINE1_00"
+ },
+ {
+  "ID": 138,
+  "name": "OBJECT_DARKSTONEMINE1_01"
+ },
+ {
+  "ID": 139,
+  "name": "OBJECT_DARKSTONEMINE1_02"
+ },
+ {
+  "ID": 140,
+  "name": "OBJECT_DARKSTONEMINE1_03"
+ },
+ {
+  "ID": 141,
+  "name": "OBJECT_DARKSTONEMINE1_04"
+ },
+ {
+  "ID": 142,
+  "name": "OBJECT_DARKSTONEMINE1_05"
+ },
+ {
+  "ID": 143,
+  "name": "OBJECT_DARKSTONEMINE1_06"
+ },
+ {
+  "ID": 144,
+  "name": "OBJECT_DARKSTONEMINE1_07"
+ },
+ {
+  "ID": 145,
+  "name": "OBJECT_DARKSTONEMINE1_08"
+ },
+ {
+  "ID": 146,
+  "name": "OBJECT_DARKSTONEMINE1_09"
+ },
+ {
+  "ID": 147,
+  "name": "OBJECT_DARKSTONEMINE1_10"
+ },
+ {
+  "ID": 148,
+  "name": "OBJECT_DARKSTONEMINE1_11"
+ },
+ {
+  "ID": 149,
+  "name": "OBJECT_DARKSTONEMINE1_12"
+ },
+ {
+  "ID": 150,
+  "name": "OBJECT_DARKPOND"
+ },
+ {
+  "ID": 151,
+  "name": "OBJECT_DARKSNOWMAN"
+ },
+ {
+  "ID": 152,
+  "name": "OBJECT_COLUMNRUINS_A2"
+ },
+ {
+  "ID": 153,
+  "name": "OBJECT_COLUMNRUINS_E1"
+ },
+ {
+  "ID": 154,
+  "name": "OBJECT_COLUMNRUINS_E2"
+ },
+ {
+  "ID": 155,
+  "name": "OBJECT_COLUMNRUINS_E3"
+ },
+ {
+  "ID": 156,
+  "name": "OBJECT_COLUMNRUINS_E4"
+ },
+ {
+  "ID": 157,
+  "name": "OBJECT_COLUMNRUINS_S1"
+ },
+ {
+  "ID": 158,
+  "name": "OBJECT_COLUMNRUINS_S2"
+ },
+ {
+  "ID": 159,
+  "name": "OBJECT_COLUMNRUINS_S3"
+ },
+ {
+  "ID": 160,
+  "name": "OBJECT_BUSH8"
+ },
+ {
+  "ID": 161,
+  "name": "OBJECT_GRAVE1"
+ },
+ {
+  "ID": 162,
+  "name": "OBJECT_GRAPE"
+ },
+ {
+  "ID": 163,
+  "name": "OBJECT_SEEWEED1"
+ },
+ {
+  "ID": 164,
+  "name": "OBJECT_SEEWEED2"
+ },
+ {
+  "ID": 165,
+  "name": "OBJECT_SEEWEED3"
+ },
+ {
+  "ID": 166,
+  "name": "OBJECT_REED1"
+ },
+ {
+  "ID": 167,
+  "name": "OBJECT_REED2"
+ },
+ {
+  "ID": 168,
+  "name": "OBJECT_REED3"
+ },
+ {
+  "ID": 169,
+  "name": "OBJECT_MUSSEL1"
+ },
+ {
+  "ID": 170,
+  "name": "OBJECT_MUSSEL2"
+ },
+ {
+  "ID": 171,
+  "name": "OBJECT_WATERLILY1"
+ },
+ {
+  "ID": 172,
+  "name": "OBJECT_WATERLILY2"
+ },
+ {
+  "ID": 173,
+  "name": "OBJECT_WATERLILY3"
+ },
+ {
+  "ID": 174,
+  "name": "OBJECT_BRANCH1"
+ },
+ {
+  "ID": 175,
+  "name": "OBJECT_BRANCH2"
+ },
+ {
+  "ID": 176,
+  "name": "OBJECT_BRANCH3"
+ },
+ {
+  "ID": 177,
+  "name": "OBJECT_BRANCH4"
+ },
+ {
+  "ID": 178,
+  "name": "OBJECT_DESERTBUSH1"
+ },
+ {
+  "ID": 179,
+  "name": "OBJECT_DESERTBUSH2"
+ },
+ {
+  "ID": 180,
+  "name": "OBJECT_DESERTBUSH3"
+ },
+ {
+  "ID": 181,
+  "name": "OBJECT_MUSHROOM1"
+ },
+ {
+  "ID": 182,
+  "name": "OBJECT_MUSHROOM2"
+ },
+ {
+  "ID": 183,
+  "name": "OBJECT_MUSHROOM3"
+ },
+ {
+  "ID": 184,
+  "name": "OBJECT_FLOWER1"
+ },
+ {
+  "ID": 185,
+  "name": "OBJECT_FLOWER2"
+ },
+ {
+  "ID": 186,
+  "name": "OBJECT_FLOWER3"
+ },
+ {
+  "ID": 187,
+  "name": "OBJECT_FLOWER4"
+ },
+ {
+  "ID": 188,
+  "name": "OBJECT_FLOWER5"
+ },
+ {
+  "ID": 189,
+  "name": "OBJECT_FOLIAGE1"
+ },
+ {
+  "ID": 190,
+  "name": "OBJECT_FOLIAGE2"
+ },
+ {
+  "ID": 191,
+  "name": "OBJECT_FOLIAGE3"
+ },
+ {
+  "ID": 192,
+  "name": "OBJECT_COLUMNRUINS_W1"
+ },
+ {
+  "ID": 193,
+  "name": "OBJECT_SHIELD_EMPTY"
+ },
+ {
+  "ID": 194,
+  "name": "OBJECT_SHIELD_COAL1"
+ },
+ {
+  "ID": 195,
+  "name": "OBJECT_SHIELD_COAL2"
+ },
+ {
+  "ID": 196,
+  "name": "OBJECT_SHIELD_COAL3"
+ },
+ {
+  "ID": 197,
+  "name": "OBJECT_SHIELD_GOLD1"
+ },
+ {
+  "ID": 198,
+  "name": "OBJECT_SHIELD_GOLD2"
+ },
+ {
+  "ID": 199,
+  "name": "OBJECT_SHIELD_GOLD3"
+ },
+ {
+  "ID": 200,
+  "name": "OBJECT_SHIELD_IRON1"
+ },
+ {
+  "ID": 201,
+  "name": "OBJECT_SHIELD_IRON2"
+ },
+ {
+  "ID": 202,
+  "name": "OBJECT_SHIELD_IRON3"
+ },
+ {
+  "ID": 203,
+  "name": "OBJECT_SHIELD_STONE1"
+ },
+ {
+  "ID": 204,
+  "name": "OBJECT_SHIELD_STONE2"
+ },
+ {
+  "ID": 205,
+  "name": "OBJECT_SHIELD_STONE3"
+ },
+ {
+  "ID": 206,
+  "name": "OBJECT_SHIELD_SULFUR1"
+ },
+ {
+  "ID": 207,
+  "name": "OBJECT_SHIELD_SULFUR2"
+ },
+ {
+  "ID": 208,
+  "name": "OBJECT_SHIELD_SULFUR3"
+ },
+ {
+  "ID": 209,
+  "name": "OBJECT_WHEAT1"
+ },
+ {
+  "ID": 210,
+  "name": "OBJECT_WHEAT2"
+ },
+ {
+  "ID": 211,
+  "name": "OBJECT_AGAVE"
+ },
+ {
+  "ID": 212,
+  "name": "OBJECT_MUSHROOM_DARK1"
+ },
+ {
+  "ID": 213,
+  "name": "OBJECT_MUSHROOM_DARK2"
+ },
+ {
+  "ID": 214,
+  "name": "OBJECT_MUSHROOM_DARK3"
+ },
+ {
+  "ID": 215,
+  "name": "OBJECT_SNOWMAN"
+ },
+ {
+  "ID": 216,
+  "name": "OBJECT_SHADOWHERB"
+ },
+ {
+  "ID": 217,
+  "name": "OBJECT_HIVE"
+ },
+ {
+  "ID": 218,
+  "name": "OBJECT_COLUMNRUINS_W2"
+ },
+ {
+  "ID": 219,
+  "name": "OBJECT_COLUMNRUINS_W3"
+ },
+ {
+  "ID": 220,
+  "name": "OBJECT_COLUMNRUINS_W4"
+ },
+ {
+  "ID": 221,
+  "name": "OBJECT_SPECIAL_FLOWER"
+ },
+ {
+  "ID": 222,
+  "name": "OBJECT_BUSH9"
+ },
+ {
+  "ID": 223,
+  "name": "OBJECT_CASTLE"
+ },
+ {
+  "ID": 224,
+  "name": "OBJECT_PHAROS"
+ },
+ {
+  "ID": 225,
+  "name": "OBJECT_COLOSSUS"
+ },
+ {
+  "ID": 226,
+  "name": "OBJECT_MOAI01"
+ },
+ {
+  "ID": 227,
+  "name": "OBJECT_MOAI02"
+ },
+ {
+  "ID": 228,
+  "name": "OBJECT_ALCHEMIST"
+ },
+ {
+  "ID": 229,
+  "name": "OBJECT_JUNGLE_TREE"
+ },
+ {
+  "ID": 230,
+  "name": "OBJECT_PALMPLANT"
+ },
+ {
+  "ID": 231,
+  "name": "OBJECT_GRAVE2"
+ },
+ {
+  "ID": 232,
+  "name": "OBJECT_RUNESTONE"
+ },
+ {
+  "ID": 233,
+  "name": "OBJECT_STONEDARKISH_B01"
+ },
+ {
+  "ID": 234,
+  "name": "OBJECT_STONEDARKISH_B02"
+ },
+ {
+  "ID": 235,
+  "name": "OBJECT_STONEDARKISH_B03"
+ },
+ {
+  "ID": 236,
+  "name": "OBJECT_STONEDARKISH_B04"
+ },
+ {
+  "ID": 237,
+  "name": "OBJECT_STONEDARKISH_B05"
+ },
+ {
+  "ID": 238,
+  "name": "OBJECT_STONEDARKISH_B06"
+ },
+ {
+  "ID": 239,
+  "name": "OBJECT_STONEDARKISH_B07"
+ },
+ {
+  "ID": 240,
+  "name": "OBJECT_STONEDARKISH_B08"
+ },
+ {
+  "ID": 241,
+  "name": "OBJECT_STONEDARKISH_B09"
+ },
+ {
+  "ID": 242,
+  "name": "OBJECT_STONEDARKISH_B10"
+ },
+ {
+  "ID": 243,
+  "name": "OBJECT_STONEDARKISH_G01"
+ },
+ {
+  "ID": 244,
+  "name": "OBJECT_STONEDARKISH_G02"
+ },
+ {
+  "ID": 245,
+  "name": "OBJECT_STONEDARKISH_G03"
+ },
+ {
+  "ID": 246,
+  "name": "OBJECT_STONEDARKISH_G04"
+ },
+ {
+  "ID": 247,
+  "name": "OBJECT_STONEDARKISH_G05"
+ },
+ {
+  "ID": 248,
+  "name": "OBJECT_STONEDARKISH_G06"
+ },
+ {
+  "ID": 249,
+  "name": "OBJECT_STONEDARKISH_G07"
+ },
+ {
+  "ID": 250,
+  "name": "OBJECT_STONEDARKISH_G08"
+ },
+ {
+  "ID": 251,
+  "name": "OBJECT_STONEDARKISH_G09"
+ },
+ {
+  "ID": 252,
+  "name": "OBJECT_STONEDARKISH_G10"
+ },
+ {
+  "ID": 253,
+  "name": "OBJECT_DARKMINESET1"
+ },
+ {
+  "ID": 254,
+  "name": "OBJECT_DARKSPITTER"
+ },
+ {
+  "ID": 255,
+  "name": "OBJECT_SUNFLOWER"
+ },
+ {
+  "ID": 256,
+  "name": "OBJECT_WAVE_LAKE24X12"
+ },
+ {
+  "ID": 257,
+  "name": "OBJECT_WAVE_LAKE28X22"
+ },
+ {
+  "ID": 258,
+  "name": "OBJECT_WAVE_LAKE40X24"
+ },
+ {
+  "ID": 259,
+  "name": "OBJECT_WAVE_LAKE37X19"
+ },
+ {
+  "ID": 260,
+  "name": "OBJECT_WAVE_LAKE48X19"
+ },
+ {
+  "ID": 261,
+  "name": "OBJECT_WAVE_LAKE49X18"
+ },
+ {
+  "ID": 262,
+  "name": "OBJECT_WAVE_LAKE51X29"
+ },
+ {
+  "ID": 263,
+  "name": "OBJECT_WAVE120X63"
+ },
+ {
+  "ID": 264,
+  "name": "OBJECT_WAVE216X99"
+ },
+ {
+  "ID": 265,
+  "name": "OBJECT_WAVE24X9"
+ },
+ {
+  "ID": 266,
+  "name": "OBJECT_WAVE48X18"
+ },
+ {
+  "ID": 267,
+  "name": "OBJECT_WAVE96X54"
+ },
+ {
+  "ID": 268,
+  "name": "OBJECT_WAVE96X63"
+ },
+ {
+  "ID": 269,
+  "name": "OBJECT_WAVE48X18_V1"
+ },
+ {
+  "ID": 270,
+  "name": "OBJECT_WAVE48X18_V2"
+ },
+ {
+  "ID": 271,
+  "name": "OBJECT_WAVE48X18_V3"
+ },
+ {
+  "ID": 272,
+  "name": "OBJECT_BOUNDARY"
+ },
+ {
+  "ID": 273,
+  "name": "OBJECT_RESGOLD"
+ },
+ {
+  "ID": 274,
+  "name": "OBJECT_RESIRON"
+ },
+ {
+  "ID": 275,
+  "name": "OBJECT_RESCOAL"
+ },
+ {
+  "ID": 276,
+  "name": "OBJECT_RESSTONE"
+ },
+ {
+  "ID": 277,
+  "name": "OBJECT_RESSULFUR"
+ },
+ {
+  "ID": 278,
+  "name": "OBJECT_RESFISH"
+ },
+ {
+  "ID": 279,
+  "name": "OBJECT_FLAG"
+ },
+ {
+  "ID": 280,
+  "name": "OBJECT_STANDARTE_R"
+ },
+ {
+  "ID": 281,
+  "name": "OBJECT_STANDARTE_M"
+ },
+ {
+  "ID": 282,
+  "name": "OBJECT_STANDARTE_V"
+ },
+ {
+  "ID": 283,
+  "name": "OBJECT_FLAG01"
+ },
+ {
+  "ID": 284,
+  "name": "OBJECT_FLAG02"
+ },
+ {
+  "ID": 285,
+  "name": "OBJECT_FLAG03"
+ },
+ {
+  "ID": 286,
+  "name": "OBJECT_FLAG04"
+ },
+ {
+  "ID": 287,
+  "name": "OBJECT_FLAG05"
+ },
+ {
+  "ID": 288,
+  "name": "OBJECT_FLAG06"
+ },
+ {
+  "ID": 289,
+  "name": "OBJECT_FLAG07"
+ },
+ {
+  "ID": 290,
+  "name": "OBJECT_FLAG08"
+ }
+]
