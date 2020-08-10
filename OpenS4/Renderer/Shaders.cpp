@@ -132,5 +132,66 @@ STRINGIFY(#version 330 core\n
 
 );
 
+
+const char* FRAGMENTSHADER_SELECTION =
+STRINGIFY(#version 330 core\n
+
+	in vec2 texCoord;
+	in vec3 vCol;
+
+	out vec4 fragColor;
+
+	uniform sampler2D tex2D;
+
+	void main(){
+
+		vec4 textureColor = texture2D(tex2D, texCoord);
+	
+		if (textureColor.a == 1)
+		{
+			fragColor.r = vCol.r;
+			fragColor.g = vCol.g;
+			fragColor.b = vCol.b;
+			fragColor.a = 1;
+		}
+		else
+		{
+			if (textureColor.r == 0 && textureColor.g == 0 && textureColor.b == 0 && textureColor.a != 0)
+			{
+				fragColor.r = vCol.r;
+				fragColor.g = vCol.g;
+				fragColor.b = vCol.b;
+				fragColor.a = 1;
+			}
+			else
+			{
+				fragColor = textureColor;
+			}
+		}
+
+		if (fragColor.a == 0)
+			discard;
+	}
+);
+
+const char * VERTEXSHADER_SELECTION = 
+STRINGIFY(#version 330 core\n
+
+layout(location = 0) in vec4 vVertex;
+layout(location = 1) in vec2 vTexCoord;
+layout(location = 2) in vec3 vColor;
+
+uniform mat4 mvpMatrix;
+
+out vec2 texCoord;
+out vec3 vCol;
+
+	void main(){
+		gl_Position = mvpMatrix * vVertex;
+		texCoord = vTexCoord;
+		vCol = vColor;
+	}
+);
+
 // clang-format on
 }  // namespace OpenS4::Renderer::Shader

@@ -18,5 +18,3 @@
 #include "Gui/imgui/ImguiMain.hpp"
 
 void TERMINATE(u64 errorCode = 1);
-
-extern float g_heightScale;

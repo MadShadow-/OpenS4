@@ -2,8 +2,6 @@
 
 #include "MultiAtlas.hpp"
 
-#include <rectpack2D/finders_interface.h>
-
 namespace OpenS4::Renderer::ObjectRenderer
 {
     static u32 makeAtlas(std::vector<rectpack2D::rect_xywh>& rectangles,
@@ -34,119 +32,6 @@ namespace OpenS4::Renderer::ObjectRenderer
         }
         return rectangles.size();
     }
-
-    class Atlas
-    {
-        u32 m_size;
-
-        u32* m_imageBuffer;
-
-        void copy_image(unsigned int* dest,
-                        unsigned int* src,
-                        int posX,
-                        int posY,
-                        int width,
-                        int height,
-                        int destWidth,
-                        int srcWidth)
-        {
-            if (srcWidth < 0) srcWidth = width;
-
-            unsigned int* destP = dest + destWidth * posY;
-
-            for (int y = 0; y < height; y++)
-            {
-                unsigned int* curDestP = destP + destWidth * y + posX;
-                unsigned int* srcP = src + (height - y - 1) * srcWidth;
-
-                for (int x = width; x > 0; x--)
-                {
-                    *curDestP = *srcP;
-                    curDestP++;
-                    srcP++;
-                }
-            }
-        }
-
-        void copyImage(OpenS4::Import::ImageData& image,
-                       rectpack2D::rect_xywh& pos)
-        {
-            for (auto y = 0; y < image.getHeight(); y++)
-            {
-                for (auto x = 0; x < image.getWidth(); x++)
-                {
-                    auto color = image.getColor(x, y);
-
-                    if (m_imageBuffer[(y + pos.y) * m_size + (x + pos.x)] != 0)
-                    {
-                        int z = 0;
-                        z++;
-                    }
-
-                    if (color != 0)
-                    {
-                        m_imageBuffer[(y + pos.y) * m_size + (x + pos.x)] =
-                            color;
-                    }
-                }
-            }
-            int z = 0;
-            z++;
-        }
-
-        GLuint m_glTextureID = 0;
-
-       public:
-        Atlas(u32 size)
-        {
-            m_size = size;
-            m_imageBuffer = new u32[size * size];
-            memset(m_imageBuffer, 0, sizeof(u32) * size * size);
-        }
-        ~Atlas()
-        {
-            if (m_imageBuffer != nullptr) delete[] m_imageBuffer;
-
-            if (m_glTextureID)
-            {
-                glDeleteTextures(1, &m_glTextureID);
-            }
-        }
-
-        void copyImageData(std::vector<rectpack2D::rect_xywh>& positions,
-                           std::vector<OpenS4::Import::ImageData>& images,
-                           u32 startIndex,
-                           u32 endIndexExcluded)
-        {
-            for (auto i = startIndex; i < endIndexExcluded; i++)
-            {
-                auto& image = images[i];
-                auto& rect = positions[i];
-
-                copyImage(image, rect);
-            }
-
-            glGenTextures(1, &m_glTextureID);
-            glBindTexture(GL_TEXTURE_2D, m_glTextureID);
-            glTexImage2D(GL_TEXTURE_2D,
-                         0,
-                         GL_RGBA,
-                         m_size,
-                         m_size,
-                         0,
-                         GL_RGBA,
-                         GL_UNSIGNED_INT_8_8_8_8,
-                         m_imageBuffer);
-            // TODO error checking.
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-
-            delete[] m_imageBuffer;
-            m_imageBuffer = nullptr;
-        }
-
-        GLuint getGLTextureID() { return m_glTextureID; }
-    };
 
     void MultiAtlas::buildAtlases(u32 atlasSize)
     {
@@ -326,8 +211,70 @@ namespace OpenS4::Renderer::ObjectRenderer
         }
     }
 
+    u32 MultiAtlas::getNumberOfFilledPixels()
+    {
+        u32 pixels = 0;
+        for (auto& atlas : m_atlases) pixels += atlas->getFilledPixels();
+        return pixels;
+    }
+    u32 MultiAtlas::getNumberOfPixels()
+    {
+        u32 pixels = 0;
+        for (auto& atlas : m_atlases) pixels += atlas->getAtlasSize();
+        return pixels;
+    }
+    u32 MultiAtlas::getSizeOfAtlas() { return m_atlases[0]->getAtlasSize(); }
+
     MultiAtlas::~MultiAtlas()
     {
         for (auto& atlas : m_atlases) delete atlas;
     }
+
+    std::vector<u32> MultiAtlas::getAtlasTexture(u32 atlasID)
+    {
+        return m_atlases[atlasID]->getAtlasImage();
+    }
+
+    void MultiAtlas::dump(OpenS4::Core::Util::FileWriter* writer)
+    {
+        OpenS4::getLogger().info("Dumping MultiAtlas...");
+        writer->write_u32(m_atlases.size());
+
+        for (u32 i = 0; i < m_atlases.size(); i++)
+        {
+            m_atlases[i]->dump(writer);
+        }
+
+        writer->write_u32vector(m_startIndices);
+        writer->write_u32vector(m_endIndices);
+
+        writer->write_u32(m_uv.size());
+        for (auto& uv : m_uv) uv.dump(writer);
+
+        OpenS4::getLogger().info("Dumping MultiAtlas done.");
+    }
+
+    std::shared_ptr<MultiAtlas> MultiAtlas::fromDump(
+        OpenS4::Core::Util::FileReader* reader)
+    {
+        std::shared_ptr<MultiAtlas> ma = std::make_shared<MultiAtlas>();
+
+        MultiAtlas* m = ma.get();
+
+        u32 numberOfAtlases = reader->read_u32();
+        for (u32 i = 0; i < numberOfAtlases; i++)
+        {
+            m->m_atlases.push_back(Atlas::fromDump(reader));
+        }
+
+        m->m_startIndices = reader->read_u32vector();
+        m->m_endIndices = reader->read_u32vector();
+
+        auto uv_size = reader->read_u32();
+        for (u32 i = 0; i < uv_size; i++)
+            m->m_uv.push_back(UV::fromDump(reader));
+
+        return ma;
+    }
+
 }  // namespace OpenS4::Renderer::ObjectRenderer

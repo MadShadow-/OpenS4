@@ -2,6 +2,9 @@
 
 #include "../OpenGL.hpp"
 
+#include "Core/Types.hpp"
+#include <vector>
+
 namespace OpenS4::Renderer {
 class TriangleBatch {
    public:

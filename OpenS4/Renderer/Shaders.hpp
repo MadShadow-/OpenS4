@@ -12,4 +12,7 @@ extern const char* VERTEXSHADER_SETTLER;
 
 extern const char* VERTEXSHADER_POINT;
 extern const char* FRAGMENTSHADER_POINT;
+
+extern const char* VERTEXSHADER_SELECTION;
+extern const char* FRAGMENTSHADER_SELECTION;
 }  // namespace OpenS4::Renderer::Shader
