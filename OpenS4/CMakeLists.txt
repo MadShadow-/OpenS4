@@ -56,3 +56,4 @@ configure_file(${PROJECT_SOURCE_DIR}/Config/Object/ObjectAnimations.json ${CMAKE
 
 # Copy Maps
 configure_file(${PROJECT_SOURCE_DIR}/Config/Maps/576_AlleTexturen.map ${CMAKE_CURRENT_BINARY_DIR}/Config/Maps/576_AlleTexturen.map COPYONLY)
+configure_file(${PROJECT_SOURCE_DIR}/Config/Maps/576_AlleTexturen.map ${CMAKE_CURRENT_BINARY_DIR}/Config/Maps/576_AlleTexturen_Eiche.map COPYONLY)
